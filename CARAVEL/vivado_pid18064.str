@@ -1,0 +1,122 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:40:23 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 18064
+License: Customer
+
+Current time: 	Wed May 21 11:54:16 EDT 2025
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1920x1080
+Screen resolution (DPI): 125
+Available screens: 1
+Available disk space: 15 GB
+Default font: family=Segoe UI,name=Segoe UI,style=plain,size=15
+
+Java version: 	9.0.4 64-bit
+Java home: 	C:/Xilinx/Vivado/2019.2/tps/win64/jre9.0.4
+Java executable location: 	C:/Xilinx/Vivado/2019.2/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	schrocjq
+User home directory: C:/Users/schrocjq
+User working directory: C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2019.2
+RDI_DATADIR: C:/Xilinx/Vivado/2019.2/data
+RDI_BINDIR: C:/Xilinx/Vivado/2019.2/bin
+
+Vivado preferences file location: C:/Users/schrocjq/AppData/Roaming/Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: C:/Users/schrocjq/AppData/Roaming/Xilinx/Vivado/2019.2/
+Vivado layouts directory: C:/Users/schrocjq/AppData/Roaming/Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/vivado.log
+Vivado journal file location: 	C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/vivado.jou
+Engine tmp dir: 	C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/.Xil/Vivado-18064-RHIT-R912GAAZ
+
+Xilinx Environment Variables
+----------------------------
+XILINX: C:/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2019.2
+XILINX_VIVADO: C:/Xilinx/Vivado/2019.2
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2019.2
+
+
+GUI allocated memory:	154 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 604 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// bB (cr):  Open Project : addNotify
+// Opening Vivado Project: C:\Xilinx\Switch Folder\Caravel_NPU_FPGA_2025\CARAVEL\CARAVEL.xpr. Version: Vivado v2019.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// Tcl Message: open_project {C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.xpr} 
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 88 MB (+89677kb) [00:00:14]
+// [Engine Memory]: 616 MB (+494430kb) [00:00:14]
+// [Engine Memory]: 661 MB (+14974kb) [00:00:15]
+// [GUI Memory]: 96 MB (+3964kb) [00:00:15]
+// [GUI Memory]: 113 MB (+12239kb) [00:00:15]
+// WARNING: HEventQueue.dispatchEvent() is taking  3468 ms.
+// Tcl Message: open_project {C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.xpr} 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'C:/Xilinx/CaravelFPGA/Caravel_FPGA_2025/CARAVEL' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 698 MB. GUI used memory: 59 MB. Current time: 5/21/25, 11:54:21 AM EDT
+// [Engine Memory]: 702 MB (+7928kb) [00:00:17]
+// WARNING: HEventQueue.dispatchEvent() is taking  1194 ms.
+// Tcl Message: open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:07 . Memory (MB): peak = 726.203 ; gain = 94.938 
+// Project name: CARAVEL; location: C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL; part: xc7a100tcsg324-1
+// [Engine Memory]: 878 MB (+147560kb) [00:00:19]
+dismissDialog("Open Project"); // bB (cr)
+// a (cr): Critical Messages: addNotify
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
