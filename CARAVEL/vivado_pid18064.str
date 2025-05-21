@@ -120,3 +120,13 @@ dismissDialog("Open Project"); // bB (cr)
 // Tcl Message: update_compile_order -fileset sources_1 
 selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
 dismissDialog("Critical Messages"); // a (cr)
+// [GUI Memory]: 119 MB (+1220kb) [00:00:36]
+// Elapsed time: 796 seconds
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, caravel (caravel.v)]", 4); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, caravel (caravel.v)]", 4); // B (F, cr)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, caravel (caravel.v)]", 4); // B (F, cr)
+// Elapsed time: 254 seconds
+selectButton(RDIResourceCommand.RDICommands_SETTINGS, "xc7a100tcsg324-1"); // h (Q, cr)
+selectButton(RDIResourceCommand.RDICommands_SETTINGS, "xc7a100tcsg324-1"); // h (Q, cr)
+// Elapsed time: 158 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 14); // B (F, cr)

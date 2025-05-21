@@ -11,3 +11,4 @@
 #-----------------------------------------------------------
 start_gui
 open_project {C:/Xilinx/Switch Folder/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.xpr}
+update_compile_order -fileset sources_1
