@@ -1,32 +1,4 @@
 # Caravel FPGA 2025
-See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by Efabless.
-
-
-## Adding VexRiscv Core:
-- Generated compatible VexRiscv core using [this SpinalHDL](https://github.com/SpinalHDL/VexRiscv) repo. The file used is found [here](SpinalHDL_Scala_files/VexRiscvCachedWishboneForSim.scala) and was run from [this folder](https://github.com/SpinalHDL/VexRiscv/tree/master/src/main/scala/vexriscv/demo) using the SinalHDL instructions.
-- The generated verilog VexRiscv core was imported into a Vivado project containing all of the verilog from [this folder](CARAVEL/CARAVEL.srcs/sources_1/imports/src).
-## Configuring the original repo for Nexys A7:
-- We did not have a Cmod Artix 7-35T FPGA or QSPI SST26VF080A Flash module, so we used the Nexys A7-100T Digilent board as it has an integrated QSPI flash connected directly to FPGA fabric.
-- The Cmod Artix 7-35T has a 12MHz oscillator but our Nexys A7-100T has a 100MHz oscillator, so we used Vivado Clock wizard to generate a clk_fix part to convert clocks as seen [here](CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v).
-- The clock pin to the Nexys QSPI flash is not accessable using the I/O planner and instead must be set with the STARTUPE2 primative. Our configuration of STARTUPE2 is found [here](CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v).
-- Since we are using a different FPGA, we had to make our own configuration file. Our configuration file is found [here](CARAVEL/CARAVEL.srcs/constrs_1/new/CARVEL.xdc).
-- We used the Raspberry Pi Pico method of flashing the QSPI flash as described by the original repo. However, we had to alter some of the code for compatability with our flash. The updated code is found [here](Micropython_scripts/flash).
-## Loading Caravel and Flashing the QSPI Flash
-The steps are similar to those described in the original repo:
-- We did not make our own program, we used the hex file from the original repo found [here](hex_file/debug_gpio.hex) and [here](Micropython_scripts/debug_gpio.hex).
-- We used Vivado to program the FPGA with Caravel as described by the original repo.
-- Our hardware connections are changed to the following:
-	- No need to connect an external flash
-	- FPGA PMOD JC1 (mprj_io[1]/SDO) will be connected to pin 6 in Raspberry pi pico (MISO/ SPIO RX)
-	- FPGA PMOD JC2 (mprj_io[2]/SDI) will be connected to pin 5 in Raspberry pi pico (MOSI/ SPIO TX)
-	- FPGA PMOD JC3 (mprj_io[3]/CSB) will be connected to pin 7 in Raspberry pi pico (SPIO CSn)
-	- FPGA PMOD JC4 (mprj_io[4]/SCK) will be connected to pin 4 in Raspberry pi pico (SPIO SCK)
-- We followed the original repo instructions for setting up the Raspberry Pi Pico.
-## Original Repo Step 2: Caravel implementation on FPGA
-- At this point Caravel should be flashing LED0 on the Nexys FPGA, proving that Caravel is running.
-- We did not verify that step 2 works, this is left for future groups. 
-Test
-
 
 # Code Compilation for Caravel:
 
@@ -138,12 +110,38 @@ We had to modify Makefiles and ensure the correct exports in the `~/.bashrc` (wh
 ### Makefiles
 
 The following Makefiles were changed and why they were changed:
-- [`cpu.makefile`](../caravel_mgmt_soc_litex/verilog/dv/make/cpu.makefile): Contains variable initializations for FIRMWARE source files and Caravel's verilog (including our VexRiscV core)
-- [`env.makefile`](../caravel_mgmt_soc_litex/verilog/dv/make/env.makefile): Contains exports for Caravel's verilog path, core verilog path, userproject verilog path and lastly the cross compiler paths (installed above)
-- [`sim.makefile`](../caravel_mgmt_soc_litex/verilog/dv/make/sim.makefile): Main Makefile to compile the hex file for the code. We had to change some makefile commands and comment out waveform simulation generation code in makefile
-- [`var.makefile`](../caravel_mgmt_soc_litex/verilog/dv/make/var.makefile): Contains variable definitions used in the `sim.makefile` for compiler flags to compile the C code (eventually turned into `hex` files). The flags involve defining CPU (vexriscv for us) type, family, endianness and other cross compiler specific settings
+- [`cpu.makefile`](./caravel_mgmt_soc_litex/verilog/dv/make/cpu.makefile): Contains variable initializations for FIRMWARE source files and Caravel's verilog (including our VexRiscV core)
+- [`env.makefile`](./caravel_mgmt_soc_litex/verilog/dv/make/env.makefile): Contains exports for Caravel's verilog path, core verilog path, userproject verilog path and lastly the cross compiler paths (installed above)
+- [`sim.makefile`](./caravel_mgmt_soc_litex/verilog/dv/make/sim.makefile): Main Makefile to compile the hex file for the code. We had to change some makefile commands and comment out waveform simulation generation code in makefile
+- [`var.makefile`](./caravel_mgmt_soc_litex/verilog/dv/make/var.makefile): Contains variable definitions used in the `sim.makefile` for compiler flags to compile the C code (eventually turned into `hex` files). The flags involve defining CPU (vexriscv for us) type, family, endianness and other cross compiler specific settings
 
 > [!TIP]
-> Currently all code is compiled in the [gpio_mgmt](../caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/) folder which is the default that the code in [Caravel_on_FPGA](https://github.com/efabless/Caravel_on_FPGA) uses to compile C code to run on caravel. However, to create your own folder structure for the C project you'd have to make the appropriate changes in the `sim.makefile` and the [local Makefile](../caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/Makefile) in the gpio_mgmt folder. 
+> Currently all code is compiled in the [gpio_mgmt](./caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/) folder which is the default that the code in [Caravel_on_FPGA](https://github.com/efabless/Caravel_on_FPGA) uses to compile C code to run on caravel. However, to create your own folder structure for the C project you'd have to make the appropriate changes in the `sim.makefile` and the [local Makefile](./caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/Makefile) in the gpio_mgmt folder. 
 
 
+# Alterations to Original Efabless Repository
+See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by Efabless.
+## Adding VexRiscv Core:
+- Generated compatible VexRiscv core using [this SpinalHDL](https://github.com/SpinalHDL/VexRiscv) repo. The file used is found [here](SpinalHDL_Scala_files/VexRiscvCachedWishboneForSim.scala) and was run from [this folder](https://github.com/SpinalHDL/VexRiscv/tree/master/src/main/scala/vexriscv/demo) using the SinalHDL instructions.
+- The generated verilog VexRiscv core was imported into a Vivado project containing all of the verilog from [this folder](CARAVEL/CARAVEL.srcs/sources_1/imports/src).
+## Configuring the original repo for Nexys A7:
+- We did not have a Cmod Artix 7-35T FPGA or QSPI SST26VF080A Flash module, so we used the Nexys A7-100T Digilent board as it has an integrated QSPI flash connected directly to FPGA fabric.
+- The Cmod Artix 7-35T has a 12MHz oscillator but our Nexys A7-100T has a 100MHz oscillator, so we used Vivado Clock wizard to generate a clk_fix part to convert clocks as seen [here](CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v).
+- The clock pin to the Nexys QSPI flash is not accessable using the I/O planner and instead must be set with the STARTUPE2 primative. Our configuration of STARTUPE2 is found [here](CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v).
+- Since we are using a different FPGA, we had to make our own configuration file. Our configuration file is found [here](CARAVEL/CARAVEL.srcs/constrs_1/new/CARVEL.xdc).
+- We used the Raspberry Pi Pico method of flashing the QSPI flash as described by the original repo. However, we had to alter some of the code for compatability with our flash. The updated code is found [here](Micropython_scripts/flash).
+## Loading Caravel and Flashing the QSPI Flash
+The steps are similar to those described in the original repo:
+- We did not make our own program, we used the hex file from the original repo found [here](hex_file/debug_gpio.hex) and [here](Micropython_scripts/debug_gpio.hex).
+- We used Vivado to program the FPGA with Caravel as described by the original repo.
+- Our hardware connections are changed to the following:
+	- No need to connect an external flash
+	- FPGA PMOD JC1 (mprj_io[1]/SDO) will be connected to pin 6 in Raspberry pi pico (MISO/ SPIO RX)
+	- FPGA PMOD JC2 (mprj_io[2]/SDI) will be connected to pin 5 in Raspberry pi pico (MOSI/ SPIO TX)
+	- FPGA PMOD JC3 (mprj_io[3]/CSB) will be connected to pin 7 in Raspberry pi pico (SPIO CSn)
+	- FPGA PMOD JC4 (mprj_io[4]/SCK) will be connected to pin 4 in Raspberry pi pico (SPIO SCK)
+- We followed the original repo instructions for setting up the Raspberry Pi Pico.
+## Original Repo Step 2: Caravel implementation on FPGA
+- At this point Caravel should be flashing LED0 on the Nexys FPGA, proving that Caravel is running.
+- We did not verify that step 2 works, this is left for future groups. 
+Test
