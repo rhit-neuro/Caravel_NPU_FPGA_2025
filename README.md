@@ -1,5 +1,4 @@
 # Caravel FPGA 2025
-See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by Efabless.
 
 # Code Compilation for Caravel:
 
@@ -121,7 +120,7 @@ The following Makefiles were changed and why they were changed:
 
 
 # Alterations to Original Efabless Repository
-
+See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by Efabless.
 ## Adding VexRiscv Core:
 - Generated compatible VexRiscv core using [this SpinalHDL](https://github.com/SpinalHDL/VexRiscv) repo. The file used is found [here](SpinalHDL_Scala_files/VexRiscvCachedWishboneForSim.scala) and was run from [this folder](https://github.com/SpinalHDL/VexRiscv/tree/master/src/main/scala/vexriscv/demo) using the SinalHDL instructions.
 - The generated verilog VexRiscv core was imported into a Vivado project containing all of the verilog from [this folder](CARAVEL/CARAVEL.srcs/sources_1/imports/src).
