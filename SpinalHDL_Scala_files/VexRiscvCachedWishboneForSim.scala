@@ -28,10 +28,10 @@ object VexRiscvCachedWishboneForSim{
 //            resetVector = 0x80000000l,
 //            prediction = STATIC,
 //          ),
-//          new DBusSimplePlugin(
-//            catchAddressMisaligned = false,
-//            catchAccessFault = false
-//          ),
+          new DBusSimplePlugin(
+            catchAddressMisaligned = true,
+            catchAccessFault = true
+          ),
           new IBusCachedPlugin(
             resetVector = null,
             prediction = STATIC,
@@ -52,24 +52,24 @@ object VexRiscvCachedWishboneForSim{
             //              portTlbSize = 4
             //            )
           ),
-          new DBusCachedPlugin(
-            config = new DataCacheConfig(
-              cacheSize         = 4096,
-              bytePerLine       = 32,
-              wayCount          = 1,
-              addressWidth      = 32,
-              cpuDataWidth      = 32,
-              memDataWidth      = 32,
-              catchAccessError  = true,
-              catchIllegal      = true,
-              catchUnaligned    = true
-            ),
-            dBusCmdMasterPipe = true, //required for wishbone
-            memoryTranslatorPortConfig = null
+//          new DBusCachedPlugin(
+//            config = new DataCacheConfig(
+//              cacheSize         = 4096,
+//              bytePerLine       = 32,
+//              wayCount          = 1,
+//              addressWidth      = 32,
+//              cpuDataWidth      = 32,
+//              memDataWidth      = 32,
+//              catchAccessError  = true,
+//              catchIllegal      = true,
+//              catchUnaligned    = true
+//            ),
+//            dBusCmdMasterPipe = true, //required for wishbone
+//            memoryTranslatorPortConfig = null
             //            memoryTranslatorPortConfig = MemoryTranslatorPortConfig(
             //              portTlbSize = 6
             //            )
-          ),
+//          ),
           new StaticMemoryTranslatorPlugin(
             ioRange      = _(31 downto 28) === 0xF
           ),
