@@ -200,6 +200,12 @@ The following Makefiles were changed and why they were changed:
 > [!TIP]
 > Currently all code is compiled in the [gpio_mgmt](./caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/) folder which is the default that the code in [Caravel_on_FPGA](https://github.com/efabless/Caravel_on_FPGA) uses to compile C code to run on caravel. However, to create your own folder structure for the C project you'd have to make the appropriate changes in the `sim.makefile` and the [local Makefile](./caravel_mgmt_soc_litex/verilog/dv/tests-caravel/gpio_mgmt/Makefile) in the gpio_mgmt folder. 
 
+### Defines and headers
+All the headers that would be needed for the C code, and all external imports are present in the [Firmware](./caravel_mgmt_soc_litex/verilog/dv/firmware/) folder.
+
+The full path to the firmware folder: `caravel_mgmt_soc_litex/verilog/dv/firmware`
+
+This is where we discovered the wishbone enable signal (one of the things that was needed to get our C code to work)
 
 # Version History
 See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by Efabless.
