@@ -6,8 +6,8 @@
 //
 // Purpose:	To handle all of the processing associated with receiving data
 //		from an SD card via the lower-level SPI processor, and then
-//	issuing write commands to our internal memory store (external to this
-//	module).
+//	    issuing write commands to our internal memory store (external to this
+//	    module).
 //
 // Creator:	Dan Gisselquist, Ph.D.
 //		Gisselquist Technology, LLC

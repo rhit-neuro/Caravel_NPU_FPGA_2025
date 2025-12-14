@@ -6,7 +6,10 @@
 //
 // Purpose:	SD Card controller, using SPI interface with the card and
 //		WB interface with the rest of the system.  This is the top
-//	level of the SPI based controller.
+//	    level of the SPI based controller.
+//
+//  This module contains two FIFO's used as data buffers, a command/status  
+//  reg & data reg (mapped onto the WB bus).
 //
 //	See the specification for more information.
 //
@@ -38,6 +41,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
+
 `timescale 1ns/1ps
 `default_nettype	none
 // }}}
@@ -214,6 +218,8 @@ module	sdspi #(
 
 
 	// }}}
+	
+
 
 	// Take an extra wishbone clock?
 	// {{{

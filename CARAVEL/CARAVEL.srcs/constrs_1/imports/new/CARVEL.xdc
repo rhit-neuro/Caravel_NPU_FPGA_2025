@@ -21,7 +21,6 @@ set_input_delay 5.0000 -clock clock12 -add_delay [get_ports {mprj_io[*]}];
 
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets mprj_io_IOBUF[4]_inst/O]
 
-
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[37]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[36]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[35]}]
@@ -124,6 +123,15 @@ set_property PACKAGE_PIN T16 [get_ports {mprj_io[37]}]
 set_property PACKAGE_PIN V15 [get_ports {mprj_io[31]}]
 set_property PACKAGE_PIN V14 [get_ports {mprj_io[30]}]
 set_property PACKAGE_PIN V12 [get_ports {mprj_io[29]}]
+
+# Caravel user I/O mapped to Nexys A7 microSD
+# Note: The SDSPI.V utilizes the mprj_io, not the FPGA pins the Caravel harness is contained on, so if a different board is used, only the pins here should be changed
+set_property -dict { PACKAGE_PIN E2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[5] }]; # SD_RESET  (goes to connector J1, SD reset transistor)
+set_property -dict { PACKAGE_PIN A1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[4] }]; # SD_CD  (Card Detect)
+set_property -dict { PACKAGE_PIN B1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[0] }]; # SD_SCK  (SPI clock)
+set_property -dict { PACKAGE_PIN C1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[1] }]; # SD_CMD  (SPI MOSI)
+set_property -dict { PACKAGE_PIN C2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[2] }]; # SD_DAT0 (SPI MISO)
+set_property -dict { PACKAGE_PIN D2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[3] }]; # SD_DAT3 (SPI CS)
 
 # 7 Segment Display Pins Below
 set_property IOSTANDARD LVCMOS33 [get_ports {Display[7]}]
