@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Dec 11 12:17:42 2025
-# Process ID: 41424
+# Start of session at: Sun Dec 14 16:54:49 2025
+# Process ID: 26052
 # Current directory: D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1
 # Command line: vivado.exe -log caravel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source caravel.tcl
 # Log file: D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/caravel.vds
@@ -12,7 +12,7 @@
 # Running On: RHIT-PW01EG6F, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 16885 MB
 #-----------------------------------------------------------
 source caravel.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 564.777 ; gain = 181.605
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 567.102 ; gain = 182.484
 Command: synth_design -top caravel -part xc7a100tcsg324-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
@@ -20,9 +20,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 41836
+INFO: [Synth 8-7075] Helper process launched with PID 47396
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1428.020 ; gain = 437.703
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1426.961 ; gain = 437.770
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 'perform', assumed default net type 'wire' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/FloatingAddition.v:59]
 WARNING: [Synth 8-11065] parameter 'Divider' becomes localparam in 'Refreshing7SegNexysA7' with formal parameter declaration list [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/lab6ece433fall2024tempate/Refreshing7SegNexysA7.v:12]
@@ -56,8 +56,8 @@ WARNING: [Synth 8-11121] redeclaration of ANSI port 'sdi_out' is not allowed [D:
 WARNING: [Synth 8-11121] redeclaration of ANSI port 'csb_out' is not allowed [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v:241]
 WARNING: [Synth 8-11121] redeclaration of ANSI port 'sck_out' is not allowed [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v:242]
 INFO: [Synth 8-6157] synthesizing module 'caravel' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v:46]
-INFO: [Synth 8-6157] synthesizing module 'clk_fix' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-41424-RHIT-PW01EG6F/realtime/clk_fix_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_fix' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-41424-RHIT-PW01EG6F/realtime/clk_fix_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_fix' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-26052-RHIT-PW01EG6F/realtime/clk_fix_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_fix' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-26052-RHIT-PW01EG6F/realtime/clk_fix_stub.v:6]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v:98]
 INFO: [Synth 8-6157] synthesizing module 'STARTUPE2' [D:/Vivato-Vitis/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133907]
 INFO: [Synth 8-6155] done synthesizing module 'STARTUPE2' (0#1) [D:/Vivato-Vitis/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133907]
@@ -196,8 +196,8 @@ INFO: [Synth 8-6157] synthesizing module 'wbarbiter' [D:/Github Repositories/Car
 INFO: [Synth 8-6155] done synthesizing module 'wbarbiter' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/DMA_Module/wbarbiter.v:64]
 INFO: [Synth 8-6155] done synthesizing module 'zipdma' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/DMA_Module/zipdma.v:42]
 INFO: [Synth 8-6157] synthesizing module 'memory_intf' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/Memory/memory_intf.v:23]
-INFO: [Synth 8-6157] synthesizing module 'bram' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-41424-RHIT-PW01EG6F/realtime/bram_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'bram' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-41424-RHIT-PW01EG6F/realtime/bram_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'bram' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-26052-RHIT-PW01EG6F/realtime/bram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bram' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/.Xil/Vivado-26052-RHIT-PW01EG6F/realtime/bram_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'WB3_Interface' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/WB3_Interface.v:19]
 INFO: [Synth 8-6155] done synthesizing module 'WB3_Interface' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/WB3_Interface.v:19]
 INFO: [Synth 8-6157] synthesizing module 'WB4_Interface' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/WB4_Interface.v:23]
@@ -206,13 +206,13 @@ INFO: [Synth 8-6157] synthesizing module 'Memory_Arbiter' [D:/Github Repositorie
 	Parameter WAIT_TIME bound to: 0 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Memory_Arbiter' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/Memory/Memory_Arbiter.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'memory_intf' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/Memory/memory_intf.v:23]
-INFO: [Synth 8-6157] synthesizing module 'sdspi' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:44]
-INFO: [Synth 8-6157] synthesizing module 'llsdspi' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v:92]
+INFO: [Synth 8-6157] synthesizing module 'sdspi' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:48]
+INFO: [Synth 8-6157] synthesizing module 'llsdspi' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v:97]
 	Parameter SPDBITS bound to: 8 - type: integer 
 	Parameter STARTUP_CLOCKS bound to: 0 - type: integer 
 	Parameter POWERUP_IDLE bound to: 0 - type: integer 
 	Parameter OPT_SPI_ARBITRATION bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'llsdspi' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'llsdspi' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v:97]
 INFO: [Synth 8-6157] synthesizing module 'spicmd' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spicmd.v:41]
 INFO: [Synth 8-6155] done synthesizing module 'spicmd' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spicmd.v:41]
 INFO: [Synth 8-6157] synthesizing module 'spirxdata' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spirxdata.v:43]
@@ -222,7 +222,7 @@ INFO: [Synth 8-6157] synthesizing module 'spitxdata' [D:/Github Repositories/Car
 	Parameter RDDELAY bound to: 2 - type: integer 
 	Parameter OPT_LITTLE_ENDIAN bound to: 1'b0 
 INFO: [Synth 8-6155] done synthesizing module 'spitxdata' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spitxdata.v:41]
-INFO: [Synth 8-6155] done synthesizing module 'sdspi' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:44]
+INFO: [Synth 8-6155] done synthesizing module 'sdspi' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:48]
 INFO: [Synth 8-6157] synthesizing module 'LUT_Module' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/LUT_Module.v:13]
 INFO: [Synth 8-6157] synthesizing module 'Parallel_Memory_Unit' [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/Parallel_Memory_Unit.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'Parallel_Memory_Unit' (0#1) [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/Parallel_Memory_Unit.v:14]
@@ -393,7 +393,7 @@ WARNING: [Synth 8-3936] Found unconnected internal register 'next_tlen_reg' and 
 WARNING: [Synth 8-6014] Unused sequential element rdack_subaddr_reg was removed.  [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/DMA_Module/zipdma_mm2s.v:588]
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/Memory/Memory_Arbiter.v:96]
 WARNING: [Synth 8-3848] Net wb4_err_o in module/entity memory_intf does not have driver. [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/Memory/memory_intf.v:47]
-WARNING: [Synth 8-6014] Unused sequential element dly_stb_reg was removed.  [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:683]
+WARNING: [Synth 8-6014] Unused sequential element dly_stb_reg was removed.  [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v:689]
 WARNING: [Synth 8-3848] Net wb4_err_o in module/entity LUT_Module does not have driver. [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/LUT_Module/LUT_Module.v:44]
 WARNING: [Synth 8-3848] Net syn_stall_4 in module/entity TopLevel does not have driver. [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/TopLevel/TopLevel.v:207]
 WARNING: [Synth 8-3848] Net syn_ack_4 in module/entity TopLevel does not have driver. [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/TopLevel/TopLevel.v:206]
@@ -516,18 +516,18 @@ WARNING: [Synth 8-7129] Port la_data_in[69] in module TopLevel is either unconne
 WARNING: [Synth 8-7129] Port la_data_in[68] in module TopLevel is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1695.461 ; gain = 705.145
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1694.305 ; gain = 705.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1695.461 ; gain = 705.145
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1694.305 ; gain = 705.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1695.461 ; gain = 705.145
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1694.305 ; gain = 705.113
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.302 . Memory (MB): peak = 1697.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.290 . Memory (MB): peak = 1694.305 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -558,20 +558,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/caravel_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1809.816 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1803.832 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.140 . Memory (MB): peak = 1809.816 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.096 . Memory (MB): peak = 1803.832 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1809.816 ; gain = 819.500
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1803.832 ; gain = 814.641
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1809.816 ; gain = 819.500
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1803.832 ; gain = 814.641
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -581,7 +581,7 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for clock100. (constraint file  {d
 Applied set_property KEEP_HIERARCHY = SOFT for chip_core/mprj/TopLevel/Mem/bram_wb. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for clk_fix. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1809.816 ; gain = 819.500
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1803.832 ; gain = 814.641
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-3936] Found unconnected internal register 'execute_to_memory_INSTRUCTION_reg' and it is trimmed from '32' to '30' bits. [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/VexRiscv.v:2328]
 INFO: [Synth 8-802] inferred FSM for state register 'IBusCachedPlugin_injector_port_state_reg' in module 'VexRiscv'
@@ -705,7 +705,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'xfer_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'wbbd_state_reg' using encoding 'sequential' in module 'housekeeping'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1809.816 ; gain = 819.500
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 1803.832 ; gain = 814.641
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'chip_core/gpio_defaults_block_0' (gpio_defaults_block) to 'chip_core/gpio_defaults_block_2'
 INFO: [Synth 8-223] decloning instance 'chip_core/gpio_defaults_block_0' (gpio_defaults_block) to 'chip_core/gpio_defaults_block_3'
@@ -948,7 +948,7 @@ DSP Report: register execute_to_memory_MUL_LL_reg is absorbed into DSP execute_t
 DSP Report: operator execute_MUL_LL is absorbed into DSP execute_to_memory_MUL_LL_reg.
 INFO: [Synth 8-3971] The signal "chip_corei_5/\soc/core /VexRiscv/RegFilePlugin_regFile_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:07:05 ; elapsed = 00:07:08 . Memory (MB): peak = 2044.797 ; gain = 1054.480
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:06:44 ; elapsed = 00:06:50 . Memory (MB): peak = 2042.344 ; gain = 1053.152
 ---------------------------------------------------------------------------------
  Sort Area is LUT_Module__GB1 multiplier/Product_0 : 0 0 : 3446 4760 : Used 1 time 0
  Sort Area is LUT_Module__GB1 multiplier/Product_0 : 0 1 : 1314 4760 : Used 1 time 0
@@ -1017,13 +1017,13 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-565] redefining clock 'clock100'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:07:13 ; elapsed = 00:07:16 . Memory (MB): peak = 2044.797 ; gain = 1054.480
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:06:51 ; elapsed = 00:06:57 . Memory (MB): peak = 2042.344 ; gain = 1053.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:11:00 ; elapsed = 00:11:07 . Memory (MB): peak = 4838.617 ; gain = 3848.301
+Finished Timing Optimization : Time (s): cpu = 00:10:39 ; elapsed = 00:10:49 . Memory (MB): peak = 4841.590 ; gain = 3852.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1065,7 +1065,7 @@ INFO: [Synth 8-7052] The timing for the instance chip_core/soc/core/VexRiscv/IBu
 INFO: [Synth 8-7052] The timing for the instance chip_core/soc/core/VexRiscv/RegFilePlugin_regFile_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance chip_core/soc/core/VexRiscv/RegFilePlugin_regFile_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:12:07 ; elapsed = 00:12:15 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Technology Mapping : Time (s): cpu = 00:11:51 ; elapsed = 00:12:04 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1084,37 +1084,37 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-6030] Inout pin 'flash_io1' is read and/or written without using tristate logic. Proper direction of connection may be wrongly inferred. Please use specific direction to avoid any incorrect logic issue [D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v:46]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:12:11 ; elapsed = 00:12:20 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished IO Insertion : Time (s): cpu = 00:11:56 ; elapsed = 00:12:09 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:12:11 ; elapsed = 00:12:20 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Renaming Generated Instances : Time (s): cpu = 00:11:56 ; elapsed = 00:12:10 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:12:15 ; elapsed = 00:12:24 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:12:01 ; elapsed = 00:12:14 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:12:15 ; elapsed = 00:12:24 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Renaming Generated Ports : Time (s): cpu = 00:12:01 ; elapsed = 00:12:14 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:12:16 ; elapsed = 00:12:25 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Handling Custom Attributes : Time (s): cpu = 00:12:01 ; elapsed = 00:12:15 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:12:16 ; elapsed = 00:12:25 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Renaming Generated Nets : Time (s): cpu = 00:12:02 ; elapsed = 00:12:15 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1193,18 +1193,18 @@ Report Cell Usage:
 |29    |OBUF      |    24|
 +------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:12:17 ; elapsed = 00:12:26 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Finished Writing Synthesis Report : Time (s): cpu = 00:12:02 ; elapsed = 00:12:15 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 1 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:12:01 ; elapsed = 00:12:20 . Memory (MB): peak = 5242.074 ; gain = 4137.402
-Synthesis Optimization Complete : Time (s): cpu = 00:12:17 ; elapsed = 00:12:26 . Memory (MB): peak = 5242.074 ; gain = 4251.758
+Synthesis Optimization Runtime : Time (s): cpu = 00:11:48 ; elapsed = 00:12:10 . Memory (MB): peak = 5242.062 ; gain = 4143.344
+Synthesis Optimization Complete : Time (s): cpu = 00:12:02 ; elapsed = 00:12:15 . Memory (MB): peak = 5242.062 ; gain = 4252.871
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.278 . Memory (MB): peak = 5242.074 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.272 . Memory (MB): peak = 5242.062 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1170 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 5242.074 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 5242.062 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 92 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 40 instances
@@ -1215,9 +1215,9 @@ Synth Design complete | Checksum: 36198da0
 INFO: [Common 17-83] Releasing license: Synthesis
 267 Infos, 286 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:12:26 ; elapsed = 00:12:36 . Memory (MB): peak = 5242.074 ; gain = 4665.695
+synth_design: Time (s): cpu = 00:12:11 ; elapsed = 00:12:37 . Memory (MB): peak = 5242.062 ; gain = 4662.789
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 5242.074 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 5242.062 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/caravel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file caravel_utilization_synth.rpt -pb caravel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Dec 11 12:30:33 2025...
+INFO: [Common 17-206] Exiting Vivado at Sun Dec 14 17:07:48 2025...

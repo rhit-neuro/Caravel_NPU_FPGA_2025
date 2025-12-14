@@ -149,10 +149,10 @@ read_verilog -library xil_defaultlib {
   {D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/imports/DMA_Module/zipdma_txgears.v}
   {D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/imports/src/caravel.v}
 }
-read_ip -quiet {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/bram/bram.xci}}
+read_ip -quiet {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/bram/bram.xci}}
 set_property used_in_implementation false [get_files -all {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/bram/bram_ooc.xdc}}]
 
-read_ip -quiet {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix.xci}}
+read_ip -quiet {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix.xci}}
 set_property used_in_implementation false [get_files -all {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/clk_fix_1/clk_fix_board.xdc}}]
 set_property used_in_implementation false [get_files -all {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/clk_fix_1/clk_fix.xdc}}]
 set_property used_in_implementation false [get_files -all {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/clk_fix_1/clk_fix_ooc.xdc}}]

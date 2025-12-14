@@ -138,8 +138,8 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.runs/synth_1/caravel.dcp}}
-  read_ip -quiet {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/bram/bram.xci}}
-  read_ip -quiet {{d:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix.xci}}
+  read_ip -quiet {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/bram/bram.xci}}
+  read_ip -quiet {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix.xci}}
 OPTRACE "read constraints: implementation" START { }
   read_xdc {{D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/constrs_1/imports/new/CARVEL.xdc}}
 OPTRACE "read constraints: implementation" END { }
