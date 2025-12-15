@@ -1,0 +1,14 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v" \
+"../../../../CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v" \
+"../../../../CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spicmd.v" \
+"../../../../CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spirxdata.v" \
+"../../../../CARAVEL.srcs/sources_1/imports/imports/SD_Card_Interface_Module/spitxdata.v" \
+"../../../../CARAVEL.srcs/sim_1/new/external_sdCard_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
