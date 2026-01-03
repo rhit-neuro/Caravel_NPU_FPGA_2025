@@ -1,25 +1,25 @@
-create_clock -name clock100 -period 10 [get_ports {clock100}];
+create_clock -period 10.000 -name clock100 [get_ports clock100]
 
-create_generated_clock -name clock12 clk_fix/inst/mmcm_adv_inst/CLKOUT0;
+create_generated_clock -name clock12 clk_fix/inst/mmcm_adv_inst/CLKOUT0
 
 # Outputs
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_clk}];
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_csb}];
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports flash_clk]
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports flash_csb]
 
-# bidirectional 
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_io0}];
-set_input_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_io0}];
+# bidirectional
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports flash_io0]
+set_input_delay -clock clock12 -add_delay 5.000 [get_ports flash_io0]
 
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_io1}];
-set_input_delay 5.0000 -clock clock12 -add_delay [get_ports {flash_io1}];
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports flash_io1]
+set_input_delay -clock clock12 -add_delay 5.000 [get_ports flash_io1]
 
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {gpio}];
-set_input_delay 5.0000 -clock clock12 -add_delay [get_ports {gpio}];
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports gpio]
+set_input_delay -clock clock12 -add_delay 5.000 [get_ports gpio]
 
-set_output_delay 5.0000 -clock clock12 -add_delay [get_ports {mprj_io[*]}];
-set_input_delay 5.0000 -clock clock12 -add_delay [get_ports {mprj_io[*]}];
+set_output_delay -clock clock12 -add_delay 5.000 [get_ports {mprj_io[*]}]
+set_input_delay -clock clock12 -add_delay 5.000 [get_ports {mprj_io[*]}]
 
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets mprj_io_IOBUF[4]_inst/O]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets {mprj_io_IOBUF[4]_inst/O}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[37]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[36]}]
@@ -53,12 +53,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[9]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[8]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[7]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[6]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[5]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[4]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[0]}]
 set_property PACKAGE_PIN E3 [get_ports clock100]
 set_property IOSTANDARD LVCMOS33 [get_ports clock100]
 set_property IOSTANDARD LVCMOS33 [get_ports flash_clk]
@@ -86,7 +80,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports ser_rx_out]
 set_property IOSTANDARD LVCMOS33 [get_ports ser_tx_out]
 set_property PACKAGE_PIN V11 [get_ports flash_clk]
 # Commented out as SD card is mapped to these
-# set_property PACKAGE_PIN K1 [get_ports {mprj_io[1]}] 
+# set_property PACKAGE_PIN K1 [get_ports {mprj_io[1]}]
 # set_property PACKAGE_PIN F6 [get_ports {mprj_io[2]}]
 # set_property PACKAGE_PIN J2 [get_ports {mprj_io[3]}]
 # set_property PACKAGE_PIN G6 [get_ports {mprj_io[4]}]
@@ -127,12 +121,12 @@ set_property PACKAGE_PIN V12 [get_ports {mprj_io[29]}]
 
 # Caravel user I/O mapped to Nexys A7 microSD
 # Note: The SDSPI.V utilizes the mprj_io, not the FPGA pins the Caravel harness is contained on, so if a different board is used, only the pins here should be changed
-set_property -dict { PACKAGE_PIN E2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[5] }]; # SD_RESET  (goes to connector J1, SD reset transistor)
-set_property -dict { PACKAGE_PIN A1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[4] }]; # SD_CD  (Card Detect)
-set_property -dict { PACKAGE_PIN B1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[0] }]; # SD_SCK  (SPI clock)
-set_property -dict { PACKAGE_PIN C1 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[1] }]; # SD_CMD  (SPI MOSI)
-set_property -dict { PACKAGE_PIN C2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[2] }]; # SD_DAT0 (SPI MISO)
-set_property -dict { PACKAGE_PIN D2 IOSTANDARD LVCMOS33 } [get_ports { mprj_io[3] }]; # SD_DAT3 (SPI CS)
+set_property -dict {PACKAGE_PIN E2 IOSTANDARD LVCMOS33} [get_ports {mprj_io[5]}]
+set_property -dict {PACKAGE_PIN A1 IOSTANDARD LVCMOS33} [get_ports {mprj_io[4]}]
+set_property -dict {PACKAGE_PIN B1 IOSTANDARD LVCMOS33} [get_ports {mprj_io[0]}]
+set_property -dict {PACKAGE_PIN C1 IOSTANDARD LVCMOS33} [get_ports {mprj_io[1]}]
+set_property -dict {PACKAGE_PIN C2 IOSTANDARD LVCMOS33} [get_ports {mprj_io[2]}]
+set_property -dict {PACKAGE_PIN D2 IOSTANDARD LVCMOS33} [get_ports {mprj_io[3]}]
 
 # 7 Segment Display Pins Below
 set_property IOSTANDARD LVCMOS33 [get_ports {Display[7]}]
@@ -167,3 +161,46 @@ set_property PACKAGE_PIN J14 [get_ports {Transistors[3]}]
 set_property PACKAGE_PIN T9 [get_ports {Transistors[2]}]
 set_property PACKAGE_PIN J18 [get_ports {Transistors[1]}]
 set_property PACKAGE_PIN J17 [get_ports {Transistors[0]}]
+
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_out[3]}]
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_out[5]}]
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_out[1]}]
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_out[0]}]
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_in[4]}]
+set_property MARK_DEBUG true [get_nets {chip_core/mprj_io_in[2]}]
+create_debug_core u_ila_0 ila
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list {mprj_io_IBUF_BUFG[4]}]]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+set_property port_width 2 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {chip_core/mprj_io_in[2]} {chip_core/mprj_io_in[4]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+set_property port_width 1 [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {chip_core/mprj_io_out[1]}]]
+create_debug_core u_ila_1 ila
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_1]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_1]
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_1]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_1]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_1]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_1]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_1]
+set_property port_width 1 [get_debug_ports u_ila_1/clk]
+connect_debug_port u_ila_1/clk [get_nets [list housekeeping/csclk]]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe0]
+set_property port_width 3 [get_debug_ports u_ila_1/probe0]
+connect_debug_port u_ila_1/probe0 [get_nets [list {chip_core/mprj_io_out[0]} {chip_core/mprj_io_out[3]} {chip_core/mprj_io_out[5]}]]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets housekeeping/csclk]
