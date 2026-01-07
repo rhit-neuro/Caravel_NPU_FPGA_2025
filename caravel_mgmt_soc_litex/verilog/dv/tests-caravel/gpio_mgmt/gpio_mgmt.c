@@ -15,6 +15,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
  #include "dummy.h"
+ #include "FreeRTOS.h"
+ #include "task.h"
  #include <defs.h>   
 
  // --------------------------------------------------------
@@ -315,6 +317,7 @@
 
      //test dummy header file
      int foo = MAX_DUMMY_VALUE;
+     TaskHandle_t xHandle1 = NULL;
  
     //  debug_oeb_out_write(1);
  

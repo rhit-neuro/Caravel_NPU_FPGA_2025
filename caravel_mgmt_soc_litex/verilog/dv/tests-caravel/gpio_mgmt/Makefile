@@ -18,7 +18,6 @@
  
 PWDD := $(shell pwd)
 BLOCKS := $(shell basename $(PWDD))
-$(info ">>" $(BLOCKS) )
 # ---- Include Partitioned Makefiles ----
 
 CONFIG = caravel
@@ -29,6 +28,10 @@ include ../../make/env.makefile
 include ../../make/var.makefile
 include ../../make/cpu.makefile
 include ../../make/sim.makefile
+
+
+
+
 
 
 
