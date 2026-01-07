@@ -232,5 +232,8 @@ Here, the next step is to actually create our own RISC-V port (specific to our C
 	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/include \`
 	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V_CARAVEL \`
 
-4. Navigate back out to 
+4. Navigate back out to caravel_mgmt_soc_litex/verilog/dv/firmware/test-caravel/gpio_mgmt. Running `make hex` should work now. There may be some warnings, but it should be fine otherwise. 
+
+
+Currently in the process of actually creating our custom port, following along with the instructions on https://www.freertos.org/Documentation/02-Kernel/03-Supported-devices/01-FreeRTOS-porting-guide.
 
