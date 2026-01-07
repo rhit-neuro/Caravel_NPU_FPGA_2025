@@ -14,7 +14,7 @@
  * limitations under the License.
  * SPDX-License-Identifier: Apache-2.0
  */
-
+ #include "dummy.h"
  #include <defs.h>   
 
  // --------------------------------------------------------
@@ -312,6 +312,9 @@
 
      // enable wishbone
      reg_wb_enable = 1;
+
+     //test dummy header file
+     int foo = MAX_DUMMY_VALUE;
  
     //  debug_oeb_out_write(1);
  
