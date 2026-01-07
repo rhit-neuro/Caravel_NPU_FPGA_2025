@@ -212,3 +212,25 @@ See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by
 To see our changes and steps to get to this point, see [this deprecated repo](https://github.com/rhit-neuro/Caravel_FPGA_2025_-DEPRECATED-_/tree/Our_Userspace).
 Look in the `Our_Userspace` branch for specifics on the FPGA version of our userspace and the `main` branch for simply blinking an LED based on the original Efabless repo.
 
+
+
+# Incorporating FreeRTOS
+
+The following are the steps that were taken to incorporate FreeRTOS into the project. The goal is to set everything up so that a developer can simply use the FreeRTOS API when writing a C program, run the 'make hex' command, and everyhting will work out smoothly.
+
+
+1. Pull the full FreeRTOS repository into this repository. Use the FreeRTOS website and download a zip file or use `git clone https://github.com/FreeRTOS/FreeRTOS.git --recurse-submodules`
+
+2. Copy FreeRTOSConfig.h, riscv-virt.h, riscv-virt.c, and riscv-reg.h from the example provided in FreeRTOS/FreeRTOS/Demo/RISC-V_RV32_QEMU_VIRT_GCC into caravel_mgmt_soc_litex/verilog/dv/firmware.
+Any header files that you want to include need to go under this /firmware directory. The makefile specifies this directory location as sources. 
+
+3. We need to specify a few includes in the Makefile to make sure the compiler has access to the FreeRTOS source files. Open caravel_mgmt_soc_litex/verilog/dv/make/sim.makefile. Add the following lines under %.elf: %.c
+	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/include \`
+	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V \`
+
+Here, the next step is to actually create our own RISC-V port (specific to our Caravel architecture) and point the compiler in that direction. In other words, we will eventually change the above to: 
+	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/include \`
+	`-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V_CARAVEL \`
+
+4. Navigate back out to 
+
