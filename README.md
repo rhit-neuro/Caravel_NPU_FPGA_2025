@@ -218,6 +218,10 @@ Look in the `Our_Userspace` branch for specifics on the FPGA version of our user
 
 The following are the steps that were taken to incorporate FreeRTOS into the project. The goal is to set everything up so that a developer can simply use the FreeRTOS API when writing a C program, run the 'make hex' command, and everyhting will work out smoothly.
 
+Note: in the .bashrc file, make sure the DESIGNS directory ends with the name of this repository. 
+`export DESIGNS='/home/gallegck/CAPSTONE/Caravel_NPU_FPGA_2025'`
+Where CAPSTONE is the directory that the repo was pulled into. If you are having trouble with the Makefile (seeing errors such as "No target exists for XYZ", print out some of the paths to make sure they are valid paths in the system like so `$(info DESIGNS is $(DESIGNS))`)
+
 
 1. Pull the full FreeRTOS repository into this repository. Use the FreeRTOS website and download a zip file or use `git clone https://github.com/FreeRTOS/FreeRTOS.git --recurse-submodules`
 

@@ -42,8 +42,8 @@
  *----------------------------------------------------------*/
 
 /* See https://www.freertos.org/Using-FreeRTOS-on-RISC-V.html */
-#define configMTIME_BASE_ADDRESS		( CLINT_ADDR + CLINT_MTIME )
-#define configMTIMECMP_BASE_ADDRESS		( CLINT_ADDR + CLINT_MTIMECMP )
+#define configMTIME_BASE_ADDRESS		( 0 )
+#define configMTIMECMP_BASE_ADDRESS		( 0 )
 #define configISR_STACK_SIZE_WORDS		( 300 )
 
 #define configUSE_PREEMPTION			1
