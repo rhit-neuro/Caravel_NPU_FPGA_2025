@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Jan  2 11:04:55 2026
+| Date             : Sat Jan  3 21:58:12 2026
 | Host             : RHIT-PW01EG6F running 64-bit major release  (build 9200)
 | Command          : report_power -file caravel_power_routed.rpt -pb caravel_power_summary_routed.pb -rpx caravel_power_routed.rpx
 | Design           : caravel
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.244        |
+| Total On-Chip Power (W)  | 0.240        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.147        |
+| Dynamic (W)              | 0.142        |
 | Device Static (W)        | 0.098        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 83.9         |
@@ -52,23 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.006 |        6 |       --- |             --- |
-| Slice Logic              |     0.004 |    35814 |       --- |             --- |
-|   LUT as Logic           |     0.004 |    14145 |     63400 |           22.31 |
-|   Register               |    <0.001 |    17705 |    126800 |           13.96 |
-|   CARRY4                 |    <0.001 |      520 |     15850 |            3.28 |
-|   F7/F8 Muxes            |    <0.001 |      590 |     63400 |            0.93 |
-|   LUT as Shift Register  |    <0.001 |      171 |     19000 |            0.90 |
-|   LUT as Distributed RAM |    <0.001 |      232 |     19000 |            1.22 |
+| Clocks                   |     0.004 |        5 |       --- |             --- |
+| Slice Logic              |     0.003 |    30589 |       --- |             --- |
+|   LUT as Logic           |     0.003 |    12605 |     63400 |           19.88 |
+|   CARRY4                 |    <0.001 |      480 |     15850 |            3.03 |
+|   Register               |    <0.001 |    14907 |    126800 |           11.76 |
+|   F7/F8 Muxes            |    <0.001 |      583 |     63400 |            0.92 |
+|   LUT as Shift Register  |    <0.001 |       40 |     19000 |            0.21 |
+|   LUT as Distributed RAM |    <0.001 |      208 |     19000 |            1.09 |
 |   BUFG                   |    <0.001 |        4 |        32 |           12.50 |
-|   Others                 |     0.000 |      471 |       --- |             --- |
-| Signals                  |     0.007 |    30338 |       --- |             --- |
-| Block RAM                |     0.002 |      6.5 |       135 |            4.81 |
+|   Others                 |     0.000 |      150 |       --- |             --- |
+| Signals                  |     0.006 |    26414 |       --- |             --- |
+| Block RAM                |     0.002 |      5.5 |       135 |            4.07 |
 | MMCM                     |     0.121 |        1 |         6 |           16.67 |
 | DSPs                     |    <0.001 |        6 |       240 |            2.50 |
 | I/O                      |     0.005 |       67 |       210 |           31.90 |
 | Static Power             |     0.098 |          |           |                 |
-| Total                    |     0.244 |          |           |                 |
+| Total                    |     0.240 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,7 +78,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.036 |       0.020 |      0.016 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.032 |       0.016 |      0.016 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.086 |       0.067 |      0.018 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.006 |       0.002 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -131,14 +131,13 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
-| Clock                                                                                      | Domain                                                            | Constraint (ns) |
-+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
-| clkfbout_clk_fix                                                                           | clk_fix/inst/clkfbout_clk_fix                                     |            50.0 |
-| clock100                                                                                   | clock100                                                          |            10.0 |
-| clock12                                                                                    | clk_fix/inst/clk_out1_clk_fix                                     |            83.3 |
-| dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/TCK |            33.0 |
-+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
++------------------+-------------------------------+-----------------+
+| Clock            | Domain                        | Constraint (ns) |
++------------------+-------------------------------+-----------------+
+| clkfbout_clk_fix | clk_fix/inst/clkfbout_clk_fix |            50.0 |
+| clock100         | clock100                      |            10.0 |
+| clock12          | clk_fix/inst/clk_out1_clk_fix |            83.3 |
++------------------+-------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -150,7 +149,7 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| caravel                  |     0.147 |
+| caravel                  |     0.142 |
 |   chip_core              |     0.016 |
 |     mprj                 |     0.010 |
 |       TopLevel           |     0.010 |
@@ -158,14 +157,8 @@ Table of Contents
 |       core               |     0.005 |
 |   clk_fix                |     0.121 |
 |     inst                 |     0.121 |
-|   dbg_hub                |     0.002 |
-|     inst                 |     0.002 |
-|       BSCANID.u_xsdbm_id |     0.002 |
 |   mprj_io_IOBUF[14]_inst |     0.001 |
 |   mprj_io_IOBUF[15]_inst |     0.001 |
-|   u_ila_0                |     0.001 |
-|     inst                 |     0.001 |
-|       ila_core_inst      |     0.001 |
 +--------------------------+-----------+
 
 
