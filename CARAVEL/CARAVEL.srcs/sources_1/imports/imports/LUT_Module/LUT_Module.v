@@ -6,7 +6,29 @@
 // Create Date: 11/22/2024 01:19:36 PM
 // Module Name: LUT_Module
 // Description: Toplevel module for lookup table accelerator.
+// This module contains a WB3 interface, a WB4 interface, and a 
+// internal arbiter that combines the WB3 and WB4 buses to create a 
+// single internal bus that drives LUT logic. 
 // 
+// The Address map model for this module:
+// 0x10xx: is the input/result
+// 0x11xx: is the V bank
+// 0x12xx: is the M bank
+// 0x13xx: is the B bank
+//
+// The Modules:
+// V: stored "v" values used by the indexing logic to decide which 
+// appoximated equation to use for a given input. The selected line
+// then decided the M and B values. V memory units are parellel as all
+// 32 values must be simultaneously accessible for comparison during indexing.
+// If not, we must sequentially search through each V value to find our 
+// best fit approximation, which is to slow.
+//
+// M: stored "m" coefficients (in y = mx + b). M and B values are sequentially searched
+// as once we find the correct V value, we can directly grab the associated
+// M and B values. 
+//
+// B: stored "b" values
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -16,6 +38,8 @@ DataWidth=32,
 MemBits=8,
 ControlWidth=16,
 MemWidth=5,
+
+//offsets
 F1Offset=16'h1000,
 F2Offset=16'h2000,
 F3Offset=16'h3000,
