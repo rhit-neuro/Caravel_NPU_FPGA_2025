@@ -33,22 +33,22 @@ hex:  ${BLOCKS:=.hex}
 # Comiple firmeware
 ##############################################################################
 %.elf: %.c $(LINKER_SCRIPT) $(SOURCE_FILES)
-	@echo "Building $@ from $<" 
-	$(info OBJS='$(OBJS)')
-	$(info LDFLAGS='$(LDFLAGS)')
-	$(info LIBS='$(LIBS)')
-	$(info GCC_PATH='$(GCC_PATH)')
-	$(info GCC_PREFIX='$(GCC_PREFIX)')
+	$(info GCC_PATH is $(GCC_PATH))
+	$(info GCC_PREFIX is $(GCC_PREFIX))
 
+	@echo "Building $@ from $<" 
 	${GCC_PATH}/${GCC_PREFIX}-gcc -g \
 	-I$(FIRMWARE_PATH) \
 	-I$(VERILOG_PATH)/dv/generated \
 	-I$(VERILOG_PATH)/dv/ \
 	-I$(VERILOG_PATH)/common \
-	$(CPUFLAGS) -Wl,-Bstatic,-T,$(LINKER_SCRIPT),--strip-debug \
-	-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/include \
-	-I$(DESIGNS)/FreeRTOS/FreeRTOS/Source/portable/GCC/RISC-V \
-	-ffreestanding -nostdlib -o $@ $(SOURCE_FILES) $<
+	-I$(FREERTOS_PATH)/Source/include \
+	-I$(FREERTOS_PATH)/Source \
+	-I$(FREERTOS_PATH)/Source/portable/GCC/RISC-V \
+	-I$(FREERTOS_PATH)/Source/portable/GCC/RISC-V/chip_specific_extensions/RISCV_no_extensions \
+	$(CPUFLAGS) \
+	-Wl,-Bstatic,-T,$(LINKER_SCRIPT),--strip-debug \
+	-ffreestanding -nostdlib -o $@ $(SOURCE_FILES) $(FREERTOS_SRC) $<
 
 %.lst: %.elf
 	${GCC_PATH}/${GCC_PREFIX}-objdump -d -S $< > $@

@@ -19,3 +19,14 @@ CPUFAMILY=riscv
 CPUFLAGS=-march=rv32i_zicsr      -mabi=ilp32 -D__vexriscv__
 CPUENDIANNESS=little
 CLANG=0
+
+FREERTOS_PATH = $(DESIGNS)/FreeRTOS/FreeRTOS
+
+FREERTOS_SRC = \
+$(FREERTOS_PATH)/Source/tasks.c \
+$(FREERTOS_PATH)/Source/queue.c \
+$(FREERTOS_PATH)/Source/list.c \
+$(FREERTOS_PATH)/Source/timers.c \
+$(FREERTOS_PATH)/Source/portable/GCC/RISC-V/port.c \
+$(FREERTOS_PATH)/Source/portable/GCC/RISC-V/portASM.S 
+

@@ -31,7 +31,28 @@
 #define memory2  (*(uint32_t *)0x30000604)
 #define memory3  (*(uint32_t *)0x30000608)
 #define memory4  (*(uint32_t *)0x3000060c)
- 
+
+/* Task function */
+void sillyTask(void *pvParameters)
+{
+    while (1)
+    {
+        //printf("Hello from FreeRTOS task!\n");
+        for(int j = 0; j < 5; j++) {
+        // Slow blink for demonstration board 
+            for (int i = 0; i < 100000; i++) {
+                reg_gpio_out = 1;
+            }
+            for (int i = 0; i < 100000; i++) {
+                reg_gpio_out = 0;
+            }
+        }
+
+        /* Delay for 1000 ms */
+        vTaskDelay(pdMS_TO_TICKS(3000));
+    }
+}
+
  void loadMemory() {
      uint32_t *base_address; // address variable
  
@@ -318,6 +339,19 @@
      //test dummy header file
      int foo = MAX_DUMMY_VALUE;
      TaskHandle_t xHandle1 = NULL;
+
+    /* Create task */
+    xTaskCreate(
+        sillyTask,          // Task function
+        "A Silly Little Task",        // Task name
+        128,             // Stack size (words)
+        NULL,            // Parameters
+        1,               // Priority
+        NULL             // Task handle
+    );
+
+    /* Start scheduler */
+    vTaskStartScheduler();
  
     //  debug_oeb_out_write(1);
  
@@ -329,17 +363,19 @@
     //  dma_config((uint32_t) 0x00000000,(uint32_t) 0x00000080,(uint32_t) 0x30000100,(uint32_t) 0x30501100); //Load V Table
     //  dma_config((uint32_t) 0x00000000,(uint32_t) 0x00000080,(uint32_t) 0x30000200,(uint32_t) 0x30501200); //Load M Table
     //  dma_config((uint32_t) 0x00000000,(uint32_t) 0x00000080,(uint32_t) 0x30000300,(uint32_t) 0x30501300); //Load B table
-    loadMemory();
-    while(1){
-        loadMemory();
-        lut_function1(0x40c00000, &memory4);
-        loadMemory();
-        lut_function1(0xbe9a2681, &memory1);
-        loadMemory();
-        lut_function1(0x40a00000, &memory2);
-        loadMemory();
-        lut_function1(0xc13773a1, &memory3);
-    }
+    
+    
+    // loadMemory();
+    // while(1){
+    //     loadMemory();
+    //     lut_function1(0x40c00000, &memory4);
+    //     loadMemory();
+    //     lut_function1(0xbe9a2681, &memory1);
+    //     loadMemory();
+    //     lut_function1(0x40a00000, &memory2);
+    //     loadMemory();
+    //     lut_function1(0xc13773a1, &memory3);
+    // }
  
 }
  
