@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1744228392">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1768443091">
   <File Type="PA-TCL" Name="caravel.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="caravel_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="caravel_reports.tcl"/>
   <File Type="RDS-RDS" Name="caravel.vds"/>
-  <File Type="RDS-UTIL" Name="TopLevel_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="TopLevel_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="caravel_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="caravel_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="caravel.dcp"/>
-  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+  <File Type="VDS-TIMINGSUMMARY" Name="caravel_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="caravel_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/DisplayMuxNexysA7.v">
       <FileInfo>
@@ -717,12 +720,28 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/SM_I_SYN_Pipeline.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SM_Reg_File.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="caravel"/>
     </Config>
   </FileSet>
-  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
     <File Path="$PSRCDIR/constrs_1/imports/new/CARVEL.xdc">
       <FileInfo>
@@ -736,7 +755,7 @@
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
-  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
     <Filter Type="Utils"/>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
@@ -746,6 +765,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="clk_fix"/>
   <BlockFileSet Type="BlockSrcs" Name="bram"/>
+  <BlockFileSet Type="BlockSrcs" Name="clk_fix"/>
 </GenRun>
