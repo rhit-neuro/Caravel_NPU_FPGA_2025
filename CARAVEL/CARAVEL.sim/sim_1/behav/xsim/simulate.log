@@ -1,4 +1,12 @@
-Vivado Simulator 2019.2
 Time resolution is 1 ps
-Block Memory Generator module TopLevel_tb.UUT.Mem.bram_wb.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-$stop called at time : 10096 ns : File "C:/Xilinx/CaravelFPGA/Caravel_FPGA_2025/CARAVEL/CARAVEL.srcs/sim_1/imports/new/TopLevel_tb.v" Line 201
+
+===== TESTCASE: CPU-only (WB3 init + WB3 compute) =====
+6915000 [CPU-only] y=3f7fffff  flags: Exc=0 Inv=0 Ovr=0 Und=0
+11715000 [CPU-only        ] No table corruption detected (V/M/B unchanged).
+
+===== TESTCASE: DMA-load (WB4) then CPU compute/readback (WB3) =====
+18555000 [DMA->CPU] y=3f7fffff  flags: Exc=0 Inv=0 Ovr=0 Und=0
+23355000 [DMA->CPU        ] No table corruption detected (V/M/B unchanged).
+
+All tests complete.
+$finish called at time : 23405 ns : File "D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sim_1/new/LUTBugSimulation_tb.v" Line 450
