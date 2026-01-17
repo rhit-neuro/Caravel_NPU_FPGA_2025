@@ -22,8 +22,6 @@
 
 module SM_divideTau(
     input [31:0] tau,
-    //input clk,
-   // input tau_valid,
     output [31:0] tau_inverse
     );
     

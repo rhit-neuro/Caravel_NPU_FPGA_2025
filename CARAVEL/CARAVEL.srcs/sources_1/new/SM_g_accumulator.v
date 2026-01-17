@@ -26,6 +26,7 @@ module SM_g_accumulator(
     input [31:0] tau_decay_inverse,
     input [1:0] synapseID,
     input [31:0] dt,
+    input exception_h,
     output [31:0] g_out,
     output exception,
     output [1:0] synapseID_out
@@ -67,6 +68,6 @@ module SM_g_accumulator(
         .result(g_out)
     );
 
-    assign exception = except_MAC1 | except_MAC2 | except_ADD;
+    assign exception = except_MAC1 | except_MAC2 | except_ADD | exception_h;
 
 endmodule

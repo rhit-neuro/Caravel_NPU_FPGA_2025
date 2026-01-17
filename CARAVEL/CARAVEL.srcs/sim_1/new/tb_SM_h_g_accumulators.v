@@ -34,6 +34,7 @@ module tb_SM_h_g_accumulators;
     
     wire [31:0] h_out;
     wire [31:0] g_out;
+    wire exception_h;
     wire exception;
     wire [31:0] tau_rise_inv;
     wire [31:0] tau_decay_inv;
@@ -54,7 +55,7 @@ module tb_SM_h_g_accumulators;
         .synapseID(synapseID),
         .dt(dt),
         .h_out(h_out),
-        .exception(exception),
+        .exception(exception_h),
         .synapseID_forward(synapseID_forward),
         .tau_decay_inverse_forward(tau_decay_inv_forward),
         .g_forward(g_forward),
@@ -68,6 +69,7 @@ module tb_SM_h_g_accumulators;
         .synapseID(synapseID_forward),
         .dt(dt_forward),
         .g_out(g_out),
+        .exception_h(exception_h),
         .exception(exception),
         .synapseID_out(synapseID_out)
     );
@@ -88,5 +90,36 @@ module tb_SM_h_g_accumulators;
     clk = 1'b0;
     forever #5 clk = ~clk;
   end
+  
+  
+ initial begin
+      tau_rise = 32'h41a00000; //20 in decimal (represented as a float)
+      h0 = 32'h40b00000; //5.5 in decimal (represented as a floating point)
+      dt = 32'h41200000; //10 in decimal (represented as a floating point)
+      tau_decay = 32'h41f00000; //30 in decimal (represented as a floating point)
+      h=32'h40e80000; //7.25 in decimal (represented as a floating point)
+      g=32'h41373333; //11.45 in decimal (represented as a floating point)
+      synapseID=2'b11;
+      actionPotential=1'b0;
+    
+      @(posedge clk);
+      actionPotential=1'b1;
+      h <= h_out;
+      g <= g_out;
+      @(posedge clk);
+      actionPotential=1'b0;
+      h <= h_out;
+      g <= g_out;
+      @(posedge clk);
+      actionPotential=1'b1;
+      h <= h_out;
+      g <= g_out;
+      @(posedge clk);
+      actionPotential=1'b0;
+      h <= h_out;
+      g <= g_out;
+      
+
+  end  
 
 endmodule

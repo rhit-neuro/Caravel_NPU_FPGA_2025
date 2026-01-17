@@ -33,7 +33,7 @@ module tb_SM_h_accumulator;
     wire [31:0] h_out;
     wire exception;
     wire [31:0] tau_rise_inv;
-    wire [31:0] synapseID_forward;
+    wire [1:0] synapseID_forward;
     wire [31:0] g_forward;
     wire [31:0] dt_forward;
     wire [31:0] tau_decay_inv;
@@ -59,15 +59,13 @@ module tb_SM_h_accumulator;
     );
     
     SM_divideTau divTau_rise (
-    .tau(tau_rise),
-    //.clk(clk),
-    .tau_inverse(tau_rise_inv)
+        .tau(tau_rise),
+        .tau_inverse(tau_rise_inv)
     );
     
     SM_divideTau divTau_decay (
-    .tau(tau_decay),
-    //.clk(clk),
-    .tau_inverse(tau_decay_inv)
+        .tau(tau_decay),
+        .tau_inverse(tau_decay_inv)
     );
     
   // 10ns clock
@@ -83,7 +81,7 @@ module tb_SM_h_accumulator;
   tau_decay = 32'h40300000; //2.75 in decimal (represented as a floating point)
   h=32'h41480000; //12.5 in decimal (represented as a floating point)
   g=32'h41480000; //12.5 in decimal (represented as a floating point)
-  synapseID=2'b00;
+  synapseID=2'b11;
   actionPotential=1'b0;
 
   @(posedge clk);
