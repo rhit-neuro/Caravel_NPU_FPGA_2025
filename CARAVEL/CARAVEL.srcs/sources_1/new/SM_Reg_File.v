@@ -26,38 +26,38 @@ module SM_Reg_File (
 
     //read ports (dont know if i need this i saw it on the example register file code online)
     input  [3:0]  rdAddrA,
-    output [15:0] rdDataA,
+    output [31:0] rdDataA,
     input  [3:0]  rdAddrB,
-    output [15:0] rdDataB,
+    output [31:0] rdDataB,
     
     //ask CK what the numbers would look like because 16 bit is probably way to big.
     //can probably reduce this to like 8 bits or something
     input         commit,   // commit to update all state and constant variables per time step
-    input  [15:0] next_f,
-    input  [15:0] next_g_syn_bar,
-    input  [15:0] next_T_rise,
-    input  [15:0] next_ho,
-    input  [15:0] next_AP,       // might change this to 1 bit but wantted to keep everyhting constant
-    input  [15:0] next_dt,
-    input  [15:0] next_T_decay,
-    input  [15:0] next_h,
-    input  [15:0] next_Vt,
-    input  [15:0] next_g,
-    input  [15:0] next_Vmem,
-    input  [15:0] next_Esyn,
+    input  [31:0] next_f,
+    input  [31:0] next_g_syn_bar,
+    input  [31:0] next_T_rise,
+    input  [31:0] next_ho,
+    input  [31:0] next_AP,       // might change this to 1 bit but wantted to keep everyhting constant
+    input  [31:0] next_dt,
+    input  [31:0] next_T_decay,
+    input  [31:0] next_h,
+    input  [31:0] next_Vt,
+    input  [31:0] next_g,
+    input  [31:0] next_Vmem,
+    input  [31:0] next_Esyn,
 
-    output [15:0] f,
-    output [15:0] g_syn_bar,
-    output [15:0] T_rise,
-    output [15:0] ho,
+    output [31:0] f,
+    output [31:0] g_syn_bar,
+    output [31:0] T_rise,
+    output [31:0] ho,
     output        AP,         
-    output [15:0] dt,
-    output [15:0] T_decay,
-    output [15:0] h,
-    output [15:0] Vt,
-    output [15:0] g,
-    output [15:0] Vmem,
-    output [15:0] Esyn
+    output [31:0] dt,
+    output [31:0] T_decay,
+    output [31:0] h,
+    output [31:0] Vt,
+    output [31:0] g,
+    output [31:0] Vmem,
+    output [31:0] Esyn
 );
 
     // address map
@@ -74,7 +74,7 @@ module SM_Reg_File (
     localparam VMEM_REG      = 10;
     localparam ESYN_REG      = 11;
 
-    reg [15:0] regfile [0:11];
+    reg [31:0] regfile [0:11];
 
     // reads
     assign rdDataA = regfile[rdAddrA];
@@ -100,7 +100,7 @@ module SM_Reg_File (
     always @(posedge clk) begin
         if (reset) begin
             for (i = 0; i < 12; i = i + 1)
-                regfile[i] <= 16'h0000;
+                regfile[i] <= 32'h00000000;
         end else begin
             if (commit) begin
                 regfile[F_REG]         <= next_f;
