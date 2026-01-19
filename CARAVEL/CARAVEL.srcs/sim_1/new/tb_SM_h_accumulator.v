@@ -75,12 +75,12 @@ module tb_SM_h_accumulator;
   end
   
   initial begin
-  tau_rise = 32'h41a00000; //20 in decimal (represented as a float)
+  tau_rise = 32'h40b00000; //5.5 in decimal (represented as a float)
   h0 = 32'h41480000; //12.5 in decimal (represented as a floating point)
-  dt = 32'h40300000; //2.75 in decimal (represented as a floating point)
-  tau_decay = 32'h40300000; //2.75 in decimal (represented as a floating point)
-  h=32'h41480000; //12.5 in decimal (represented as a floating point)
-  g=32'h41480000; //12.5 in decimal (represented as a floating point)
+  dt = 32'h40a00000; //5 in decimal (represented as a floating point)
+  tau_decay = 32'h41040000; //8.25 in decimal (represented as a floating point)
+  h=32'h415c0000; //13.75 in decimal (represented as a floating point)
+  g=32'h41700000; //15 in decimal (represented as a floating point)
   synapseID=2'b11;
   actionPotential=1'b0;
 

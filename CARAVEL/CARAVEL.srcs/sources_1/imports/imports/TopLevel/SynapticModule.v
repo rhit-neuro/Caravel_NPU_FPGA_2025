@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Bryce Chen
+// Engineer: Bryce Chen, Aster Zawaideh
 // 
 // Create Date: 01/03/2026 07:04:23 PM
 // Design Name: 
@@ -116,6 +116,8 @@ module SynapticModule
     wire        AP2;
     wire [15:0] f3, gsyn3, Trise3, ho3, dt3, Tdecay3, h3, Vt3, g3, Vmem3, Esyn3;
     wire        AP3;
+    
+
 
     SM_Reg_File RF0 (
         .clk(CLK_I), .reset(RST_I),
@@ -204,6 +206,85 @@ module SynapticModule
         .f(f3), .g_syn_bar(gsyn3), .T_rise(Trise3), .ho(ho3), .AP(AP3),
         .dt(dt3), .T_decay(Tdecay3), .h(h3), .Vt(Vt3), .g(g3), .Vmem(Vmem3), .Esyn(Esyn3)
     );
+    
+    //TODO: need a mux to assign these values from the correct reg file based on id
+    reg [31:0] tau_rise, tau_decay;
+    reg [31:0] ho, h, tau_rise_inverse, tau_decay_inverse, g, dt, h_out, dt_forward, tau_decay_inverse_forward, g_forward;
+    reg  actionPotential, exception;
+    reg [1:0] synapseID, synapseID_forward;
+    
+
+    always @(*) begin
+        synapseID=bank;
+        case (bank)
+            2'b00: begin
+                tau_rise = Trise0;
+                tau_decay = Tdecay0;
+                ho = ho0;
+                h = h0;
+                g = g0;
+                dt = dt0;
+                actionPotential = AP0;
+            end
+            2'b01: begin
+                tau_rise = Trise1;
+                tau_decay = Tdecay1;
+                ho = ho1;
+                h = h1;
+                g = g1;
+                dt = dt1;
+                actionPotential = AP1;
+            end
+            2'b10: begin
+                tau_rise = Trise2;
+                tau_decay = Tdecay2;
+                ho = ho2;
+                h = h2;
+                g = g2;
+                dt = dt2;
+                actionPotential = AP2;
+            end
+            default: begin
+                tau_rise = Trise3;
+                tau_decay = Tdecay3;
+                ho = ho3;
+                h = h3;
+                g = g3;
+                dt = dt3;
+                actionPotential = AP3;
+                end
+        endcase
+    end
+
+
+    SM_divideTau divTauRise(
+        .tau(tau_rise),
+        .tau_inverse(tau_rise_inverse)
+    );
+    
+    SM_divideTau divTauDecay(
+        .tau(tau_decay),
+        .tau_inverse(tau_decay_inverse)
+    );
+    
+    
+     SM_h_accumulator hUpdate(
+        .h0(ho),
+        .h(h),
+        .tau_rise_inverse(tau_rise_inverse),
+        .tau_decay_inverse(tau_decay_inverse), 
+        .g(g),
+        .actionPotential(actionPotential),
+        .synapseID(synapseID),
+        .dt(dt),
+        .h_out(h_out),
+        .exception(exception),
+        .synapseID_forward(synapseID_forward),
+        .dt_forward(dt_forward),
+        .tau_decay_inverse_forward(tau_decay_inverse_forward),
+        .g_forward(g_forward)
+    );
+    
 
     // Readback mux so that i can run a test bench (working now) 
     // when the pipelines are added REMOVE THIS ALWAYS BLOCK MUX

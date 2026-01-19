@@ -1,21 +1,25 @@
-vlib work
-vlib riviera
+transcript off
+onbreak {quit -force}
+onerror {quit -force}
+transcript on
 
+vlib work
 vlib riviera/xpm
 vlib riviera/xil_defaultlib
 
 vmap xpm riviera/xpm
 vmap xil_defaultlib riviera/xil_defaultlib
 
-vlog -work xpm  -sv2k12 "+incdir+../../../ipstatic" \
-"C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+vlog -work xpm  -incr "+incdir+../../../ipstatic" -l xpm -l xil_defaultlib \
+"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
-vcom -work xpm -93 \
-"C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_VCOMP.vhd" \
+vcom -work xpm -93  -incr \
+"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
-vlog -work xil_defaultlib  -v2k5 "+incdir+../../../ipstatic" \
-"../../../../CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix_clk_wiz.v" \
-"../../../../CARAVEL.srcs/sources_1/ip/clk_fix_1/clk_fix.v" \
+vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../ipstatic" -l xpm -l xil_defaultlib \
+"../../../../CARAVEL.gen/sources_1/ip/clk_fix_1/clk_fix_clk_wiz.v" \
+"../../../../CARAVEL.gen/sources_1/ip/clk_fix_1/clk_fix.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

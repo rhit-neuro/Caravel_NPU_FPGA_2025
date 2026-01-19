@@ -18,10 +18,13 @@
   <File Type="BITSTR-MMI" Name="caravel.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="TopLevel_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="caravel.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="TopLevel_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="caravel.ltx"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="NPI_FILE" Name="caravel.npi"/>
   <File Type="OPT-DRC" Name="TopLevel_drc_opted.rpt"/>
+  <File Type="RBD_FILE" Name="caravel.rbd"/>
   <File Type="OPT-HWDEF" Name="caravel.hwdef"/>
   <File Type="PLACE-IO" Name="TopLevel_io_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="TopLevel_utilization_placed.rpt"/>
@@ -55,15 +58,12 @@
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="TopLevel_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="TopLevel_bus_skew_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="TopLevel_bus_skew_postroute_physopted.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="TopLevel_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="TopLevel_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="TopLevel_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="caravel.pdi"/>
   <File Type="RCFI_FILE" Name="caravel.rcfi"/>
   <File Type="CFI_FILE" Name="caravel.cfi"/>
   <File Type="RNPI_FILE" Name="caravel.rnpi"/>
-  <File Type="NPI_FILE" Name="caravel.npi"/>
-  <File Type="RBD_FILE" Name="caravel.rbd"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/imports/LUT_Module/FloatingAddition.v">
