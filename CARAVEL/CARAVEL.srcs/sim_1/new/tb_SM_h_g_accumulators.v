@@ -103,10 +103,14 @@ module tb_SM_h_g_accumulators;
       actionPotential=1'b0;
     
       @(posedge clk);
+      //h=10.875
+      //g=124.0167
       actionPotential=1'b1;
       h <= h_out;
       g <= g_out;
       @(posedge clk);
+      //h=71.3125
+      //g=878.48
       actionPotential=1'b0;
       h <= h_out;
       g <= g_out;
