@@ -98,23 +98,23 @@ module SynapticModule
     localparam COMMIT_REG    = 4'd15;
 
     // Staging "next" values (loaded by DMA/WB writes)
-    // 4 banks × 12 vars
-    reg [15:0] next0 [0:11];
-    reg [15:0] next1 [0:11];
-    reg [15:0] next2 [0:11];
-    reg [15:0] next3 [0:11];
+    // 4 banks of 12 vars
+    reg [31:0] next0 [0:11];
+    reg [31:0] next1 [0:11];
+    reg [31:0] next2 [0:11];
+    reg [31:0] next3 [0:11];
 
     // commit bit for each regfile
     reg commit0, commit1, commit2, commit3;
 
     // Outputs from each regfile
-    wire [15:0] f0, gsyn0, Trise0, ho0, dt0, Tdecay0, h0, Vt0, g0, Vmem0, Esyn0;
+    wire [31:0] f0, gsyn0, Trise0, ho0, dt0, Tdecay0, h0, Vt0, g0, Vmem0, Esyn0;
     wire        AP0;
-    wire [15:0] f1, gsyn1, Trise1, ho1, dt1, Tdecay1, h1, Vt1, g1, Vmem1, Esyn1;
+    wire [31:0] f1, gsyn1, Trise1, ho1, dt1, Tdecay1, h1, Vt1, g1, Vmem1, Esyn1;
     wire        AP1;
-    wire [15:0] f2, gsyn2, Trise2, ho2, dt2, Tdecay2, h2, Vt2, g2, Vmem2, Esyn2;
+    wire [31:0] f2, gsyn2, Trise2, ho2, dt2, Tdecay2, h2, Vt2, g2, Vmem2, Esyn2;
     wire        AP2;
-    wire [15:0] f3, gsyn3, Trise3, ho3, dt3, Tdecay3, h3, Vt3, g3, Vmem3, Esyn3;
+    wire [31:0] f3, gsyn3, Trise3, ho3, dt3, Tdecay3, h3, Vt3, g3, Vmem3, Esyn3;
     wire        AP3;
     
 
@@ -209,10 +209,9 @@ module SynapticModule
     
     //TODO: need a mux to assign these values from the correct reg file based on id
     reg [31:0] tau_rise, tau_decay;
-    reg [31:0] ho, h, tau_rise_inverse, tau_decay_inverse, g, dt, h_out, dt_forward, tau_decay_inverse_forward, g_forward;
-    reg  actionPotential, exception;
-    reg [1:0] synapseID, synapseID_forward;
-    
+    reg [31:0] ho, h, tau_rise_inverse, tau_decay_inverse, g, dt, h_out, g_out, dt_forward, tau_decay_inverse_forward, g_forward;
+    reg  actionPotential, exception_h, exception_hg;
+    reg [1:0] synapseID, synapseID_forward,synapseID_out;
 
     always @(*) begin
         synapseID=bank;
@@ -278,89 +277,102 @@ module SynapticModule
         .synapseID(synapseID),
         .dt(dt),
         .h_out(h_out),
-        .exception(exception),
+        .exception(exception_h),
         .synapseID_forward(synapseID_forward),
         .dt_forward(dt_forward),
         .tau_decay_inverse_forward(tau_decay_inverse_forward),
         .g_forward(g_forward)
     );
     
+    
+ SM_g_accumulator gUpdate(
+    .h(h_out),
+    .g(g_forward),
+    .tau_decay_inverse(tau_decay_inverse_forward),
+    .synapseID(synapseID_forward),
+    .dt(dt_forward),
+    .exception_h(exception_h),
+    .g_out(g_out),
+    .exception(exception_hg),
+    .synapseID_out(synapseID_out)
+    );
+    
 
     // Readback mux so that i can run a test bench (working now) 
     // when the pipelines are added REMOVE THIS ALWAYS BLOCK MUX
-    // returns 16-bit in lower half of DAT_O
-    reg [15:0] read16_0, read16_1, read16_2, read16_3;
-    reg [15:0] read16;
+    // returns 32-bit in lower half of DAT_O
+    reg [31:0] read32_0, read32_1, read32_2, read32_3;
+    reg [31:0] read32;
     always @(*) begin
         case (idx)
-            F_REG:         read16_0 = f0;
-            G_SYN_BAR_REG: read16_0 = gsyn0;
-            T_RISE_REG:    read16_0 = Trise0;
-            HO_REG:        read16_0 = ho0;
-            AP_REG:        read16_0 = {15'h0, AP0};
-            DT_REG:        read16_0 = dt0;
-            T_DECAY_REG:   read16_0 = Tdecay0;
-            H_REG:         read16_0 = h0;
-            VT_REG:        read16_0 = Vt0;
-            G_REG:         read16_0 = g0;
-            VMEM_REG:      read16_0 = Vmem0;
-            ESYN_REG:      read16_0 = Esyn0;
-            default:       read16_0 = 16'h0000;
+            F_REG:         read32_0 = f0;
+            G_SYN_BAR_REG: read32_0 = gsyn0;
+            T_RISE_REG:    read32_0 = Trise0;
+            HO_REG:        read32_0 = ho0;
+            AP_REG:        read32_0 = {31'h0, AP0};
+            DT_REG:        read32_0 = dt0;
+            T_DECAY_REG:   read32_0 = Tdecay0;
+            H_REG:         read32_0 = h0;
+            VT_REG:        read32_0 = Vt0;
+            G_REG:         read32_0 = g0;
+            VMEM_REG:      read32_0 = Vmem0;
+            ESYN_REG:      read32_0 = Esyn0;
+            default:       read32_0 = 32'h00000000;
         endcase
 
         case (idx)
-            F_REG:         read16_1 = f1;
-            G_SYN_BAR_REG: read16_1 = gsyn1;
-            T_RISE_REG:    read16_1 = Trise1;
-            HO_REG:        read16_1 = ho1;
-            AP_REG:        read16_1 = {15'h0, AP1};
-            DT_REG:        read16_1 = dt1;
-            T_DECAY_REG:   read16_1 = Tdecay1;
-            H_REG:         read16_1 = h1;
-            VT_REG:        read16_1 = Vt1;
-            G_REG:         read16_1 = g1;
-            VMEM_REG:      read16_1 = Vmem1;
-            ESYN_REG:      read16_1 = Esyn1;
-            default:       read16_1 = 16'h0000;
+            F_REG:         read32_1 = f1;
+            G_SYN_BAR_REG: read32_1 = gsyn1;
+            T_RISE_REG:    read32_1 = Trise1;
+            HO_REG:        read32_1 = ho1;
+            AP_REG:        read32_1 = {31'h0, AP1};
+            DT_REG:        read32_1 = dt1;
+            T_DECAY_REG:   read32_1 = Tdecay1;
+            H_REG:         read32_1 = h1;
+            VT_REG:        read32_1 = Vt1;
+            G_REG:         read32_1 = g1;
+            VMEM_REG:      read32_1 = Vmem1;
+            ESYN_REG:      read32_1 = Esyn1;
+            default:       read32_1 = 32'h00000000;
         endcase
 
         case (idx)
-            F_REG:         read16_2 = f2;
-            G_SYN_BAR_REG: read16_2 = gsyn2;
-            T_RISE_REG:    read16_2 = Trise2;
-            HO_REG:        read16_2 = ho2;
-            AP_REG:        read16_2 = {15'h0, AP2};
-            DT_REG:        read16_2 = dt2;
-            T_DECAY_REG:   read16_2 = Tdecay2;
-            H_REG:         read16_2 = h2;
-            VT_REG:        read16_2 = Vt2;
-            G_REG:         read16_2 = g2;
-            VMEM_REG:      read16_2 = Vmem2;
-            ESYN_REG:      read16_2 = Esyn2;
-            default:       read16_2 = 16'h0000;
+            F_REG:         read32_2 = f2;
+            G_SYN_BAR_REG: read32_2 = gsyn2;
+            T_RISE_REG:    read32_2 = Trise2;
+            HO_REG:        read32_2 = ho2;
+            AP_REG:        read32_2 = {31'h0, AP2};
+            DT_REG:        read32_2 = dt2;
+            T_DECAY_REG:   read32_2 = Tdecay2;
+            H_REG:         read32_2 = h2;
+            VT_REG:        read32_2 = Vt2;
+            G_REG:         read32_2 = g2;
+            VMEM_REG:      read32_2 = Vmem2;
+            ESYN_REG:      read32_2 = Esyn2;
+            default:       read32_2 = 32'h00000000;
         endcase
 
         case (idx)
-            F_REG:         read16_3 = f3;
-            G_SYN_BAR_REG: read16_3 = gsyn3;
-            T_RISE_REG:    read16_3 = Trise3;
-            HO_REG:        read16_3 = ho3;
-            AP_REG:        read16_3 = {15'h0, AP3};
-            DT_REG:        read16_3 = dt3;
-            T_DECAY_REG:   read16_3 = Tdecay3;
-            H_REG:         read16_3 = h3;
-            VT_REG:        read16_3 = Vt3;
-            G_REG:         read16_3 = g3;
-            VMEM_REG:      read16_3 = Vmem3;
-            ESYN_REG:      read16_3 = Esyn3;
-            default:       read16_3 = 16'h0000;
+            F_REG:         read32_3 = f3;
+            G_SYN_BAR_REG: read32_3 = gsyn3;
+            T_RISE_REG:    read32_3 = Trise3;
+            HO_REG:        read32_3 = ho3;
+            AP_REG:        read32_3 = {31'h0, AP3};
+            DT_REG:        read32_3 = dt3;
+            T_DECAY_REG:   read32_3 = Tdecay3;
+            H_REG:         read32_3 = h3;
+            VT_REG:        read32_3 = Vt3;
+            G_REG:         read32_3 = g3;
+            VMEM_REG:      read32_3 = Vmem3;
+            ESYN_REG:      read32_3 = Esyn3;
+            default:       read32_3 = 32'h00000000;
         endcase
 
         case (bank)
-            2'd0: read16 = read16_0;
-            2'd1: read16 = read16_1;
-            2'd2: read16 = read16_2;
-            default: read16 = read16_3;
+            2'd0: read32 = read32_0;
+            2'd1: read32 = read32_1;
+            2'd2: read32 = read32_2;
+            default: read32 = read32_3;
         endcase
     end
 
@@ -374,10 +386,10 @@ module SynapticModule
             commit0 <= 1'b0; commit1 <= 1'b0; commit2 <= 1'b0; commit3 <= 1'b0;
 
             for (k = 0; k < 12; k = k + 1) begin
-                next0[k] <= 16'h0000;
-                next1[k] <= 16'h0000;
-                next2[k] <= 16'h0000;
-                next3[k] <= 16'h0000;
+                next0[k] <= 32'h00000000;
+                next1[k] <= 32'h00000000;
+                next2[k] <= 32'h00000000;
+                next3[k] <= 32'h00000000;
             end
         end else begin
             // defaults
@@ -394,16 +406,16 @@ module SynapticModule
                         commit2 <= 1'b1;
                         commit3 <= 1'b1;
                     end else if (idx < 12) begin
-                        // write 16-bit value into staging for selected regfile
+                        // write 32-bit value into staging for selected regfile
                         case (bank)
-                            2'd0: next0[idx] <= DAT_I[15:0];
-                            2'd1: next1[idx] <= DAT_I[15:0];
-                            2'd2: next2[idx] <= DAT_I[15:0];
-                            default: next3[idx] <= DAT_I[15:0];
+                            2'd0: next0[idx] <= DAT_I[31:0];
+                            2'd1: next1[idx] <= DAT_I[31:0];
+                            2'd2: next2[idx] <= DAT_I[31:0];
+                            default: next3[idx] <= DAT_I[31:0];
                         endcase
                     end
                 end else begin
-                    DAT_O <= {16'h0000, read16};
+                    DAT_O <= {32'h00000000, read32};
                 end
             end
         end
