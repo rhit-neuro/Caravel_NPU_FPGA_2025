@@ -16,7 +16,8 @@
 
 CPU=vexriscv
 CPUFAMILY=riscv
-CPUFLAGS=-march=rv32i_zicsr      -mabi=ilp32 -D__vexriscv__
+# CPUFLAGS=-march=rv32i_zicsr      -mabi=ilp32 -D__vexriscv__  
+CPUFLAGS = -march=rv32imfd  -mabi=ilp32d  -D__vexriscv__ 
 CPUENDIANNESS=little
 CLANG=0
 
@@ -27,6 +28,9 @@ $(FREERTOS_PATH)/Source/tasks.c \
 $(FREERTOS_PATH)/Source/queue.c \
 $(FREERTOS_PATH)/Source/list.c \
 $(FREERTOS_PATH)/Source/timers.c \
+$(FREERTOS_PATH)/Source/event_groups.c \
+$(FREERTOS_PATH)/Source/stream_buffer.c \
+$(FREERTOS_PATH)/Source/portable/MemMang/heap_4.c \
 $(FREERTOS_PATH)/Source/portable/GCC/RISC-V/port.c \
 $(FREERTOS_PATH)/Source/portable/GCC/RISC-V/portASM.S 
 

@@ -43,6 +43,7 @@ export VERILOG_PATH = $(CORE_VERILOG_PATH)
 
 export GCC_PATH?=      $(TOOLS)/bin
 export GCC_PREFIX?=    riscv32-unknown-linux-gnu
+# export GCC_PREFIX?= riscv32-unknown-elf
 
 
 

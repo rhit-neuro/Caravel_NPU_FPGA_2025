@@ -46,10 +46,12 @@
 #define configMTIMECMP_BASE_ADDRESS		( 0 )
 #define configISR_STACK_SIZE_WORDS		( 300 )
 
+#define configENABLE_FPU                1                                   // added this -CK
+
 #define configUSE_PREEMPTION			1
 #define configUSE_IDLE_HOOK				0
-#define configUSE_TICK_HOOK				1
-#define configCPU_CLOCK_HZ				( ( unsigned long ) 100000000 )  // 100 MHz (double check this!)
+#define configUSE_TICK_HOOK				0                                   // changed this to 0 -CK
+#define configCPU_CLOCK_HZ				( ( unsigned long ) 100000000 )     // changed this to 100 MHz (double check this!)  -CK
 #define configTICK_RATE_HZ				( ( TickType_t ) 1000 )          // time unit
 #if __riscv_xlen == 64
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 240 )
