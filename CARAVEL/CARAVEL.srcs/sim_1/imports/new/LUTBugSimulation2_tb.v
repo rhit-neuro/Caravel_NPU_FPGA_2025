@@ -83,7 +83,7 @@ module LUTBugSimulation2_tb();
   // Simple DMA source RAM model (byte address base = 0)
   reg  [31:0] dma_src_mem [0:255];
   wire        ram_ack;
-  wire [31:0] ram_rdata;
+  wire [31:0]  ram_rdata;
 
   // Muxed WB4 inputs into the DUT
   wire        lut_wb4_cyc_i = (use_zipdma_wb4) ? fab_lut_cyc : wb4_cyc_i;
@@ -189,12 +189,14 @@ module LUTBugSimulation2_tb();
 
   // RAM model (used as DMA source)
   // - Address space: 0x0000_0000 ..
-  // - Zero-wait-state response, no stall, 32-bit words
+  // - One-cycle response, no stall, 32-bit words
   // - Byte enables honored on writes
+  // NOTE: Implemented as zero-wait-state (ACK in same cycle) to avoid any pipelining/late-ACK mismatch with ZipDMA.
   wire [7:0] ram_word_index = dma_mwb_addr[7:0];
   wire       ram_req = use_zipdma_wb4 && dma_to_ram && dma_mwb_stb && dma_mwb_cyc;
-  assign     ram_ack   = ram_req;
-  assign     ram_rdata = dma_src_mem[ram_word_index];
+
+  assign ram_ack   = ram_req;
+  assign ram_rdata = dma_src_mem[ram_word_index];
 
   always @(posedge clock) begin
     if (!reset) begin
@@ -206,6 +208,7 @@ module LUTBugSimulation2_tb();
       end
     end
   end
+
 
   // Return path back into ZipDMA
   assign dma_mwb_stall = (use_zipdma_wb4 && dma_to_lut) ? wb4_stall_o : 1'b0;
@@ -219,8 +222,7 @@ module LUTBugSimulation2_tb();
   localparam [31:0] F1_M_BASE  = 32'h3050_1200; // M Values
   localparam [31:0] F1_B_BASE  = 32'h3050_1300; // B Values
 
-  localparam [31:0] DMA_X_SRC_ADDR = 32'h0000_0300;
-  localparam [31:0] DMA_Y_DST_ADDR = 32'h0000_0340;
+  localparam integer LOOP_ITERS = 100; // Number of compute iterations in looped testcases
 
   // Init vectors (from userspace.c)
   reg [31:0] V_INIT [0:31];
@@ -262,25 +264,6 @@ module LUTBugSimulation2_tb();
       wb3_sel_i <= 4'h0;
       wb3_adr_i <= 32'h0;
       wb3_dat_i <= 32'h0;
-    end
-  endtask
-
-  task compute_f1_zipdma;
-    input  [31:0] x;
-    output [31:0] y;
-    begin
-      dma_src_mem[DMA_X_SRC_ADDR[9:2]] = x;
-      dma_src_mem[DMA_Y_DST_ADDR[9:2]] = 32'h0;
-
-      use_zipdma_wb4 = 1'b1;
-      zipdma_copy(DMA_X_SRC_ADDR, F1_XY_ADDR, 32'd4);
-
-      repeat (20) @(posedge clock);
-
-      zipdma_copy(F1_XY_ADDR, DMA_Y_DST_ADDR, 32'd4);
-      use_zipdma_wb4 = 1'b0;
-
-      y = dma_src_mem[DMA_Y_DST_ADDR[9:2]];
     end
   endtask
 
@@ -476,7 +459,6 @@ module LUTBugSimulation2_tb();
       dma_ctrl_write(2'b11, nbytes);
 
       // Start DMA (bit31=0) + clear any prior interrupt/error flags
-      // NOTE: Keep bit29=0 so the DMA does not wait on an external interrupt trigger
       dma_ctrl_write(2'b00, 32'h4000_0000);
       dma_wait_done();
     end
@@ -533,6 +515,18 @@ module LUTBugSimulation2_tb();
     end
   endtask
 
+  // WB4 compute path (Write X, then read Y back via WB4)
+  task compute_f1_wb4;
+    input  [31:0] x;
+    output [31:0] y;
+    begin
+      wb4_write32(F1_XY_ADDR, x);
+      @(posedge clock);
+      wb4_read32(F1_XY_ADDR, y);
+    end
+  endtask
+
+
   //------------------------------------------------------------------------------
   // Export PRE & POST values to text file for external comparison
   //
@@ -576,6 +570,53 @@ module LUTBugSimulation2_tb();
   end
   endtask
 
+  // Loop-dump helpers:
+  //   - Creates a CSV with a single header line
+  //   - Appends one full V/M/B snapshot per iteration, using index=(iter*32 + i)
+  task init_loop_csv;
+    input [8*128-1:0] fname;
+    integer fh;
+  begin
+    fh = $fopen(fname, "w");
+    if (fh == 0) begin
+      $display("%0t [FILE] ERROR: could not open %s", $time, fname);
+    end else begin
+      $fwrite(fh, "bank,index,hex\n");
+      $fclose(fh);
+      $display("%0t [FILE] Wrote %s", $time, fname);
+    end
+  end
+  endtask
+
+  task append_tables_loop_csv;
+    input [8*128-1:0] fname;
+    input integer     iter;
+    input [31:0] V_TAB [0:31];
+    input [31:0] M_TAB [0:31];
+    input [31:0] B_TAB [0:31];
+    integer fh;
+    integer base;
+  begin
+    fh = $fopen(fname, "a"); // Append rows
+    if (fh == 0) begin
+      $display("%0t [FILE] ERROR: could not open %s", $time, fname);
+    end else begin
+      base = iter * 32;
+      for (i = 0; i < 32; i = i + 1) begin
+        $fwrite(fh, "V,%0d,%08h\n", base + i, V_TAB[i]);
+      end
+      for (i = 0; i < 32; i = i + 1) begin
+        $fwrite(fh, "M,%0d,%08h\n", base + i, M_TAB[i]);
+      end
+      for (i = 0; i < 32; i = i + 1) begin
+        $fwrite(fh, "B,%0d,%08h\n", base + i, B_TAB[i]);
+      end
+      $fclose(fh);
+    end
+  end
+  endtask
+
+
   //------------------------------------------------------------------------------
   // Testcases
   //------------------------------------------------------------------------------
@@ -584,10 +625,10 @@ module LUTBugSimulation2_tb();
     begin
       load_tables_wb3();
       snapshot_pre();
-      dump_tables_to_file("testcase_wb3_only_pre.csv","wb3-pre", V_PRE, M_PRE, B_PRE);
+      dump_tables_to_file("testcase_wb3_only_pre.csv","cpu-pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
-      dump_tables_to_file("testcase_wb3_only_post.csv","wb3-post", V_POST, M_POST, B_POST);
+      dump_tables_to_file("testcase_wb3_only_post.csv","cpu-post", V_POST, M_POST, B_POST);
       
     end
   endtask
@@ -597,26 +638,87 @@ module LUTBugSimulation2_tb();
     begin
       load_tables_wb4();
       snapshot_pre();
-      dump_tables_to_file("testcase_wb4_only_pre.csv","wb4-pre", V_PRE, M_PRE, B_PRE);
-      compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
+      dump_tables_to_file("testcase_wb4_only_pre.csv","dma-pre", V_PRE, M_PRE, B_PRE);
+      compute_f1_wb4(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
-      dump_tables_to_file("testcase_wb4_only_post.csv","wb4-post", V_POST, M_POST, B_POST);
+      dump_tables_to_file("testcase_wb4_only_post.csv","dma-post", V_POST, M_POST, B_POST);
       
     end
   endtask
 
-  task testcase_zipdma_only;
+  task testcase_zipdma_then_cpu;
     reg [31:0] y;
     begin
       load_tables_zipdma();
       snapshot_pre();
       dump_tables_to_file("testcase_zipdma_pre.csv","zipdma-pre", V_PRE, M_PRE, B_PRE);
-      compute_f1_zipdma(32'h40A00000, y); // x = 5.0 (example)
+      compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
       dump_tables_to_file("testcase_zipdma_post.csv","zipdma-post", V_POST, M_POST, B_POST);
       
     end
   endtask
+
+  task testcase_wb3_only_loop;
+    reg [31:0] y;
+    integer iter;
+    begin
+      load_tables_wb3();
+      init_loop_csv("testcase_wb3_only_pre_loop.csv");
+      init_loop_csv("testcase_wb3_only_post_loop.csv");
+
+      for (iter = 0; iter < LOOP_ITERS; iter = iter + 1) begin
+        snapshot_pre();
+        append_tables_loop_csv("testcase_wb3_only_pre_loop.csv", iter, V_PRE, M_PRE, B_PRE);
+
+        compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
+
+        snapshot_post();
+        append_tables_loop_csv("testcase_wb3_only_post_loop.csv", iter, V_POST, M_POST, B_POST);
+      end
+    end
+  endtask
+
+  task testcase_wb4_only_loop;
+    reg [31:0] y;
+    integer iter;
+    begin
+      load_tables_wb4();
+      init_loop_csv("testcase_wb4_only_pre_loop.csv");
+      init_loop_csv("testcase_wb4_only_post_loop.csv");
+
+      for (iter = 0; iter < LOOP_ITERS; iter = iter + 1) begin
+        snapshot_pre();
+        append_tables_loop_csv("testcase_wb4_only_pre_loop.csv", iter, V_PRE, M_PRE, B_PRE);
+
+        compute_f1_wb4(32'h40A00000, y); // x = 5.0 (example)
+
+        snapshot_post();
+        append_tables_loop_csv("testcase_wb4_only_post_loop.csv", iter, V_POST, M_POST, B_POST);
+      end
+    end
+  endtask
+
+  task testcase_zipdma_then_cpu_loop;
+    reg [31:0] y;
+    integer iter;
+    begin
+      load_tables_zipdma();
+      init_loop_csv("testcase_zipdma_pre_loop.csv");
+      init_loop_csv("testcase_zipdma_post_loop.csv");
+
+      for (iter = 0; iter < LOOP_ITERS; iter = iter + 1) begin
+        snapshot_pre();
+        append_tables_loop_csv("testcase_zipdma_pre_loop.csv", iter, V_PRE, M_PRE, B_PRE);
+
+        compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
+
+        snapshot_post();
+        append_tables_loop_csv("testcase_zipdma_post_loop.csv", iter, V_POST, M_POST, B_POST);
+      end
+    end
+  endtask
+
 
   //------------------------------------------------------------------------------
   // Initial block
@@ -765,7 +867,11 @@ module LUTBugSimulation2_tb();
 
     testcase_wb3_only();
     testcase_wb4_only();
-    testcase_zipdma_only();
+    testcase_zipdma_then_cpu();
+
+    testcase_wb3_only_loop();
+    testcase_wb4_only_loop();
+    testcase_zipdma_then_cpu_loop();
 
     #(`HALF_CYCLE*10);
     $finish;
