@@ -2,7 +2,7 @@
 `define HALF_CYCLE 5
 
 //------------------------------------------------------------------------------
-// LUTBugSimulation_tb.v  (baseline-style TB)
+// LUTBugSimulation_tb.v  (baseline-style TB) (note: file type is set to SystemVerilog in Vivado)
 //------------------------------------------------------------------------------
 // Targets: LUT_Module
 // Goal:
@@ -135,7 +135,7 @@ module LUTBugSimulation_tb();
 
       while (!wb3_ack_o) @(posedge clock);
 
-      @(posedge clock);
+      @(posedge clock); // Wait an extra clk cycle to sample actual data
       data = wb3_dat_o;
 
       @(posedge clock);
@@ -188,7 +188,7 @@ module LUTBugSimulation_tb();
       while (wb4_stall_o) @(posedge clock);
       while (!wb4_ack_o) @(posedge clock);
 
-      @(posedge clock);
+      @(posedge clock); // Wait an extra clk cycle to sample actual data
       data = wb4_dat_o;
 
       @(posedge clock);
@@ -259,64 +259,74 @@ module LUTBugSimulation_tb();
   endtask
 
   //------------------------------------------------------------------------------
-  // Compare snapshots (PRE vs POST)
+  // Export PRE & POST values to text file for external comparison
+  //
+  // Outputted file format is
+  //
+  //  tag=<...>,time_ns=<...>
+  //  bank,index,hex
+  //  V,0,XXXXXXXX
+  //  ...
+  //  M,0,XXXXXXXX
+  //  ...
+  //  B,0,XXXXXXXX
+  //  ...
   //------------------------------------------------------------------------------
-  task report_mismatches;
-    input [8*16-1:0] tag;
-    integer mism;
-    begin
-      mism = 0;
+  task dump_tables_to_file;
+    input [8*128-1:0] fname;
+    input [8*32-1:0]  tag;
+    input [31:0] V_TAB [0:31];
+    input [31:0] M_TAB [0:31];
+    input [31:0] B_TAB [0:31];
+    integer fh;
+  begin
+    fh = $fopen(fname, "w"); // Write to file (overwrite any prev values)
+    if (fh == 0) begin
+      $display("%0t [FILE] ERROR: could not open %s", $time, fname);
+    end else begin // If we have something to write, begin
+      $fwrite(fh, "tag=%s,time_ns=%0t\n", tag, $time);
+      $fwrite(fh, "bank,index,hex\n");
       for (i = 0; i < 32; i = i + 1) begin
-        if (V_PRE[i] !== V_POST[i]) begin
-          $display("%0t [%s] V mismatch idx=%0d pre=%h post=%h", $time, tag, i, V_PRE[i], V_POST[i]);
-          mism = mism + 1;
-        end
-        if (M_PRE[i] !== M_POST[i]) begin
-          $display("%0t [%s] M mismatch idx=%0d pre=%h post=%h", $time, tag, i, M_PRE[i], M_POST[i]);
-          mism = mism + 1;
-        end
-        if (B_PRE[i] !== B_POST[i]) begin
-          $display("%0t [%s] B mismatch idx=%0d pre=%h post=%h", $time, tag, i, B_PRE[i], B_POST[i]);
-          mism = mism + 1;
-        end
+        $fwrite(fh, "V,%0d,%08h\n", i, V_TAB[i]);
       end
-
-      if (mism == 0) begin
-        $display("%0t [%s] No table corruption detected (V/M/B unchanged).", $time, tag);
-      end else begin
-        $display("%0t [%s] Detected %0d coefficient mismatches.", $time, tag, mism);
+      for (i = 0; i < 32; i = i + 1) begin
+        $fwrite(fh, "M,%0d,%08h\n", i, M_TAB[i]);
       end
+      for (i = 0; i < 32; i = i + 1) begin
+        $fwrite(fh, "B,%0d,%08h\n", i, B_TAB[i]);
+      end
+      $fclose(fh);
+      $display("%0t [FILE] Wrote %s", $time, fname);
     end
+  end
   endtask
 
   //------------------------------------------------------------------------------
   // Testcases
   //------------------------------------------------------------------------------
-  task testcase_cpu_only;
+  task testcase_cpu_only_wb3;
     reg [31:0] y;
     begin
-      $display("\n===== TESTCASE: CPU-only (WB3 init + WB3 compute) =====");
       load_tables_wb3();
       snapshot_pre();
+      dump_tables_to_file("cpu-pre-calc.csv","cpu-pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
-      $display("%0t [CPU-only] y=%h  flags: Exc=%b Inv=%b Ovr=%b Und=%b",
-               $time, y, Exception, Invalid, Overflow, Underflow);
       snapshot_post();
-      report_mismatches("CPU-only        ");
+      dump_tables_to_file("cpu-post-calc.csv","cpu-post", V_POST, M_POST, B_POST);
+      
     end
   endtask
 
-  task testcase_dma_then_cpu;
+  task testcase_cpu_only_wb4;
     reg [31:0] y;
     begin
-      $display("\n===== TESTCASE: DMA-load (WB4) then CPU compute/readback (WB3) =====");
       load_tables_wb4();
       snapshot_pre();
+      dump_tables_to_file("dma-pre-calc.csv","dma-pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
-      $display("%0t [DMA->CPU] y=%h  flags: Exc=%b Inv=%b Ovr=%b Und=%b",
-               $time, y, Exception, Invalid, Overflow, Underflow);
       snapshot_post();
-      report_mismatches("DMA->CPU        ");
+      dump_tables_to_file("dma-post-calc.csv","dma-post", V_POST, M_POST, B_POST);
+      
     end
   endtask
 
@@ -442,10 +452,9 @@ module LUTBugSimulation_tb();
     // settle
     #(`HALF_CYCLE*10);
 
-    testcase_cpu_only();
-    testcase_dma_then_cpu();
+    testcase_cpu_only_wb3();
+    testcase_cpu_only_wb4();
 
-    $display("\nAll tests complete.");
     #(`HALF_CYCLE*10);
     $finish;
   end
