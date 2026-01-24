@@ -33,9 +33,6 @@ hex:  ${BLOCKS:=.hex}
 # Comiple firmeware
 ##############################################################################
 %.elf: %.c $(LINKER_SCRIPT) $(SOURCE_FILES)
-	$(info GCC_PATH is $(GCC_PATH))
-	$(info GCC_PREFIX is $(GCC_PREFIX))
-
 	@echo "Building $@ from $<" 
 	${GCC_PATH}/${GCC_PREFIX}-gcc -g \
 	-I$(FIRMWARE_PATH) \
@@ -48,7 +45,7 @@ hex:  ${BLOCKS:=.hex}
 	-I$(FREERTOS_PATH)/Source/portable/GCC/RISC-V/chip_specific_extensions/RISCV_no_extensions \
 	$(CPUFLAGS) \
 	-Wl,-Bstatic,-T,$(LINKER_SCRIPT),--strip-debug \
-	-ffreestanding -nostdlib -o $@ $(SOURCE_FILES) $(FREERTOS_SRC) $<
+	-ffreestanding -nostdlib -o $@ $(SOURCE_FILES) $(FREERTOS_SRC) $(LDFLAGS) $<
 
 %.lst: %.elf
 	${GCC_PATH}/${GCC_PREFIX}-objdump -d -S $< > $@
