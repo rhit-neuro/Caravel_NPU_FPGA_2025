@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_SM_h_g_accumulators_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_SM_h_g_accumulators" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0 ps"></ZoomStartTime>
+      <ZoomEndTime time="18 ps"></ZoomEndTime>
+      <Cursor1Time time="0 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="265"></NameColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/tb_SM_h_g_accumulators/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/tau_rise" type="array">
+      <obj_property name="ElementShortName">tau_rise[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tau_rise[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/tau_decay" type="array">
+      <obj_property name="ElementShortName">tau_decay[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tau_decay[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/h0" type="array">
+      <obj_property name="ElementShortName">h0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">h0[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/dt" type="array">
+      <obj_property name="ElementShortName">dt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dt[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/h" type="array">
+      <obj_property name="ElementShortName">h[31:0]</obj_property>
+      <obj_property name="ObjectShortName">h[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/g" type="array">
+      <obj_property name="ElementShortName">g[31:0]</obj_property>
+      <obj_property name="ObjectShortName">g[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/synapseID" type="array">
+      <obj_property name="ElementShortName">synapseID[1:0]</obj_property>
+      <obj_property name="ObjectShortName">synapseID[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/actionPotential" type="logic">
+      <obj_property name="ElementShortName">actionPotential</obj_property>
+      <obj_property name="ObjectShortName">actionPotential</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/h_out" type="array">
+      <obj_property name="ElementShortName">h_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">h_out[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/g_out" type="array">
+      <obj_property name="ElementShortName">g_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">g_out[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/exception_h" type="logic">
+      <obj_property name="ElementShortName">exception_h</obj_property>
+      <obj_property name="ObjectShortName">exception_h</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/exception" type="logic">
+      <obj_property name="ElementShortName">exception</obj_property>
+      <obj_property name="ObjectShortName">exception</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/tau_rise_inv" type="array">
+      <obj_property name="ElementShortName">tau_rise_inv[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tau_rise_inv[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/tau_decay_inv" type="array">
+      <obj_property name="ElementShortName">tau_decay_inv[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tau_decay_inv[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/synapseID_forward" type="array">
+      <obj_property name="ElementShortName">synapseID_forward[1:0]</obj_property>
+      <obj_property name="ObjectShortName">synapseID_forward[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/synapseID_out" type="array">
+      <obj_property name="ElementShortName">synapseID_out[1:0]</obj_property>
+      <obj_property name="ObjectShortName">synapseID_out[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/tau_decay_inv_forward" type="array">
+      <obj_property name="ElementShortName">tau_decay_inv_forward[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tau_decay_inv_forward[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/g_forward" type="array">
+      <obj_property name="ElementShortName">g_forward[31:0]</obj_property>
+      <obj_property name="ObjectShortName">g_forward[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SM_h_g_accumulators/dt_forward" type="array">
+      <obj_property name="ElementShortName">dt_forward[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dt_forward[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+</wave_config>

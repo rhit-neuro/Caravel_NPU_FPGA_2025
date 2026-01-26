@@ -77,8 +77,8 @@ module SynapticModule
     // Choose bits that make sense for your map
     // bank: which regfile (0..3)
     // idx : which variable (0..15)
-    wire [1:0] bank = ADR_I[7:6];
-    wire [3:0] idx  = ADR_I[5:2];
+    wire [1:0] bank = ADR_I[7:6]; //corresponds to a synapse register file
+    wire [3:0] idx  = ADR_I[5:2]; //corresponds to a parameter register
 
     // variable indices (match SM_Reg_File map)
     localparam F_REG         = 0;
@@ -103,6 +103,13 @@ module SynapticModule
     reg [31:0] next1 [0:11];
     reg [31:0] next2 [0:11];
     reg [31:0] next3 [0:11];
+
+    reg [31:0] staged0 [0:11];
+    reg [31:0] staged1 [0:11];
+    reg [31:0] staged2 [0:11];
+    reg [31:0] staged3 [0:11];
+
+    
 
     // commit bit for each regfile
     reg commit0, commit1, commit2, commit3;
@@ -285,22 +292,22 @@ module SynapticModule
     );
     
     
- SM_g_accumulator gUpdate(
-    .h(h_out),
-    .g(g_forward),
-    .tau_decay_inverse(tau_decay_inverse_forward),
-    .synapseID(synapseID_forward),
-    .dt(dt_forward),
-    .exception_h(exception_h),
-    .g_out(g_out),
-    .exception(exception_hg),
-    .synapseID_out(synapseID_out)
-    );
+     SM_g_accumulator gUpdate(
+        .h(h_out),
+        .g(g_forward),
+        .tau_decay_inverse(tau_decay_inverse_forward),
+        .synapseID(synapseID_forward),
+        .dt(dt_forward),
+        .exception_h(exception_h),
+        .g_out(g_out),
+        .exception(exception_hg),
+        .synapseID_out(synapseID_out)
+        );
     
-
     // Readback mux so that i can run a test bench (working now) 
     // when the pipelines are added REMOVE THIS ALWAYS BLOCK MUX
     // returns 32-bit in lower half of DAT_O
+    /*
     reg [31:0] read32_0, read32_1, read32_2, read32_3;
     reg [31:0] read32;
     always @(*) begin
@@ -375,6 +382,7 @@ module SynapticModule
             default: read32 = read32_3;
         endcase
     end
+    */
 
     // Wishbone handling refered to DMA module assuming that is also correct lol
     integer k;
@@ -408,7 +416,10 @@ module SynapticModule
                     end else if (idx < 12) begin
                         // write 32-bit value into staging for selected regfile
                         case (bank)
-                            2'd0: next0[idx] <= DAT_I[31:0];
+                            2'd0: begin
+                                staged0[idx] <= DAT_I[31:0];
+                                next0[idx] <= staged0[idx];
+                            end 
                             2'd1: next1[idx] <= DAT_I[31:0];
                             2'd2: next2[idx] <= DAT_I[31:0];
                             default: next3[idx] <= DAT_I[31:0];

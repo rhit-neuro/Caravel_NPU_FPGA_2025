@@ -1,48 +1,88 @@
-Vivado Simulator 2019.2
-Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 41a4b1c30b854d759b876c47b9b9f5e3 --incr --debug typical --relax --mt 2 -L blk_mem_gen_v8_4_4 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot TopLevel_tb_behav xil_defaultlib.TopLevel_tb xil_defaultlib.glbl -log elaborate.log 
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L xbip_utils_v3_0_11 -L axi_utils_v2_0_7 -L xbip_pipe_v3_0_7 -L xbip_dsp48_wrapper_v3_0_5 -L xbip_dsp48_addsub_v3_0_7 -L xbip_dsp48_multadd_v3_0_7 -L xbip_bram18k_v3_0_7 -L mult_gen_v12_0_19 -L floating_point_v7_1_16 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_SM_h_g_accumulators_behav xil_defaultlib.tb_SM_h_g_accumulators xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 's_axis_a_tvalid' is not connected on this instance [C:/Xilinx/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sources_1/new/SM_divideTau.v:32]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.zipdma_ctrl(ADDRESS_WIDTH=32,LGD...
-Compiling module xil_defaultlib.zipdma_fsm(LGDMALENGTH=32)
-Compiling module xil_defaultlib.zipdma_mm2s(ADDRESS_WIDTH=32,BUS...
-Compiling module xil_defaultlib.zipdma_rxgears(BUS_WIDTH=32)
-Compiling module xil_defaultlib.sfifo(BW=36,LGFLEN=8)
-Compiling module xil_defaultlib.zipdma_txgears(BUS_WIDTH=32)
-Compiling module xil_defaultlib.zipdma_s2mm(ADDRESS_WIDTH=32,BUS...
-Compiling module xil_defaultlib.wbarbiter(AW=30)
-Compiling module xil_defaultlib.zipdma_default
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_softecc_outpu...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="art...
-Compiling module xil_defaultlib.bram
-Compiling module xil_defaultlib.WB3_Interface
-Compiling module xil_defaultlib.WB4_Interface
-Compiling module xil_defaultlib.Memory_Arbiter
-Compiling module xil_defaultlib.memory_intf
-Compiling module xil_defaultlib.llsdspi(SPDBITS=8,STARTUP_CLOCKS...
-Compiling module xil_defaultlib.spicmd
-Compiling module xil_defaultlib.spirxdata
-Compiling module xil_defaultlib.spitxdata_default
-Compiling module xil_defaultlib.sdspi_default
-Compiling module xil_defaultlib.Parallel_Memory_Unit
-Compiling module xil_defaultlib.FloatingCompare
-Compiling module xil_defaultlib.Indexing_Unit
-Compiling module xil_defaultlib.Memory_Unit
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_11.xbip_utils_v3_0_11_pkg
+Compiling package axi_utils_v2_0_7.axi_utils_v2_0_7_pkg
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_exp_table...
+Compiling package mult_gen_v12_0_19.mult_gen_v12_0_19_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_16.floating_point_v7_1_16_pkg
+Compiling package floating_point_v7_1_16.flt_utils
+Compiling package unisim.vcomponents
+Compiling package xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv_comp
 Compiling module xil_defaultlib.FloatingMultiplication
 Compiling module xil_defaultlib.Priority_Encoder
 Compiling module xil_defaultlib.FloatingAddition
 Compiling module xil_defaultlib.LUT_MAC_Module
-Compiling module xil_defaultlib.LUT_Arbiter
-Compiling module xil_defaultlib.LUT_Module
-Compiling module xil_defaultlib.TopLevel
-Compiling module xil_defaultlib.TopLevel_tb
+Compiling module xil_defaultlib.SM_h_accumulator
+Compiling module xil_defaultlib.SM_g_accumulator
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=23,length=0)\]
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=25,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="ar...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=26,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=0)\]
+Compiling architecture virtex of entity floating_point_v7_1_16.flt_div_mant [\flt_div_mant(c_xdevicefamily="a...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=10,length=0,fast_in...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(length=0,fast_input=true)...]
+Compiling architecture rtl of entity floating_point_v7_1_16.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=4,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=8,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=3,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=14,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_div_exp [\flt_div_exp(c_xdevicefamily="no...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=12,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="ar...]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="ar...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=3,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=2,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_16.carry_chain [\carry_chain(c_xdevicefamily="ar...]
+Compiling architecture rtl of entity floating_point_v7_1_16.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_16.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_16.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture virtex of entity floating_point_v7_1_16.flt_div [\flt_div(c_xdevicefamily="artix7...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture synth of entity xbip_pipe_v3_0_7.xbip_pipe_v3_0_7_viv [\xbip_pipe_v3_0_7_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_16.delay [\delay(width=32,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16_viv [\floating_point_v7_1_16_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_16.floating_point_v7_1_16 [\floating_point_v7_1_16(c_xdevic...]
+Compiling module xil_defaultlib.floating_point_div
+Compiling module xil_defaultlib.SM_divideTau
+Compiling module xil_defaultlib.tb_SM_h_g_accumulators
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot TopLevel_tb_behav
+Built simulation snapshot tb_SM_h_g_accumulators_behav

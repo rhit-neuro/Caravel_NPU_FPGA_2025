@@ -1,0 +1,2 @@
+floating_point_0.v,verilog,xil_defaultlib,c:/Xilinx/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/floating_point_0/sim/floating_point_0.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

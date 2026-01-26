@@ -1,0 +1,7 @@
+verilog xil_defaultlib  \
+"../../../../CARAVEL.gen/sources_1/ip/floating_point_div/sim/floating_point_div.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

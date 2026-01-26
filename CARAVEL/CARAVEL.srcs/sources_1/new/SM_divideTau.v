@@ -29,7 +29,7 @@ module SM_divideTau(
     assign Float_1 = 32'h3f800000;
 
     
-    floating_point_0 divideTau (
+    floating_point_div divideTau (
       //.aclk(clk),                                  // input wire aclk
       //.s_axis_a_tvalid(1'b1),                          // input wire s_axis_a_tvalid
       .s_axis_a_tdata(Float_1),              // input wire [31 : 0] s_axis_a_tdata
