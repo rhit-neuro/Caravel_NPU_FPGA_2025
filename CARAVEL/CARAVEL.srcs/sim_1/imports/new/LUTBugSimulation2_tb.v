@@ -85,6 +85,34 @@ module LUTBugSimulation2_tb();
   wire        ram_ack;
   wire [31:0]  ram_rdata;
 
+  //------------------------------------------------------------------------------
+  // memory_intf integration (SRAM/BRAM-style system memory)
+  //
+  // The TB previously used a simple reg-array RAM model as the ZipDMA source/destination.
+  // The blocks below instantiate the project's memory_intf + arbiter + WB3/WB4 interfaces
+  // so ZipDMA reads/writes go through the same memory interface used in the full design.
+  //------------------------------------------------------------------------------
+
+  // Wishbone B3 port into memory_intf (TB-driven, used to prefill DMA source buffers)
+  reg         mem_wb3_cyc_i, mem_wb3_stb_i, mem_wb3_we_i;
+  reg [31:0]  mem_wb3_adr_i;
+  reg [3:0]   mem_wb3_sel_i;
+  reg [31:0]  mem_wb3_dat_i;
+  wire [31:0] mem_wb3_dat_o;
+  wire        mem_wb3_ack_o;
+
+  // Wishbone B4 port into memory_intf (ZipDMA master when dma_to_ram==1)
+  wire        mem_wb4_cyc_i;
+  wire        mem_wb4_stb_i;
+  wire        mem_wb4_we_i;
+  wire [31:0] mem_wb4_adr_i;
+  wire [3:0]  mem_wb4_sel_i;
+  wire [31:0] mem_wb4_dat_i;
+  wire [31:0] mem_wb4_dat_o;
+  wire        mem_wb4_ack_o;
+  wire        mem_wb4_stall_o;
+  wire        mem_wb4_err_o;
+
   // Muxed WB4 inputs into the DUT
   wire        lut_wb4_cyc_i = (use_zipdma_wb4) ? fab_lut_cyc : wb4_cyc_i;
   wire        lut_wb4_stb_i = (use_zipdma_wb4) ? fab_lut_stb : wb4_stb_i;
@@ -179,6 +207,40 @@ module LUTBugSimulation2_tb();
   wire        dma_to_lut = dma_mwb_cyc && (dma_mwb_byte_addr[31:16] == 16'h3050);
   wire        dma_to_ram = dma_mwb_cyc && !dma_to_lut;
 
+  // memory_intf WB4 wiring for the ZipDMA master (system memory space)
+  assign mem_wb4_cyc_i = use_zipdma_wb4 && dma_to_ram && dma_mwb_cyc;
+  assign mem_wb4_stb_i = use_zipdma_wb4 && dma_to_ram && dma_mwb_stb;
+  assign mem_wb4_we_i  = use_zipdma_wb4 && dma_to_ram && dma_mwb_we;
+  assign mem_wb4_adr_i = dma_mwb_byte_addr;
+  assign mem_wb4_sel_i = dma_mwb_sel;
+  assign mem_wb4_dat_i = dma_mwb_wdata;
+
+  // memory_intf instance (SRAM/BRAM-backed memory with WB3/WB4 arbitration)
+  memory_intf u_mem_intf(
+    .clock(clock),
+    .reset(reset),
+
+    .wb3_cyc_i(mem_wb3_cyc_i),
+    .wb3_stb_i(mem_wb3_stb_i),
+    .wb3_we_i (mem_wb3_we_i),
+    .wb3_adr_i(mem_wb3_adr_i),
+    .wb3_sel_i(mem_wb3_sel_i),
+    .wb3_dat_i(mem_wb3_dat_i),
+    .wb3_dat_o(mem_wb3_dat_o),
+    .wb3_ack_o(mem_wb3_ack_o),
+
+    .wb4_cyc_i(mem_wb4_cyc_i),
+    .wb4_stb_i(mem_wb4_stb_i),
+    .wb4_we_i (mem_wb4_we_i),
+    .wb4_adr_i(mem_wb4_adr_i),
+    .wb4_sel_i(mem_wb4_sel_i),
+    .wb4_dat_i(mem_wb4_dat_i),
+    .wb4_dat_o(mem_wb4_dat_o),
+    .wb4_ack_o(mem_wb4_ack_o),
+    .wb4_stall_o(mem_wb4_stall_o),
+    .wb4_err_o(mem_wb4_err_o)
+  );
+
   // Drive LUT WB4 inputs when ZipDMA is selected and DMA is targeting LUT space
   assign fab_lut_cyc = use_zipdma_wb4 && dma_to_lut && dma_mwb_cyc;
   assign fab_lut_stb = use_zipdma_wb4 && dma_to_lut && dma_mwb_stb;
@@ -211,10 +273,10 @@ module LUTBugSimulation2_tb();
 
 
   // Return path back into ZipDMA
-  assign dma_mwb_stall = (use_zipdma_wb4 && dma_to_lut) ? wb4_stall_o : 1'b0;
-  assign dma_mwb_ack   = (use_zipdma_wb4 && dma_to_lut) ? wb4_ack_o   : ram_ack;
-  assign dma_mwb_rdata = (use_zipdma_wb4 && dma_to_lut) ? wb4_dat_o   : ram_rdata;
-  assign dma_mwb_err   = (use_zipdma_wb4 && dma_to_lut) ? wb4_err_o   : 1'b0;
+  assign dma_mwb_stall = (use_zipdma_wb4 && dma_to_lut) ? wb4_stall_o : mem_wb4_stall_o;
+  assign dma_mwb_ack   = (use_zipdma_wb4 && dma_to_lut) ? wb4_ack_o   : mem_wb4_ack_o;
+  assign dma_mwb_rdata = (use_zipdma_wb4 && dma_to_lut) ? wb4_dat_o   : mem_wb4_dat_o;
+  assign dma_mwb_err   = (use_zipdma_wb4 && dma_to_lut) ? wb4_err_o   : mem_wb4_err_o;
 
   // Function 1 addresses
   localparam [31:0] F1_XY_ADDR = 32'h3050_1000; // Input/output (Write X, Read Y)
@@ -341,6 +403,68 @@ module LUTBugSimulation2_tb();
       wb4_stb_i <= 1'b0;
       wb4_sel_i <= 4'h0;
       wb4_adr_i <= 32'h0;
+    end
+  endtask
+
+  //------------------------------------------------------------------------------
+  // memory_intf WB3 master tasks (single-beat)
+  //------------------------------------------------------------------------------
+  task mem_wb3_write32;
+    input [31:0] addr;
+    input [31:0] data;
+    begin
+      @(posedge clock);
+      mem_wb3_adr_i <= addr;
+      mem_wb3_dat_i <= data;
+      mem_wb3_sel_i <= 4'hF;
+      mem_wb3_we_i  <= 1'b1;
+      mem_wb3_cyc_i <= 1'b1;
+      mem_wb3_stb_i <= 1'b1;
+
+      while (!mem_wb3_ack_o) @(posedge clock);
+
+      @(posedge clock);
+      mem_wb3_cyc_i <= 1'b0;
+      mem_wb3_stb_i <= 1'b0;
+      mem_wb3_we_i  <= 1'b0;
+      mem_wb3_sel_i <= 4'h0;
+      mem_wb3_adr_i <= 32'h0;
+      mem_wb3_dat_i <= 32'h0;
+    end
+  endtask
+
+  task mem_wb3_read32;
+    input [31:0] addr;
+    output [31:0] data;
+    begin
+      @(posedge clock);
+      mem_wb3_adr_i <= addr;
+      mem_wb3_sel_i <= 4'hF;
+      mem_wb3_we_i  <= 1'b0;
+      mem_wb3_cyc_i <= 1'b1;
+      mem_wb3_stb_i <= 1'b1;
+
+      while (!mem_wb3_ack_o) @(posedge clock);
+
+      @(posedge clock);
+      data = mem_wb3_dat_o;
+
+      mem_wb3_cyc_i <= 1'b0;
+      mem_wb3_stb_i <= 1'b0;
+      mem_wb3_sel_i <= 4'h0;
+      mem_wb3_adr_i <= 32'h0;
+    end
+  endtask
+
+  task init_sram_dma_buffers;
+    integer k;
+    begin
+      // Fill system memory at 0x0000_0000/0x0000_0100/0x0000_0200 with V/M/B init vectors
+      for (k = 0; k < 32; k = k + 1) begin
+        mem_wb3_write32(32'h0000_0000 + (k<<2), V_INIT[k]);
+        mem_wb3_write32(32'h0000_0100 + (k<<2), M_INIT[k]);
+        mem_wb3_write32(32'h0000_0200 + (k<<2), B_INIT[k]);
+      end
     end
   endtask
 
@@ -625,10 +749,10 @@ module LUTBugSimulation2_tb();
     begin
       load_tables_wb3();
       snapshot_pre();
-      dump_tables_to_file("testcase_wb3_only_pre.csv","cpu-pre", V_PRE, M_PRE, B_PRE);
+      dump_tables_to_file("testcase_wb3_only_pre.csv","testcase_wb3_only_pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
-      dump_tables_to_file("testcase_wb3_only_post.csv","cpu-post", V_POST, M_POST, B_POST);
+      dump_tables_to_file("testcase_wb3_only_post.csv","testcase_wb3_only_post", V_POST, M_POST, B_POST);
       
     end
   endtask
@@ -638,23 +762,23 @@ module LUTBugSimulation2_tb();
     begin
       load_tables_wb4();
       snapshot_pre();
-      dump_tables_to_file("testcase_wb4_only_pre.csv","dma-pre", V_PRE, M_PRE, B_PRE);
+      dump_tables_to_file("testcase_wb4_only_pre.csv","testcase_wb4_only_pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb4(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
-      dump_tables_to_file("testcase_wb4_only_post.csv","dma-post", V_POST, M_POST, B_POST);
+      dump_tables_to_file("testcase_wb4_only_post.csv","testcase_wb4_only_post", V_POST, M_POST, B_POST);
       
     end
   endtask
 
-  task testcase_zipdma_then_cpu;
+  task testcase_zipdma;
     reg [31:0] y;
     begin
       load_tables_zipdma();
       snapshot_pre();
-      dump_tables_to_file("testcase_zipdma_pre.csv","zipdma-pre", V_PRE, M_PRE, B_PRE);
+      dump_tables_to_file("testcase_zipdma_pre.csv","testcase_zipdma_pre", V_PRE, M_PRE, B_PRE);
       compute_f1_wb3(32'h40A00000, y); // x = 5.0 (example)
       snapshot_post();
-      dump_tables_to_file("testcase_zipdma_post.csv","zipdma-post", V_POST, M_POST, B_POST);
+      dump_tables_to_file("testcase_zipdma_post.csv","testcase_zipdma_post", V_POST, M_POST, B_POST);
       
     end
   endtask
@@ -699,7 +823,7 @@ module LUTBugSimulation2_tb();
     end
   endtask
 
-  task testcase_zipdma_then_cpu_loop;
+  task testcase_zipdma_loop;
     reg [31:0] y;
     integer iter;
     begin
@@ -733,6 +857,14 @@ module LUTBugSimulation2_tb();
 
     wb4_cyc_i = 0; wb4_stb_i = 0; wb4_we_i = 0;
     wb4_adr_i = 0; wb4_sel_i = 0; wb4_dat_i = 0;
+
+    // memory_intf WB3 init
+    mem_wb3_cyc_i = 0;
+    mem_wb3_stb_i = 0;
+    mem_wb3_we_i  = 0;
+    mem_wb3_adr_i = 0;
+    mem_wb3_sel_i = 0;
+    mem_wb3_dat_i = 0;
 
     // ZipDMA control defaults
     use_zipdma_wb4 = 1'b0;
@@ -865,16 +997,50 @@ module LUTBugSimulation2_tb();
     // settle
     #(`HALF_CYCLE*10);
 
+    // Initialize the system memory (memory_intf) used by ZipDMA as the source buffers
+    init_sram_dma_buffers();
+
     testcase_wb3_only();
     testcase_wb4_only();
-    testcase_zipdma_then_cpu();
+    testcase_zipdma();
 
     testcase_wb3_only_loop();
     testcase_wb4_only_loop();
-    testcase_zipdma_then_cpu_loop();
+    testcase_zipdma_loop();
 
     #(`HALF_CYCLE*10);
     $finish;
   end
 
+endmodule
+
+//------------------------------------------------------------------------------
+// Simple behavioral BRAM used by memory_intf for simulation
+//------------------------------------------------------------------------------
+module bram(
+    input  wire        clka,
+    input  wire [9:0]  addra,
+    input  wire [31:0] dina,
+    output reg  [31:0] douta,
+    input  wire [3:0]  wea,
+    input  wire        ena
+);
+    reg [31:0] mem [0:1023];
+    integer ii;
+    initial begin
+        for (ii = 0; ii < 1024; ii = ii + 1) begin
+            mem[ii] = 32'h0;
+        end
+    end
+
+    always @(posedge clka) begin
+        if (ena) begin
+            // write-first per-byte behavior
+            if (wea[0]) mem[addra][ 7: 0] <= dina[ 7: 0];
+            if (wea[1]) mem[addra][15: 8] <= dina[15: 8];
+            if (wea[2]) mem[addra][23:16] <= dina[23:16];
+            if (wea[3]) mem[addra][31:24] <= dina[31:24];
+            douta <= mem[addra];
+        end
+    end
 endmodule
