@@ -35,7 +35,7 @@ module SM_g_accumulator(
     wire except_MAC1,except_MAC2, except_ADD;
     wire overF_MAC1,overF_MAC2, overF_ADD;
     wire underF_MAC1,underF_MAC2, underF_ADD;
-    wire [31:0] result_MAC1, dg, result_ADD;
+    wire [31:0] result_MAC1;
 
     assign synapseID_out = synapseID;
 
@@ -52,22 +52,14 @@ module SM_g_accumulator(
     
     LUT_MAC_Module #(.DataWidth(32)) MAC2(
         .M_value(result_MAC1),
-        .B_value(0),
+        .B_value(g),
         .X_value(dt),
         .Exception(except_MAC2),
         .Overflow(overF_MAC2),
         .Underflow(underF_MAC2),
-        .result(dg)
-    );
-    
-    
-       FloatingAddition #(.XLEN(32)) FPAdd(
-        .A(g),
-        .B(dg),
-        .Exception(except_ADD),
         .result(g_out)
     );
-
-    assign exception = except_MAC1 | except_MAC2 | except_ADD | exception_h;
+    
+    assign exception = except_MAC1 | except_MAC2 | exception_h;
 
 endmodule

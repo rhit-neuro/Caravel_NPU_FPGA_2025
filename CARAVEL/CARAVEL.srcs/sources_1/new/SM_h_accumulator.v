@@ -43,10 +43,8 @@ module SM_h_accumulator(
     wire overF_MAC1,overF_MAC2, overF_ADD;
     wire underF_MAC1,underF_MAC2, underF_ADD;
     
-    wire [31:0] Float_1;
-    assign Float_1 = 32'h3f800000;
     
-    wire [31:0] result_MAC1, dh;
+    wire [31:0] result_MAC1;
 
     wire [31:0] b_MAC1;
     assign b_MAC1 = actionPotential ? h0 : 0; //if (event detected in pre-synaptic cell): add h0 , else: add 0
@@ -69,22 +67,16 @@ module SM_h_accumulator(
     
     LUT_MAC_Module #(.DataWidth(32)) MAC2(
         .M_value(result_MAC1),
-        .B_value(0),
+        .B_value(h),
         .X_value(dt),
         .Exception(except_MAC2),
         .Overflow(overF_MAC2),
         .Underflow(underF_MAC2),
-        .result(dh)
-    );
-    
-    FloatingAddition #(.XLEN(32)) FPAdd(
-        .A(h),
-        .B(dh),
-        .Exception(except_ADD),
         .result(h_out)
     );
 
-    assign exception = except_MAC1 | except_MAC2 | except_ADD;
+
+    assign exception = except_MAC1 | except_MAC2;
         
         
 endmodule

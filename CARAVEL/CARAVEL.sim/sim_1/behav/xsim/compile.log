@@ -16,5 +16,3 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Xilinx/Caravel_NPU_FPGA_2025/CAR
 INFO: [VRFC 10-311] analyzing module SM_h_accumulator
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Xilinx/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.srcs/sim_1/new/tb_SM_h_g_accumulators.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module tb_SM_h_g_accumulators
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Xilinx/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
