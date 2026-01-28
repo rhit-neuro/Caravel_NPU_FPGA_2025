@@ -23,40 +23,34 @@
 
 module SM_h_accumulator(
     input [31:0] h0,
-    input [31:0] h,
+    input [31:0] h_tn1,
     input [31:0] tau_rise_inverse,
-    input [31:0] tau_decay_inverse, //forward
-    input [31:0] g, //forward
-    input actionPotential,
+    input actionPotential_tn1,
     input [1:0] synapseID,
     input [31:0] dt,
-    output [31:0] h_out,
-    output exception,
-    output [1:0] synapseID_forward,
-    output [31:0] dt_forward,
-    output [31:0] tau_decay_inverse_forward, //forward
-    output [31:0] g_forward //forward
+    output [31:0] h_t,
+    output exception
+//    output [1:0] synapseID_forward,
+//    output [31:0] dt_forward
     );
     
     
-    wire except_MAC1,except_MAC2, except_ADD;
-    wire overF_MAC1,overF_MAC2, overF_ADD;
-    wire underF_MAC1,underF_MAC2, underF_ADD;
+    wire except_MAC1,except_MAC2;
+    wire overF_MAC1,overF_MAC2;
+    wire underF_MAC1,underF_MAC2;
     
     
     wire [31:0] result_MAC1;
 
     wire [31:0] b_MAC1;
-    assign b_MAC1 = actionPotential ? h0 : 0; //if (event detected in pre-synaptic cell): add h0 , else: add 0
+    assign b_MAC1 = actionPotential_tn1 ? h0 : 0; //if (event detected in pre-synaptic cell): add h0 , else: add 0
 
-    assign synapseID_forward = synapseID;
-    assign tau_decay_inverse_forward = tau_decay_inverse;
-    assign g_forward = g;
-    assign dt_forward = dt;
+    //assign synapseID_forward = synapseID;
+//    assign dt_forward = dt;
 
     
     LUT_MAC_Module #(.DataWidth(32)) MAC1(
-        .M_value(h),
+        .M_value(h_tn1),
         .B_value(b_MAC1),
         .X_value(tau_rise_inverse),
         .Exception(except_MAC1),
@@ -67,12 +61,12 @@ module SM_h_accumulator(
     
     LUT_MAC_Module #(.DataWidth(32)) MAC2(
         .M_value(result_MAC1),
-        .B_value(h),
+        .B_value(h_tn1),
         .X_value(dt),
         .Exception(except_MAC2),
         .Overflow(overF_MAC2),
         .Underflow(underF_MAC2),
-        .result(h_out)
+        .result(h_t)
     );
 
 

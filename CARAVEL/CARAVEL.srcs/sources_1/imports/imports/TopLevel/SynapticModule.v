@@ -216,8 +216,8 @@ module SynapticModule
     
     //TODO: need a mux to assign these values from the correct reg file based on id
     reg [31:0] tau_rise, tau_decay;
-    reg [31:0] ho, h, tau_rise_inverse, tau_decay_inverse, g, dt, h_out, g_out, dt_forward, tau_decay_inverse_forward, g_forward;
-    reg  actionPotential, exception_h, exception_hg;
+    reg [31:0] ho, h_tn1, tau_rise_inverse, tau_decay_inverse, g_tn1, dt, h_t, g_t;
+    reg  actionPotential_tn1, exception_h, exception_hg;
     reg [1:0] synapseID, synapseID_forward,synapseID_out;
 
     always @(*) begin
@@ -227,37 +227,37 @@ module SynapticModule
                 tau_rise = Trise0;
                 tau_decay = Tdecay0;
                 ho = ho0;
-                h = h0;
-                g = g0;
+                h_tn1 = h0;
+                g_tn1 = g0;
                 dt = dt0;
-                actionPotential = AP0;
+                actionPotential_tn1 = AP0;
             end
             2'b01: begin
                 tau_rise = Trise1;
                 tau_decay = Tdecay1;
                 ho = ho1;
-                h = h1;
-                g = g1;
+                h_tn1 = h1;
+                g_tn1 = g1;
                 dt = dt1;
-                actionPotential = AP1;
+                actionPotential_tn1 = AP1;
             end
             2'b10: begin
                 tau_rise = Trise2;
                 tau_decay = Tdecay2;
                 ho = ho2;
-                h = h2;
-                g = g2;
+                h_tn1 = h2;
+                g_tn1 = g2;
                 dt = dt2;
-                actionPotential = AP2;
+                actionPotential_tn1 = AP2;
             end
             default: begin
                 tau_rise = Trise3;
                 tau_decay = Tdecay3;
                 ho = ho3;
-                h = h3;
-                g = g3;
+                h_tn1 = h3;
+                g_tn1 = g3;
                 dt = dt3;
-                actionPotential = AP3;
+                actionPotential_tn1 = AP3;
                 end
         endcase
     end
@@ -276,32 +276,27 @@ module SynapticModule
     
      SM_h_accumulator hUpdate(
         .h0(ho),
-        .h(h),
+        .h_tn1(h_tn1),
         .tau_rise_inverse(tau_rise_inverse),
         .tau_decay_inverse(tau_decay_inverse), 
-        .g(g),
-        .actionPotential(actionPotential),
+        .g_tn1(g_tn1),
+        .actionPotential_tn1(actionPotential_tn1),
         .synapseID(synapseID),
         .dt(dt),
-        .h_out(h_out),
-        .exception(exception_h),
-        .synapseID_forward(synapseID_forward),
-        .dt_forward(dt_forward),
-        .tau_decay_inverse_forward(tau_decay_inverse_forward),
-        .g_forward(g_forward)
+        .h_t(h_t),
+        .exception(exception_h)
     );
     
     
      SM_g_accumulator gUpdate(
-        .h(h_out),
-        .g(g_forward),
-        .tau_decay_inverse(tau_decay_inverse_forward),
-        .synapseID(synapseID_forward),
-        .dt(dt_forward),
+        .h_tn1(h_tn1),
+        .g_tn1(g_tn1),
+        .tau_decay_inverse(tau_decay_inverse),
+        .synapseID(synapseID),
+        .dt(dt),
         .exception_h(exception_h),
-        .g_out(g_out),
-        .exception(exception_hg),
-        .synapseID_out(synapseID_out)
+        .g_t(g_out),
+        .exception(exception_hg)
         );
     
     // Readback mux so that i can run a test bench (working now) 

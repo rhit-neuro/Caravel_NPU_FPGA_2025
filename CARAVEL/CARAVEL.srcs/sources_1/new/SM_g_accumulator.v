@@ -21,28 +21,28 @@
 
 
 module SM_g_accumulator(
-    input [31:0] h,
-    input [31:0] g,
+    input [31:0] h_tn1,
+    input [31:0] g_tn1,
     input [31:0] tau_decay_inverse,
     input [1:0] synapseID,
     input [31:0] dt,
     input exception_h,
-    output [31:0] g_out,
-    output exception,
-    output [1:0] synapseID_out
+    output [31:0] g_t,
+    output exception
+//    output [1:0] synapseID_out
     );
     
-    wire except_MAC1,except_MAC2, except_ADD;
-    wire overF_MAC1,overF_MAC2, overF_ADD;
-    wire underF_MAC1,underF_MAC2, underF_ADD;
+    wire except_MAC1,except_MAC2;
+    wire overF_MAC1,overF_MAC2;
+    wire underF_MAC1,underF_MAC2;
     wire [31:0] result_MAC1;
 
-    assign synapseID_out = synapseID;
+//    assign synapseID_out = synapseID;
 
     
     LUT_MAC_Module #(.DataWidth(32)) MAC1(
-        .M_value(g),
-        .B_value(h),
+        .M_value(g_tn1),
+        .B_value(h_tn1),
         .X_value(tau_decay_inverse),
         .Exception(except_MAC1),
         .Overflow(overF_MAC1),
@@ -52,12 +52,12 @@ module SM_g_accumulator(
     
     LUT_MAC_Module #(.DataWidth(32)) MAC2(
         .M_value(result_MAC1),
-        .B_value(g),
+        .B_value(g_tn1),
         .X_value(dt),
         .Exception(except_MAC2),
         .Overflow(overF_MAC2),
         .Underflow(underF_MAC2),
-        .result(g_out)
+        .result(g_t)
     );
     
     assign exception = except_MAC1 | except_MAC2 | exception_h;
