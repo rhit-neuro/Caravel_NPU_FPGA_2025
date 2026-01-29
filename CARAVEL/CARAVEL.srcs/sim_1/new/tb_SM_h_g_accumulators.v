@@ -81,12 +81,12 @@ module tb_SM_h_g_accumulators;
   
   
  initial begin
-      tau_rise = 32'h41a00000; //20 in decimal (represented as a float)
-      h0 = 32'h40b00000; //5.5 in decimal (represented as a floating point)
-      dt = 32'h41200000; //10 in decimal (represented as a floating point)
-      tau_decay = 32'h41f00000; //30 in decimal (represented as a floating point)
-      h_tn1=32'h40e80000; //7.25 in decimal (represented as a floating point)
-      g_tn1=32'h41373333; //11.45 in decimal (represented as a floating point)
+      tau_rise = 32'h40a00000; //5 in decimal (represented as a float)
+      h0 = 32'h3f000000; //0.5 in decimal (represented as a floating point)
+      dt = 32'h40000000; //2 in decimal (represented as a floating point)
+      tau_decay = 32'h40000000; //2 in decimal (represented as a floating point)
+      h_tn1=32'h3f000000; //0.5 in decimal (represented as a floating point)
+      g_tn1=32'h3f800000; //1 in decimal (represented as a floating point)
       synapseID=2'b11;
       actionPotential_tn1=1'b0;
       
@@ -104,8 +104,9 @@ module tb_SM_h_g_accumulators;
       
       
       actionPotential_tn1=1'b1;
-      h_tn1 <= h_t;
       g_tn1 <= g_t;
+      h_tn1 <= h_t;
+
       
       @(posedge clk); //t=2
 
