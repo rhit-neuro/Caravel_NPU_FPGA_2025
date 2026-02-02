@@ -140,7 +140,7 @@
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
-#include "riscv-virt.h"
+// #include "riscv-virt.h"
 
 /*-----------------------------------------------------------
  * Application specific definitions.
