@@ -1,0 +1,4 @@
+[submodule "Hog"]
+	path = Hog
+	url = ../../hog-cern/Hog.git
+	
