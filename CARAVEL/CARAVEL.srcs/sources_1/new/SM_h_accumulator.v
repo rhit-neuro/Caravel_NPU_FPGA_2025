@@ -70,14 +70,13 @@ module SM_h_accumulator(
             done_h = 0;
         end
         else if(enable_h) begin
-            exception = except_MAC1 | except_MAC2;
             h_t = result_MAC2;
             done_h = 1;
         end else begin
             h_t = h_tn1;
             done_h = 0;
         end
-        
+        exception = except_MAC1 | except_MAC2;
      end 
         
         
