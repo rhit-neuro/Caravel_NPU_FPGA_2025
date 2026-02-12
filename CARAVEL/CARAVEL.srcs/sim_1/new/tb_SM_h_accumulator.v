@@ -83,6 +83,28 @@ module tb_SM_h_accumulator;
 
   #40 enable_h <=1;
   AP_tn1 <= 1'b1;
+  
+  #45 enable_h <= 0;
+  h_tn1 <= h_t;
+
+  #50 enable_h<=1;
+  AP_tn1 <= 1'b0;
+  
+  #55 enable_h <= 0;
+  h_tn1 <= h_t;
+  
+  
+ #60 enable_h <=1;
+  AP_tn1 <= 1'b1;
+  
+  #65 enable_h <= 0;
+  h_tn1 <= h_t;
+  
+  
+  #70 enable_h<=1;
+  AP_tn1 <= 1'b0;
+  
+  #75 enable_h <= 0;
   h_tn1 <= h_t;
 
   end

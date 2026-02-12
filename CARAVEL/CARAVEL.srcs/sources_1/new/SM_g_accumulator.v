@@ -26,7 +26,6 @@ module SM_g_accumulator(
     input [31:0] h_tn1,
     input [31:0] g_tn1,
     input [31:0] tau_decay_inverse,
-    input [1:0] synapseID,
     input [31:0] dt,
     input exception_h_tn1,
     output wire [31:0] g_t,

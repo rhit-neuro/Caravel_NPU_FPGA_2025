@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Aster Zawaideh
 // 
 // Create Date: 02/07/2026 07:57:16 PM
 // Design Name: 
@@ -72,12 +72,14 @@ module tb_SM_h_g_accumulators;
       reset <=1;
       tau_rise_inv <= 32'h3e4ccccd; //0.2 in decimal (represented as a float)
       h0 <= 32'h3f000000; //0.5 in decimal (represented as a floating point)
-      dt <= 32'h40000000; //2 in decimal (represented as a floating point)
+      dt <= 32'h3f000000; //0.5 in decimal (represented as a floating point)
       h_tn1 <= 32'h3f000000; //0.5 in decimal (represented as a floating point)t)
       AP_tn1 <= 1'b0;
       enable_h <=1'b0;
       tau_decay_inv <= 32'h3f000000; //0.5 in decimal (represented as a float)
-      g_tn1 <= 32'h40400000; //3 in decimal (represented as a floating point)t)
+      //g_tn1 <= 32'h3eaaaaab; //0.33333333 in decimal (represented as a floating point (works)
+      g_tn1 <= 32'h3e800000; //0.25 in decimal (represented as a floating point) (doesn't work)
+      //g_tn1 <= 32'h3e19999a; //0.15 in decimal (represented as a floating point) (works)
       exception_h_tn1 <= 1'b0;
       enable_g <= 1'b0;
       
