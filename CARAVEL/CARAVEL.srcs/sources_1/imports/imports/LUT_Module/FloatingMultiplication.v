@@ -32,7 +32,14 @@ assign Normalized_Product = Norm_Flag ? Product : Product << 1;
 wire Round_Flag = |Normalized_Product[22:0];  //Ending 22 bits are OR'ed for rounding operation.
 assign Mantissa = Normalized_Product[46:24] + (Normalized_Product[23] & Round_Flag);
 
-assign Zero = Exception ? 1'b0 : (Mantissa == 23'd0) ? 1'b1 : 1'b0;
+// IEEE-754 zero is exp==0 AND mantissa==0 
+wire A_isZero = (A[30:23] == 8'h00) && (A[22:0] == 23'd0);
+wire B_isZero = (B[30:23] == 8'h00) && (B[22:0] == 23'd0);
+
+// updated zero status flag to follow IEEE standard 
+assign Zero = (!Exception) && (A_isZero || B_isZero);
+
+//assign Zero = Exception ? 1'b0 : (Mantissa == 23'd0) ? 1'b1 : 1'b0;    //Incorrect implemetation of the Zero Status flag from last years implementation
 
 assign Temp_Exponent = A_Exponent + B_Exponent;
 
