@@ -61,7 +61,7 @@ module SM_g_accumulator(
 
     assign exception = except_MAC1 | except_MAC2 | exception_h_tn1;
     assign done_g = (reset ? 0 : (enable_g ? 1 : 0));
-    assign g_t = (enable_g ? result_MAC2:g_tn1);
+    assign g_t = (enable_g ? result_MAC2 : g_tn1);
 
     
 //     always @(reset or enable_g or result_MAC2)begin

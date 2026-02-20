@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Bryce Chen
+// Engineer: Bryce Chen, Aster Zawaideh
 // 
 // Create Date: 12/20/2025 06:05:23 AM
 // Design Name: 
@@ -24,15 +24,15 @@ module SM_Reg_File (
    input         clk,
     input         reset,
 
-    //read ports (dont know if i need this i saw it on the example register file code online)
-    input  [3:0]  rdAddrA,
-    output [31:0] rdDataA,
-    input  [3:0]  rdAddrB,
-    output [31:0] rdDataB,
+//    //read ports (dont know if i need this i saw it on the example register file code online)
+//    input  [3:0]  rdAddrA,
+//    output [31:0] rdDataA,
+//    input  [3:0]  rdAddrB,
+//    output [31:0] rdDataB,
     
-    //ask CK what the numbers would look like because 16 bit is probably way to big.
-    //can probably reduce this to like 8 bits or something
     input         commit,   // commit to update all state and constant variables per time step
+    input         done_g,
+    input         done_h,
     input  [31:0] next_f,
     input  [31:0] next_g_syn_bar,
     input  [31:0] next_T_rise,
@@ -45,6 +45,8 @@ module SM_Reg_File (
     input  [31:0] next_g,
     input  [31:0] next_Vmem,
     input  [31:0] next_Esyn,
+    input  [31:0] g_t,
+    input  [31:0] h_t,
 
     output [31:0] f,
     output [31:0] g_syn_bar,
@@ -76,9 +78,9 @@ module SM_Reg_File (
 
     reg [31:0] regfile [0:11];
 
-    // reads
-    assign rdDataA = regfile[rdAddrA];
-    assign rdDataB = regfile[rdAddrB];
+//    //reads
+//    assign rdDataA = regfile[rdAddrA];
+//    assign rdDataB = regfile[rdAddrB];
 
     //outputs
     assign f         = regfile[F_REG];
@@ -115,6 +117,14 @@ module SM_Reg_File (
                 regfile[G_REG]         <= next_g;
                 regfile[VMEM_REG]      <= next_Vmem;
                 regfile[ESYN_REG]      <= next_Esyn;
+            end
+            if(done_g) begin
+                regfile[G_REG]         <= g_t; //writeback from Update g module
+
+            end
+            
+            if(done_h) begin
+                regfile[H_REG]         <= h_t; // writeback from update h module
             end
         end
     end

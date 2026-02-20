@@ -96,6 +96,24 @@ module SynapticModule
 
     // Special write index to trigger commit
     localparam COMMIT_REG    = 4'd15;
+    
+    
+//    //local parameters for state machine
+//    localparam state_setup = 3'b000;
+//    localparam state_calc_gh = 3'b001;
+//    localparam state_calc_Isyn = 3'b010;
+//    localparam state_sum_Isyn = 3'b011;
+//    localparam state_send_Isyn = 3'b100;
+    
+//    reg [2:0] present_state, next_state;
+    
+//    always @(present_state, next_state, reset, done_g, done_h) begin
+        
+//    end
+    
+    
+    
+    
 
     // Staging "next" values (loaded by DMA/WB writes)
     // 4 banks of 12 vars
@@ -130,7 +148,10 @@ module SynapticModule
         .clk(CLK_I), .reset(RST_I),
         .rdAddrA(4'd0), .rdDataA(), .rdAddrB(4'd0), .rdDataB(),
         .commit(commit0),
-
+        .done_g(done_g0),
+        .done_h(done_h0),
+        .h_t(h0_t),
+        .g_t(g0_t),
         .next_f(next0[F_REG]),
         .next_g_syn_bar(next0[G_SYN_BAR_REG]),
         .next_T_rise(next0[T_RISE_REG]),
@@ -152,7 +173,10 @@ module SynapticModule
         .clk(CLK_I), .reset(RST_I),
         .rdAddrA(4'd0), .rdDataA(), .rdAddrB(4'd0), .rdDataB(),
         .commit(commit1),
-
+        .done_g(done_g1),
+        .done_h(done_h1),
+        .h_t(h1_t),
+        .g_t(g1_t),
         .next_f(next1[F_REG]),
         .next_g_syn_bar(next1[G_SYN_BAR_REG]),
         .next_T_rise(next1[T_RISE_REG]),
@@ -174,7 +198,10 @@ module SynapticModule
         .clk(CLK_I), .reset(RST_I),
         .rdAddrA(4'd0), .rdDataA(), .rdAddrB(4'd0), .rdDataB(),
         .commit(commit2),
-
+        .done_g(done_g2),
+        .done_h(done_h2),
+        .h_t(h2_t),
+        .g_t(g2_t),
         .next_f(next2[F_REG]),
         .next_g_syn_bar(next2[G_SYN_BAR_REG]),
         .next_T_rise(next2[T_RISE_REG]),
@@ -196,7 +223,10 @@ module SynapticModule
         .clk(CLK_I), .reset(RST_I),
         .rdAddrA(4'd0), .rdDataA(), .rdAddrB(4'd0), .rdDataB(),
         .commit(commit3),
-
+        .done_g(done_g3),
+        .done_h(done_h3),
+        .h_t(h3_t),
+        .g_t(g3_t),
         .next_f(next3[F_REG]),
         .next_g_syn_bar(next3[G_SYN_BAR_REG]),
         .next_T_rise(next3[T_RISE_REG]),
@@ -214,91 +244,178 @@ module SynapticModule
         .dt(dt3), .T_decay(Tdecay3), .h(h3), .Vt(Vt3), .g(g3), .Vmem(Vmem3), .Esyn(Esyn3)
     );
     
-    //TODO: need a mux to assign these values from the correct reg file based on id
-    reg [31:0] tau_rise, tau_decay;
-    reg [31:0] ho, h_tn1, tau_rise_inverse, tau_decay_inverse, g_tn1, dt, h_t, g_t;
-    reg  actionPotential_tn1, exception_h, exception_hg;
-    reg [1:0] synapseID, synapseID_forward,synapseID_out;
-
-    always @(*) begin
-        synapseID=bank;
-        case (bank)
-            2'b00: begin
-                tau_rise = Trise0;
-                tau_decay = Tdecay0;
-                ho = ho0;
-                h_tn1 = h0;
-                g_tn1 = g0;
-                dt = dt0;
-                actionPotential_tn1 = AP0;
-            end
-            2'b01: begin
-                tau_rise = Trise1;
-                tau_decay = Tdecay1;
-                ho = ho1;
-                h_tn1 = h1;
-                g_tn1 = g1;
-                dt = dt1;
-                actionPotential_tn1 = AP1;
-            end
-            2'b10: begin
-                tau_rise = Trise2;
-                tau_decay = Tdecay2;
-                ho = ho2;
-                h_tn1 = h2;
-                g_tn1 = g2;
-                dt = dt2;
-                actionPotential_tn1 = AP2;
-            end
-            default: begin
-                tau_rise = Trise3;
-                tau_decay = Tdecay3;
-                ho = ho3;
-                h_tn1 = h3;
-                g_tn1 = g3;
-                dt = dt3;
-                actionPotential_tn1 = AP3;
-                end
-        endcase
-    end
-
-
-    SM_divideTau divTauRise(
-        .tau(tau_rise),
-        .tau_inverse(tau_rise_inverse)
-    );
+    wire [31:0] AP0_tn1, h0_tn1, g0_tn1;
+    wire [31:0] AP1_tn1, h1_tn1, g1_tn1;
+    wire [31:0] AP2_tn1, h2_tn1, g2_tn1;
+    wire [31:0] AP3_tn1, h3_tn1, g3_tn1;
+    wire [3:0] enable_g, enable_h;
+    wire [3:0] done_g, done_h;
     
-    SM_divideTau divTauDecay(
-        .tau(tau_decay),
-        .tau_inverse(tau_decay_inverse)
+    SM_Reg_File_Synapse_tn1 Syn0_tn1(
+        .clk(CLK_I),
+        .reset(RST_I),
+        .enable(enable), //TODO !!!
+        .AP_t(AP0),       
+        .h_t(h0),
+        .g_t(g0),
+        .AP_tn1(AP0_tn1),         
+        .h_tn1(h0_tn1),
+        .g_tn1(g0_tn1)
     );
     
     
-     SM_h_accumulator hUpdate(
-        .h0(ho),
-        .h_tn1(h_tn1),
+     SM_Reg_File_Synapse_tn1 Syn1_tn1(
+        .clk(CLK_I),
+        .reset(RST_I),
+        .enable(enable), //TODO !!!
+        .AP_t(AP1),       
+        .h_t(h1),
+        .g_t(g1),
+        .AP_tn1(AP1_tn1),         
+        .h_tn1(h1_tn1),
+        .g_tn1(g1_tn1)
+    );
+    
+     SM_Reg_File_Synapse_tn1 Syn2_tn1(
+        .clk(CLK_I),
+        .reset(RST_I),
+        .enable(enable), //TODO !!!
+        .AP_t(AP2),       
+        .h_t(h2),
+        .g_t(g2),
+        .AP_tn1(AP2_tn1),         
+        .h_tn1(h2_tn1),
+        .g_tn1(g2_tn1)
+    );
+    
+       SM_Reg_File_Synapse_tn1 Syn3_tn1(
+        .clk(CLK_I),
+        .reset(RST_I),
+        .enable(enable), //TODO !!!
+        .AP_t(AP3),       
+        .h_t(h3),
+        .g_t(g3),
+        .AP_tn1(AP3_tn1),         
+        .h_tn1(h3_tn1),
+        .g_tn1(g3_tn1)
+    );
+    
+     SM_h_accumulator hUpdate0(
+        .reset(reset),
+        .enable_h(enable_h[0]),
+        .h0(ho0),
+        .h_tn1(h0_tn1),
         .tau_rise_inverse(tau_rise_inverse),
-        .tau_decay_inverse(tau_decay_inverse), 
-        .g_tn1(g_tn1),
-        .actionPotential_tn1(actionPotential_tn1),
-        .synapseID(synapseID),
+        .actionPotential_tn1(AP0_tn1),
         .dt(dt),
-        .h_t(h_t),
-        .exception(exception_h)
+        .h_t(h0_t),
+        .exception(exception_h0),
+        .done_h(done_h[0])
     );
     
     
-     SM_g_accumulator gUpdate(
-        .h_tn1(h_tn1),
-        .g_tn1(g_tn1),
+     SM_g_accumulator gUpdate0(
+        .reset(reset),
+        .enable_g(enable_g[0]),
+        .h_tn1(h0_tn1),
+        .g_tn1(g0_tn1),
         .tau_decay_inverse(tau_decay_inverse),
-        .synapseID(synapseID),
         .dt(dt),
-        .exception_h(exception_h),
-        .g_t(g_out),
-        .exception(exception_hg)
+        .exception_h_tn1(exception_h0_tn1),
+        .g_t(g0_t),
+        .exception(exception_hg0),
+        .done_g(done_g[0])
         );
 
+
+     SM_h_accumulator hUpdate1(
+        .reset(reset),
+        .enable_h(enable_h[1]),
+        .h0(ho1),
+        .h_tn1(h1_tn1),
+        .tau_rise_inverse(tau_rise_inverse),
+        .actionPotential_tn1(AP1_tn1),
+        .dt(dt),
+        .h_t(h1_t),
+        .exception(exception_h1),
+        .done_h(done_h[1])
+    );
+    
+    
+     SM_g_accumulator gUpdate1(
+        .reset(reset),
+        .enable_g(enable_g[1]),
+        .h_tn1(h1_tn1),
+        .g_tn1(g1_tn1),
+        .tau_decay_inverse(tau_decay_inverse),
+        .dt(dt),
+        .exception_h_tn1(exception_h1_tn1),
+        .g_t(g1_t),
+        .exception(exception_hg1),
+        .done_g(done_g[1])
+        );
+        
+        
+     SM_h_accumulator hUpdate2(
+        .reset(reset),
+        .enable_h(enable_h[2]),
+        .h0(ho2),
+        .h_tn1(h2_tn1),
+        .tau_rise_inverse(tau_rise_inverse),
+        .actionPotential_tn1(AP2_tn1),
+        .dt(dt),
+        .h_t(h2_t),
+        .exception(exception_h2),
+        .done_h(done_h[2])
+    );
+    
+    
+     SM_g_accumulator gUpdate2(
+        .reset(reset),
+        .enable_g(enable_g[2]),
+        .h_tn1(h2_tn1),
+        .g_tn1(g2_tn1),
+        .tau_decay_inverse(tau_decay_inverse),
+        .dt(dt),
+        .exception_h_tn1(exception_h2_tn1),
+        .g_t(g2_t),
+        .exception(exception_hg2),
+        .done_g(done_g[2])
+        );
+
+     SM_h_accumulator hUpdate3(
+        .reset(reset),
+        .enable_h(enable_h[3]),
+        .h0(ho3),
+        .h_tn1(h3_tn1),
+        .tau_rise_inverse(tau_rise_inverse),
+        .actionPotential_tn1(AP3_tn1),
+        .dt(dt),
+        .h_t(h3_t),
+        .exception(exception_h3),
+        .done_h(done_h[3])
+    );
+    
+    
+     SM_g_accumulator gUpdate3(
+        .reset(reset),
+        .enable_g(enable_g[3]),
+        .h_tn1(h3_tn1),
+        .g_tn1(g3_tn1),
+        .tau_decay_inverse(tau_decay_inverse),
+        .dt(dt),
+        .exception_h_tn1(exception_h3_tn1),
+        .g_t(g3_t),
+        .exception(exception_hg3),
+        .done_g(done_g[3])
+        );
+
+
+    
+
+
+
+/*
     // Wishbone handling refered to DMA module assuming that is also correct lol
     integer k;
 
@@ -346,5 +463,5 @@ module SynapticModule
             end
         end
     end
-
+*/
 endmodule
