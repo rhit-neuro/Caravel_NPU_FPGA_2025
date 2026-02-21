@@ -25,7 +25,7 @@ module SM_Reg_File_Synapse_tn1(
     input         reset,
     input         enable,
 
-    input  [31:0] AP_t,       
+    input   AP_t,       
     input  [31:0] h_t,
     input  [31:0] g_t,
     

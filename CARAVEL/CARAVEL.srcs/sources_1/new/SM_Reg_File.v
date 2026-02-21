@@ -59,7 +59,8 @@ module SM_Reg_File (
     output [31:0] Vt,
     output [31:0] g,
     output [31:0] Vmem,
-    output [31:0] Esyn
+    output [31:0] Esyn,
+    output reg flag_updated_gh
 );
 
     // address map
@@ -103,7 +104,9 @@ module SM_Reg_File (
         if (reset) begin
             for (i = 0; i < 12; i = i + 1)
                 regfile[i] <= 32'h00000000;
+                flag_updated_gh <= 1'b0;
         end else begin
+            flag_updated_gh <= 1'b0;
             if (commit) begin
                 regfile[F_REG]         <= next_f;
                 regfile[G_SYN_BAR_REG] <= next_g_syn_bar;
@@ -117,14 +120,18 @@ module SM_Reg_File (
                 regfile[G_REG]         <= next_g;
                 regfile[VMEM_REG]      <= next_Vmem;
                 regfile[ESYN_REG]      <= next_Esyn;
+                flag_updated_gh <= 1'b0;
+
             end
             if(done_g) begin
                 regfile[G_REG]         <= g_t; //writeback from Update g module
+                flag_updated_gh <= 1'b1;
 
             end
-            
             if(done_h) begin
                 regfile[H_REG]         <= h_t; // writeback from update h module
+                flag_updated_gh <= 1'b1;
+
             end
         end
     end

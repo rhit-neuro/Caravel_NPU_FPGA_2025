@@ -29,7 +29,7 @@ module SM_I_SYN_Accumulator(
     input      [31:0] Vmem,
     input      [31:0] E_syn,
 
-    output wire [31:0] i_syn_total_sum,
+    output wire [31:0] i_syn_sum,
     output wire done_i_syn
 );
 
@@ -82,5 +82,5 @@ module SM_I_SYN_Accumulator(
     );
     
     assign done_i_syn = (reset ? 0 : (enable_i_syn ? 1 : 0));
-    assign i_syn_total_sum = enable_i_syn ? i_syn: 0;
+    assign i_syn_sum = enable_i_syn ? i_syn: 0;
 endmodule
