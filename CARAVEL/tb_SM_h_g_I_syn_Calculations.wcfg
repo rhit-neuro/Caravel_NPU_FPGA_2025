@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_I_SYN_Accumulator_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_I_SYN_Accumulator" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="33.581 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="193"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="group88" type="group">
+      <obj_property name="label">Vars for Calc</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/enable_i_syn" type="logic">
+         <obj_property name="ElementShortName">enable_i_syn</obj_property>
+         <obj_property name="ObjectShortName">enable_i_syn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/g_syn_bar" type="array">
+         <obj_property name="ElementShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/f" type="array">
+         <obj_property name="ElementShortName">f[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/Vmem" type="array">
+         <obj_property name="ElementShortName">Vmem[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Vmem[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/E_syn" type="array">
+         <obj_property name="ElementShortName">E_syn[31:0]</obj_property>
+         <obj_property name="ObjectShortName">E_syn[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/tau_rise_inv" type="array">
+         <obj_property name="ElementShortName">tau_rise_inv[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tau_rise_inv[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/h0" type="array">
+         <obj_property name="ElementShortName">h0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h0[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/enable_i_syn" type="logic">
+         <obj_property name="ElementShortName">enable_i_syn</obj_property>
+         <obj_property name="ObjectShortName">enable_i_syn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/g_syn_bar" type="array">
+         <obj_property name="ElementShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/f" type="array">
+         <obj_property name="ElementShortName">f[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/Vmem" type="array">
+         <obj_property name="ElementShortName">Vmem[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Vmem[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/E_syn" type="array">
+         <obj_property name="ElementShortName">E_syn[31:0]</obj_property>
+         <obj_property name="ObjectShortName">E_syn[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/tau_rise_inv" type="array">
+         <obj_property name="ElementShortName">tau_rise_inv[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tau_rise_inv[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/h0" type="array">
+         <obj_property name="ElementShortName">h0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h0[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dt" type="array">
+         <obj_property name="ElementShortName">dt[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dt[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/h_tn1" type="array">
+         <obj_property name="ElementShortName">h_tn1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_tn1[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/AP_tn1" type="logic">
+         <obj_property name="ElementShortName">AP_tn1</obj_property>
+         <obj_property name="ObjectShortName">AP_tn1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/exception_h_t" type="logic">
+         <obj_property name="ElementShortName">exception_h_t</obj_property>
+         <obj_property name="ObjectShortName">exception_h_t</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/enable_g" type="logic">
+         <obj_property name="ElementShortName">enable_g</obj_property>
+         <obj_property name="ObjectShortName">enable_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/tau_decay_inv" type="array">
+         <obj_property name="ElementShortName">tau_decay_inv[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tau_decay_inv[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/g_tn1" type="array">
+         <obj_property name="ElementShortName">g_tn1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_tn1[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/exception_h_tn1" type="logic">
+         <obj_property name="ElementShortName">exception_h_tn1</obj_property>
+         <obj_property name="ObjectShortName">exception_h_tn1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/exception" type="logic">
+         <obj_property name="ElementShortName">exception</obj_property>
+         <obj_property name="ObjectShortName">exception</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group79" type="group">
+      <obj_property name="label">Calculations</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/i_syn_total_sum" type="array">
+         <obj_property name="ElementShortName">i_syn_total_sum[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_syn_total_sum[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/done_i_syn" type="logic">
+         <obj_property name="ElementShortName">done_i_syn</obj_property>
+         <obj_property name="ObjectShortName">done_i_syn</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/g_t" type="array">
+         <obj_property name="ElementShortName">g_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/done_g" type="logic">
+         <obj_property name="ElementShortName">done_g</obj_property>
+         <obj_property name="ObjectShortName">done_g</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
