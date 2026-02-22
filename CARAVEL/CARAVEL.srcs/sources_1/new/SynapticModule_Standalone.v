@@ -95,7 +95,9 @@ module SynapticModule_Standalone(
     reg reset_g, reset_h;
     wire [31:0] g0_t, g1_t, g2_t, g3_t;
     wire [31:0] h0_t, h1_t, h2_t, h3_t;
-    wire [3:0] updated_gh;
+    wire [3:0]  flag_update_tn1;
+    wire [3:0] exception_h;
+    wire [3:0] updated_regFile_tn1;
     wire [31:0] dt, Vmem, Vt;
 
  SM_Reg_File_Static neuronStaticParameters(
@@ -130,9 +132,10 @@ module SynapticModule_Standalone(
         .next_h(next_h_0),
         .next_g(next_g_0),
         .next_Esyn(next_Esyn_0),
+        .next_exception_h_t(exception_h0),
 
         .f(f0), .g_syn_bar(gsyn0), .T_rise(Trise0), .ho(ho0), .AP(AP0),
-         .T_decay(Tdecay0), .h(h0), .g(g0), .Esyn(Esyn0), .flag_updated_gh(updated_gh[0])
+         .T_decay(Tdecay0), .h(h0), .g(g0), .Esyn(Esyn0), .flag_update_tn1(flag_update_tn1[0]), .exception_h_t(exception_h[0])
     );
 
     SM_Reg_File RF1 (
@@ -151,10 +154,10 @@ module SynapticModule_Standalone(
         .next_h(next_h_1),
         .next_g(next_g_1),
         .next_Esyn(next_Esyn_1),
-
+        .next_exception_h_t(exception_h1),
 
         .f(f1), .g_syn_bar(gsyn1), .T_rise(Trise1), .ho(ho1), .AP(AP1),
-         .T_decay(Tdecay1), .h(h1),  .g(g1), .Esyn(Esyn1), .flag_updated_gh(updated_gh[1])
+         .T_decay(Tdecay1), .h(h1),  .g(g1), .Esyn(Esyn1), .flag_update_tn1(flag_update_tn1[1]), .exception_h_t(exception_h[1])
     );
 
     SM_Reg_File RF2 (
@@ -173,10 +176,11 @@ module SynapticModule_Standalone(
         .next_h(next_h_2),
         .next_g(next_g_2),
         .next_Esyn(next_Esyn_2),
+        .next_exception_h_t(exception_h2),
 
 
         .f(f2), .g_syn_bar(gsyn2), .T_rise(Trise2), .ho(ho2), .AP(AP2),
-         .T_decay(Tdecay2), .h(h2), .g(g2), .Esyn(Esyn2), .flag_updated_gh(updated_gh[2])
+         .T_decay(Tdecay2), .h(h2), .g(g2), .Esyn(Esyn2), .flag_update_tn1(flag_update_tn1[2]), .exception_h_t(exception_h[2])
     );
 
     SM_Reg_File RF3 (
@@ -195,10 +199,11 @@ module SynapticModule_Standalone(
         .next_h(next_h_3),
         .next_g(next_g_3),
         .next_Esyn(next_Esyn_3),
+        .next_exception_h_t(exception_h3),
 
 
         .f(f3), .g_syn_bar(gsyn3), .T_rise(Trise3), .ho(ho3), .AP(AP3),
-         .T_decay(Tdecay3), .h(h3), .g(g3), .Esyn(Esyn3), .flag_updated_gh(updated_gh[3])
+         .T_decay(Tdecay3), .h(h3), .g(g3), .Esyn(Esyn3), .flag_update_tn1(flag_update_tn1[3]), .exception_h_t(exception_h[3])
     );
     
     wire  AP0_tn1, AP1_tn1,  AP2_tn1, AP3_tn1; 
@@ -227,50 +232,66 @@ module SynapticModule_Standalone(
     SM_Reg_File_Synapse_tn1 Syn0_tn1(
         .clk(CLK_I),
         .reset(RST_I),
-        .enable(updated_gh[0]),
+        .enable(flag_update_tn1[0]),
         .AP_t(AP0),       
         .h_t(h0),
         .g_t(g0),
         .AP_tn1(AP0_tn1),         
         .h_tn1(h0_tn1),
-        .g_tn1(g0_tn1)
+        .g_tn1(g0_tn1),
+        .updated_regFile_tn1(updated_regFile_tn1[0]),
+        .exception_h_t(exception_h[0]),
+        .exception_h_tn1(exception_h0_tn1)
+        
     );
     
     
      SM_Reg_File_Synapse_tn1 Syn1_tn1(
         .clk(CLK_I),
         .reset(RST_I),
-        .enable(updated_gh[1]),
+        .enable(flag_update_tn1[1]),
         .AP_t(AP1),       
         .h_t(h1),
         .g_t(g1),
         .AP_tn1(AP1_tn1),         
         .h_tn1(h1_tn1),
-        .g_tn1(g1_tn1)
+        .g_tn1(g1_tn1),
+        .updated_regFile_tn1(updated_regFile_tn1[1]),
+        .exception_h_t(exception_h[1]),
+        .exception_h_tn1(exception_h1_tn1)
+
     );
     
      SM_Reg_File_Synapse_tn1 Syn2_tn1(
         .clk(CLK_I),
         .reset(RST_I),
-        .enable(updated_gh[2]),
+        .enable(flag_update_tn1[2]),
         .AP_t(AP2),       
         .h_t(h2),
         .g_t(g2),
         .AP_tn1(AP2_tn1),         
         .h_tn1(h2_tn1),
-        .g_tn1(g2_tn1)
+        .g_tn1(g2_tn1),
+        .updated_regFile_tn1(updated_regFile_tn1[2]),
+        .exception_h_t(exception_h[2]),
+        .exception_h_tn1(exception_h2_tn1)
+
     );
     
        SM_Reg_File_Synapse_tn1 Syn3_tn1(
         .clk(CLK_I),
         .reset(RST_I),
-        .enable(updated_gh[3]),
+        .enable(flag_update_tn1[3]),
         .AP_t(AP3),       
         .h_t(h3),
         .g_t(g3),
         .AP_tn1(AP3_tn1),         
         .h_tn1(h3_tn1),
-        .g_tn1(g3_tn1)
+        .g_tn1(g3_tn1),
+        .updated_regFile_tn1(updated_regFile_tn1[3]),
+        .exception_h_t(exception_h[3]),
+        .exception_h_tn1(exception_h3_tn1)
+
     );
     
      SM_h_accumulator hUpdate0(
@@ -478,7 +499,7 @@ module SynapticModule_Standalone(
     
     reg [2:0] present_state, next_state;
     
-    always @(present_state, next_state, RST_I, done_g, done_h, done_Isyn) begin
+    always @(*) begin
             //default statements
             next_state = state_no_gh; 
             enable_g = 4'b0000;
@@ -488,7 +509,7 @@ module SynapticModule_Standalone(
             enable_Isyn = 4'b0000;
             case(present_state)
                 state_setup : begin
-                    next_state = (!RST_I) ? state_no_gh : state_setup;
+                    next_state = (!RST_I && updated_regFile_tn1==4'hF) ? state_no_gh : state_setup;
 
                 end
                 state_no_gh: begin
@@ -520,7 +541,7 @@ module SynapticModule_Standalone(
 
                 end
                 default: begin 
-                    next_state = state_no_gh; 
+                    next_state = present_state; 
                 end  
             endcase
         

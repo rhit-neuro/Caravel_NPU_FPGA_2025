@@ -28,9 +28,9 @@ module SM_h_accumulator(
     input [31:0] tau_rise_inverse,
     input actionPotential_tn1,
     input [31:0] dt,
-    output reg [31:0] h_t,
-    output reg exception,
-    output reg done_h
+    output wire [31:0] h_t,
+    output wire exception,
+    output wire done_h
     );
     
     
@@ -64,20 +64,24 @@ module SM_h_accumulator(
         .Underflow(underF_MAC2),
         .result(result_MAC2)
     );
+    
+        assign exception = except_MAC1 | except_MAC2;
+        assign done_h = (reset ? 0 : (enable_h ? 1 : 0));
+        assign h_t = (enable_h ? result_MAC2 : h_tn1);
 
-    always @(reset or enable_h or result_MAC2)begin
-        if(reset)begin
-            done_h = 0;
-        end
-        else if(enable_h) begin
-            h_t = result_MAC2;
-            done_h = 1;
-        end else begin
-            h_t = h_tn1;
-            done_h = 0;
-        end
-        exception = except_MAC1 | except_MAC2;
-     end 
+//    always @(reset or enable_h or result_MAC2)begin
+//        if(reset)begin
+//            done_h = 0;
+//        end
+//        else if(enable_h) begin
+//            h_t = result_MAC2;
+//            done_h = 1;
+//        end else begin
+//            h_t = h_tn1;
+//            done_h = 0;
+//        end
+//        exception = except_MAC1 | except_MAC2;
+//     end 
         
         
 endmodule

@@ -143,7 +143,10 @@ module tb_SynapticModule;
     initial begin 
         reset <= 1;
         
-        #5     
+        @(posedge clk);
+        @(posedge clk);
+        reset <=0; 
+        @(posedge clk);
         next_dt = 32'h3f000000;  // 0.5 in decimal, represented as float
         next_Vmem = 32'h3fc00000; //1.5 in decimal, represented as float
         next_Vt = 32'h3f933333;  //1.15 in decimal, represented as float
@@ -188,38 +191,50 @@ module tb_SynapticModule;
         next_g_3 = 32'h3e700000; //0.23438      
         next_Esyn_3 =  32'h3f200000; //0.625  
         
-        reset <=0; 
         commit0 <=1;
         commit1 <= 1;
         commit2 <= 1;
         commit3 <= 1;  
         commitStatic <= 1;  
         
-        #10 
+        @(posedge clk);
+        
         commit0 <=0;
         commit1 <= 0;
         commit2 <= 0;
         commit3 <= 0;
         commitStatic <= 0;  
-
-        
-        #5 
+                
         next_AP_0 = 32'h00000001; //1      
         next_AP_1 = 32'h00000001; //1      
         next_AP_2 = 32'h00000001; //1       
         next_AP_3 = 32'h00000001; //1      
-        commit0 <= 1;
-        commit1 <= 1;
-        commit2 <= 1;
-        commit3 <= 1;
+
         
-        #5 
-        commit0 <=0;
-        commit1 <= 0;
-        commit2 <= 0;
-        commit3 <= 0;
+        @(posedge clk);
+        next_AP_0 = 32'h00000000; //0      
+        next_AP_1 = 32'h00000000; //0      
+        next_AP_2 = 32'h00000000; //0       
+        next_AP_3 = 32'h00000000; //0      
+
         
+        @(posedge clk);
+
         
+        @(posedge clk);
+        next_AP_0 = 32'h00000001; //1      
+        next_AP_1 = 32'h00000001; //1      
+        next_AP_2 = 32'h00000001; //1       
+        next_AP_3 = 32'h00000001; //1      
+
+               
+        @(posedge clk); 
+        next_AP_0 = 32'h00000000; //0      
+        next_AP_1 = 32'h00000000; //0      
+        next_AP_2 = 32'h00000000; //0       
+        next_AP_3 = 32'h00000000; //0      
+
+        @(posedge clk);
         
         
     end 
