@@ -38,12 +38,12 @@ module SM_Reg_File (
     input  [31:0] next_T_rise,
     input  [31:0] next_ho,
     input  [31:0] next_AP,       // might change this to 1 bit but wantted to keep everyhting constant
-    input  [31:0] next_dt,
+    //input  [31:0] next_dt,
     input  [31:0] next_T_decay,
     input  [31:0] next_h,
-    input  [31:0] next_Vt,
+    //input  [31:0] next_Vt,
     input  [31:0] next_g,
-    input  [31:0] next_Vmem,
+    //input  [31:0] next_Vmem,
     input  [31:0] next_Esyn,
     input  [31:0] g_t,
     input  [31:0] h_t,
@@ -56,9 +56,9 @@ module SM_Reg_File (
     output [31:0] dt,
     output [31:0] T_decay,
     output [31:0] h,
-    output [31:0] Vt,
+    //output [31:0] Vt,
     output [31:0] g,
-    output [31:0] Vmem,
+   // output [31:0] Vmem,
     output [31:0] Esyn,
     output reg flag_updated_gh
 );
@@ -69,12 +69,12 @@ module SM_Reg_File (
     localparam T_RISE_REG    = 2;
     localparam HO_REG        = 3;
     localparam AP_REG        = 4;
-    localparam DT_REG        = 5;
+    //localparam DT_REG        = 5;
     localparam T_DECAY_REG   = 6;
     localparam H_REG         = 7;
-    localparam VT_REG        = 8;
+   // localparam VT_REG        = 8;
     localparam G_REG         = 9;
-    localparam VMEM_REG      = 10;
+   // localparam VMEM_REG      = 10;
     localparam ESYN_REG      = 11;
 
     reg [31:0] regfile [0:11];
@@ -89,12 +89,12 @@ module SM_Reg_File (
     assign T_rise    = regfile[T_RISE_REG];
     assign ho        = regfile[HO_REG];
     assign AP        = regfile[AP_REG][0];
-    assign dt        = regfile[DT_REG];
+  //  assign dt        = regfile[DT_REG];
     assign T_decay   = regfile[T_DECAY_REG];
     assign h         = regfile[H_REG];
-    assign Vt        = regfile[VT_REG];
+   // assign Vt        = regfile[VT_REG];
     assign g         = regfile[G_REG];
-    assign Vmem      = regfile[VMEM_REG];
+   // assign Vmem      = regfile[VMEM_REG];
     assign Esyn      = regfile[ESYN_REG];
 
     integer i;
@@ -113,14 +113,14 @@ module SM_Reg_File (
                 regfile[T_RISE_REG]    <= next_T_rise;
                 regfile[HO_REG]        <= next_ho;
                 regfile[AP_REG]        <= next_AP;
-                regfile[DT_REG]        <= next_dt;
+               // regfile[DT_REG]        <= next_dt;
                 regfile[T_DECAY_REG]   <= next_T_decay;
                 regfile[H_REG]         <= next_h;
-                regfile[VT_REG]        <= next_Vt;
+                //regfile[VT_REG]        <= next_Vt;
                 regfile[G_REG]         <= next_g;
-                regfile[VMEM_REG]      <= next_Vmem;
+                //regfile[VMEM_REG]      <= next_Vmem;
                 regfile[ESYN_REG]      <= next_Esyn;
-                flag_updated_gh <= 1'b0;
+                flag_updated_gh <= 1'b1;
 
             end
             if(done_g) begin
