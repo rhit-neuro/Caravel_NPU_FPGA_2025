@@ -295,6 +295,7 @@ module SynapticModule_Standalone(
     );
     
      SM_h_accumulator hUpdate0(
+        .clk(CLK_I),
         .reset(reset_h),
         .enable_h(enable_h[0]),
         .h0(ho0),
@@ -309,6 +310,7 @@ module SynapticModule_Standalone(
     
     
      SM_g_accumulator gUpdate0(
+        .clk(CLK_I),
         .reset(reset_g),
         .enable_g(enable_g[0]),
         .h_tn1(h0_tn1),
@@ -323,6 +325,7 @@ module SynapticModule_Standalone(
 
 
      SM_h_accumulator hUpdate1(
+        .clk(CLK_I),
         .reset(reset_h),
         .enable_h(enable_h[1]),
         .h0(ho1),
@@ -337,6 +340,7 @@ module SynapticModule_Standalone(
     
     
      SM_g_accumulator gUpdate1(
+        .clk(CLK_I),
         .reset(reset_g),
         .enable_g(enable_g[1]),
         .h_tn1(h1_tn1),
@@ -351,6 +355,7 @@ module SynapticModule_Standalone(
         
         
      SM_h_accumulator hUpdate2(
+         .clk(CLK_I),
         .reset(reset_h),
         .enable_h(enable_h[2]),
         .h0(ho2),
@@ -365,6 +370,7 @@ module SynapticModule_Standalone(
     
     
      SM_g_accumulator gUpdate2(
+        .clk(CLK_I),
         .reset(reset_g),
         .enable_g(enable_g[2]),
         .h_tn1(h2_tn1),
@@ -378,6 +384,7 @@ module SynapticModule_Standalone(
         );
 
      SM_h_accumulator hUpdate3(
+         .clk(CLK_I),
         .reset(reset_h),
         .enable_h(enable_h[3]),
         .h0(ho3),
@@ -392,6 +399,7 @@ module SynapticModule_Standalone(
     
     
      SM_g_accumulator gUpdate3(
+        .clk(CLK_I),
         .reset(reset_g),
         .enable_g(enable_g[3]),
         .h_tn1(h3_tn1),
@@ -407,6 +415,7 @@ module SynapticModule_Standalone(
 
     
      SM_I_SYN_Accumulator IsynUpdate0(
+        .clk(CLK_I),
         .reset(RST_I),
         .enable_i_syn(enable_Isyn[0]),
         .g_syn_bar(gsyn0),
@@ -421,6 +430,7 @@ module SynapticModule_Standalone(
 
     
      SM_I_SYN_Accumulator IsynUpdate1(
+        .clk(CLK_I),
         .reset(RST_I),
         .enable_i_syn(enable_Isyn[1]),
         .g_syn_bar(gsyn1),
@@ -434,6 +444,7 @@ module SynapticModule_Standalone(
     );
     
     SM_I_SYN_Accumulator IsynUpdate2(
+        .clk(CLK_I),
         .reset(RST_I),
         .enable_i_syn(enable_Isyn[2]),
         .g_syn_bar(gsyn2),
@@ -449,6 +460,7 @@ module SynapticModule_Standalone(
 
     
      SM_I_SYN_Accumulator IsynUpdate3(
+        .clk(CLK_I),
         .reset(RST_I),
         .enable_i_syn(enable_Isyn[3]),
         .g_syn_bar(gsyn3),
@@ -523,20 +535,28 @@ module SynapticModule_Standalone(
                     enable_g = 4'b0000;
                     enable_h = 4'b0000;
                     enable_Isyn = 4'b1111; //calculate I syn
-                    reset_g = 1'b1;
-                    reset_h = 1'b1;
+                    reset_g = 1'b0;          // <<< KEEP LOW
+                    reset_h = 1'b0;          // <<< KEEP LOW
+//                    reset_g = 1'b1;
+//                    reset_h = 1'b1;
                     //next_state = (done_Isyn == 4'hF) ? state_Isyn_done : state_gh_done;
                     next_state = addIsyn_sumAll_ready ? state_send_IsynTotal : state_Isyn_done;
 
                 end
                 state_Isyn_done: begin
-                    reset_g = 1'b1;
-                    reset_h = 1'b1;
                     enable_Isyn = 4'b0000;
+                    reset_g = 1'b0;
+                    reset_h = 1'b0;
+//                    reset_g = 1'b1;
+//                    reset_h = 1'b1;
+//                    enable_Isyn = 4'b0000;
+                    
                     next_state = addIsyn_sumAll_ready ? state_send_IsynTotal : state_Isyn_done;
                 end
                 state_send_IsynTotal: begin
                     enable_Isyn = 4'b0000;
+                    reset_g = 1'b1;
+                    reset_h = 1'b1; 
                     next_state = state_no_gh;
 
                 end

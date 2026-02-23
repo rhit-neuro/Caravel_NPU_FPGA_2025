@@ -148,7 +148,8 @@ module tb_SynapticModule;
         reset <=0; 
         @(posedge clk);
         next_dt = 32'h3f000000;  // 0.5 in decimal, represented as float
-        next_Vmem = 32'h3fc00000; //1.5 in decimal, represented as float
+        next_Vmem = 32'h3ee00000; //0.4375 in decimal, represented as float
+//        next_Vmem = 32'h3fc00000; //1.5 in decimal, represented as float
         next_Vt = 32'h3f933333;  //1.15 in decimal, represented as float
         
         next_f_0 = 32'h3e900000; //0.28125        
@@ -218,7 +219,7 @@ module tb_SynapticModule;
         next_AP_3 = 32'h00000000; //0      
 
         
-        @(posedge clk);
+//        @(posedge clk);
 
         
         @(posedge clk);
@@ -234,7 +235,7 @@ module tb_SynapticModule;
         next_AP_2 = 32'h00000000; //0       
         next_AP_3 = 32'h00000000; //0      
 
-        @(posedge clk);
+//        @(posedge clk);
         
         
     end 

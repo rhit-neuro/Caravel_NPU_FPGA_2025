@@ -72,7 +72,9 @@ module SM_Mem_Mapping #(parameter
     // Offset 
     wire [7:0] reg_offset;
     assign reg_offset = address_offset[7:0];
-
+    
+    //need to add a mini look up table that maps nueron id to the field_sel_comb
+    
     // Decode
     reg [8:0] field_sel_comb;
     always @(*) begin

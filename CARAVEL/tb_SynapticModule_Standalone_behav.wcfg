@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_SynapticModule_Standalone_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_SynapticModule_Standalone" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="51.915 ns"></ZoomStartTime>
+      <ZoomEndTime time="173.116 ns"></ZoomEndTime>
+      <Cursor1Time time="81.915 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="296"></NameColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/tb_SynapticModule_Standalone/RST_I" type="logic">
+      <obj_property name="ElementShortName">RST_I</obj_property>
+      <obj_property name="ObjectShortName">RST_I</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/CLK_I" type="logic">
+      <obj_property name="ElementShortName">CLK_I</obj_property>
+      <obj_property name="ObjectShortName">CLK_I</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/AP0" type="logic">
+      <obj_property name="ElementShortName">AP0</obj_property>
+      <obj_property name="ObjectShortName">AP0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/AP1" type="logic">
+      <obj_property name="ElementShortName">AP1</obj_property>
+      <obj_property name="ObjectShortName">AP1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/AP2" type="logic">
+      <obj_property name="ElementShortName">AP2</obj_property>
+      <obj_property name="ObjectShortName">AP2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/AP3" type="logic">
+      <obj_property name="ElementShortName">AP3</obj_property>
+      <obj_property name="ObjectShortName">AP3</obj_property>
+   </wvobject>
+   <wvobject fp_name="group333" type="group">
+      <obj_property name="label">h_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate1/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate1/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate1/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group337" type="group">
+      <obj_property name="label">g_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate1/done_g" type="logic">
+         <obj_property name="ElementShortName">done_g</obj_property>
+         <obj_property name="ObjectShortName">done_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate1/g_t" type="array">
+         <obj_property name="ElementShortName">g_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate1/enable_g" type="logic">
+         <obj_property name="ElementShortName">enable_g</obj_property>
+         <obj_property name="ObjectShortName">enable_g</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group341" type="group">
+      <obj_property name="label">h_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate2/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate2/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate2/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group345" type="group">
+      <obj_property name="label">g_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate2/done_g" type="logic">
+         <obj_property name="ElementShortName">done_g</obj_property>
+         <obj_property name="ObjectShortName">done_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate2/g_t" type="array">
+         <obj_property name="ElementShortName">g_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate2/enable_g" type="logic">
+         <obj_property name="ElementShortName">enable_g</obj_property>
+         <obj_property name="ObjectShortName">enable_g</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group349" type="group">
+      <obj_property name="label">h_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate3/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate3/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate3/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group353" type="group">
+      <obj_property name="label">g_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate3/done_g" type="logic">
+         <obj_property name="ElementShortName">done_g</obj_property>
+         <obj_property name="ObjectShortName">done_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate3/g_t" type="array">
+         <obj_property name="ElementShortName">g_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate3/enable_g" type="logic">
+         <obj_property name="ElementShortName">enable_g</obj_property>
+         <obj_property name="ObjectShortName">enable_g</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/present_state" type="array">
+      <obj_property name="ElementShortName">present_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">present_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/next_state" type="array">
+      <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group325" type="group">
+      <obj_property name="label">h_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate0/enable_h" type="logic">
+         <obj_property name="ElementShortName">enable_h</obj_property>
+         <obj_property name="ObjectShortName">enable_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate0/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/hUpdate0/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group329" type="group">
+      <obj_property name="label">g_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate0/enable_g" type="logic">
+         <obj_property name="ElementShortName">enable_g</obj_property>
+         <obj_property name="ObjectShortName">enable_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate0/g_t" type="array">
+         <obj_property name="ElementShortName">g_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/gUpdate0/done_g" type="logic">
+         <obj_property name="ElementShortName">done_g</obj_property>
+         <obj_property name="ObjectShortName">done_g</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group309" type="group">
+      <obj_property name="label">I_syn_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/enable_i_syn" type="logic">
+         <obj_property name="ElementShortName">enable_i_syn</obj_property>
+         <obj_property name="ObjectShortName">enable_i_syn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/done_i_syn" type="logic">
+         <obj_property name="ElementShortName">done_i_syn</obj_property>
+         <obj_property name="ObjectShortName">done_i_syn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/g_syn_bar" type="array">
+         <obj_property name="ElementShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g_syn_bar[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/f" type="array">
+         <obj_property name="ElementShortName">f[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/g" type="array">
+         <obj_property name="ElementShortName">g[31:0]</obj_property>
+         <obj_property name="ObjectShortName">g[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/Vmem" type="array">
+         <obj_property name="ElementShortName">Vmem[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Vmem[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/E_syn" type="array">
+         <obj_property name="ElementShortName">E_syn[31:0]</obj_property>
+         <obj_property name="ObjectShortName">E_syn[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SynapticModule_Standalone/dut/IsynUpdate0/i_syn" type="array">
+         <obj_property name="ElementShortName">i_syn[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_syn[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/addIsyn_firstHalf/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/addIsyn_secondHalf/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SynapticModule_Standalone/dut/addIsyn_sumAll/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+</wave_config>

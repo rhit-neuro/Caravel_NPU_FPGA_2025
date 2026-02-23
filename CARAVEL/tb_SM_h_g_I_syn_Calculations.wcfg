@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="33.581 ns"></ZoomEndTime>
-      <Cursor1Time time="0.000 ns"></Cursor1Time>
+      <ZoomEndTime time="43.161 ns"></ZoomEndTime>
+      <Cursor1Time time="21.420 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="193"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <NameColumnWidth column_width="287"></NameColumnWidth>
+      <ValueColumnWidth column_width="144"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="2" />
+   <WVObjectSize size="5" />
    <wvobject fp_name="group88" type="group">
       <obj_property name="label">Vars for Calc</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -195,10 +195,9 @@
    <wvobject fp_name="group79" type="group">
       <obj_property name="label">Calculations</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_I_SYN_Accumulator/i_syn_total_sum" type="array">
-         <obj_property name="ElementShortName">i_syn_total_sum[31:0]</obj_property>
-         <obj_property name="ObjectShortName">i_syn_total_sum[31:0]</obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/i_syn_sum" type="array">
+         <obj_property name="ElementShortName">i_syn_sum[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_syn_sum[31:0]</obj_property>
          <obj_property name="Radix">REALRADIX</obj_property>
          <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
          <obj_property name="radix_fractionWidth">24</obj_property>
@@ -243,6 +242,149 @@
          <obj_property name="ObjectShortName">done_g</obj_property>
          <obj_property name="CustomSignalColor">#FFA500</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group569" type="group">
+      <obj_property name="label">dut_h</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/h_t" type="array">
+         <obj_property name="ElementShortName">h_t[31:0]</obj_property>
+         <obj_property name="ObjectShortName">h_t[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/done_h" type="logic">
+         <obj_property name="ElementShortName">done_h</obj_property>
+         <obj_property name="ObjectShortName">done_h</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/result_MAC1" type="array">
+         <obj_property name="ElementShortName">result_MAC1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">result_MAC1[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/result_MAC2" type="array">
+         <obj_property name="ElementShortName">result_MAC2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">result_MAC2[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/b_MAC1" type="array">
+         <obj_property name="ElementShortName">b_MAC1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">b_MAC1[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group575" type="group">
+      <obj_property name="label">MAC1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC1/M_value" type="array">
+         <obj_property name="ElementShortName">M_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC1/B_value" type="array">
+         <obj_property name="ElementShortName">B_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">B_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC1/X_value" type="array">
+         <obj_property name="ElementShortName">X_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">X_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC1/result" type="array">
+         <obj_property name="ElementShortName">result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">result[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC1/multResult" type="array">
+         <obj_property name="ElementShortName">multResult[31:0]</obj_property>
+         <obj_property name="ObjectShortName">multResult[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group585" type="group">
+      <obj_property name="label">MAC2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC2/M_value" type="array">
+         <obj_property name="ElementShortName">M_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC2/B_value" type="array">
+         <obj_property name="ElementShortName">B_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">B_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC2/X_value" type="array">
+         <obj_property name="ElementShortName">X_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">X_value[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC2/result" type="array">
+         <obj_property name="ElementShortName">result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">result[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_I_SYN_Accumulator/dut_h/MAC2/multResult" type="array">
+         <obj_property name="ElementShortName">multResult[31:0]</obj_property>
+         <obj_property name="ObjectShortName">multResult[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

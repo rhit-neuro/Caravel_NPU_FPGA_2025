@@ -28,7 +28,7 @@ module tb_I_SYN_Accumulator;
     reg [31:0] f;
     reg [31:0] Vmem;
     reg [31:0] E_syn;
-    wire [31:0] i_syn_total_sum;
+    wire [31:0] i_syn_sum;
     wire done_i_syn;
     
     //g & h accumulator
@@ -73,7 +73,7 @@ module tb_I_SYN_Accumulator;
         .g(g_t),
         .Vmem(Vmem),
         .E_syn(E_syn),
-        .i_syn_total_sum(i_syn_total_sum),
+        .i_syn_sum(i_syn_sum),
         .done_i_syn(done_i_syn)
     );
     
