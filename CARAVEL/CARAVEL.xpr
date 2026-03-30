@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="65" Path="D:/Github Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.xpr">
+<Project Product="Vivado" Version="7" Minor="65" Path="D:/Github_Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="41a4b1c30b854d759b876c47b9b9f5e3"/>
@@ -44,6 +44,7 @@
     <Option Name="SimulatorGccVersionRiviera" Val="9.3.0"/>
     <Option Name="SimulatorGccVersionActiveHdl" Val="9.3.0"/>
     <Option Name="BoardPart" Val=""/>
+    <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -59,7 +60,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="FeatureSet" Val="FeatureSet_Classic"/>
-    <Option Name="WTXSimLaunchSim" Val="37"/>
+    <Option Name="WTXSimLaunchSim" Val="53"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -92,6 +93,7 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/DisplayMuxNexysA7.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../ECE433Fall2024labs/lab6ece433fall2024JS/lab6ece433fall2024JS.srcs/sources_1/imports/lab6ece433fall2024tempate/DisplayMuxNexysA7.v"/>
           <Attr Name="ImportTime" Val="1729019026"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -101,6 +103,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/FPGA_POR.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/FPGA_POR.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -137,6 +140,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/HEXto7Segment.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../ECE433Fall2024labs/lab6ece433fall2024JS/lab6ece433fall2024JS.srcs/sources_1/imports/lab6ece433fall2024tempate/HEXto7Segment.v"/>
           <Attr Name="ImportTime" Val="1729198789"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -182,6 +186,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/Memory/Memory_Arbiter.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/Memory/Memory_Arbiter.v"/>
           <Attr Name="ImportTime" Val="1742848061"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -218,6 +223,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/RAM128.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/RAM128.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -227,6 +233,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/RAM256.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/RAM256.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -236,6 +243,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/Refreshing7SegNexysA7.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../ECE433Fall2024labs/lab6ece433fall2024JS/lab6ece433fall2024JS.srcs/sources_1/imports/lab6ece433fall2024tempate/Refreshing7SegNexysA7.v"/>
           <Attr Name="ImportTime" Val="1729019026"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -245,6 +253,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/SevenSegDriverNexysA7.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../ECE433Fall2024labs/lab6ece433fall2024JS/lab6ece433fall2024JS.srcs/sources_1/imports/lab6ece433fall2024tempate/SevenSegDriverNexysA7.v"/>
           <Attr Name="ImportTime" Val="1729019026"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -254,6 +263,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/defines.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/defines.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -263,6 +273,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/TopLevel.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/TopLevel.v"/>
           <Attr Name="ImportTime" Val="1743477780"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -272,6 +283,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/VexRiscv.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/VexRiscv.v"/>
           <Attr Name="ImportTime" Val="1743639549"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -299,6 +311,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/defines.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/defines.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -308,6 +321,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/__user_project_wrapper.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/__user_project_wrapper.v"/>
           <Attr Name="ImportTime" Val="1743640221"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -317,6 +331,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/caravel_clocking.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/caravel_clocking.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -326,6 +341,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/user_defines.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/user_defines.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -335,6 +351,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/caravel_core.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/caravel_core.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -344,6 +361,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/chip_io_FPGA.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/chip_io_FPGA.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -353,6 +371,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/clock_div.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/clock_div.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -362,6 +381,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/debug_regs.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/debug_regs.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -371,6 +391,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/gpio_control_block.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/gpio_control_block.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -380,6 +401,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/gpio_defaults_block.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/gpio_defaults_block.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -389,6 +411,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/gpio_logic_high.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/gpio_logic_high.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -398,6 +421,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/housekeeping.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/housekeeping.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -407,6 +431,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/housekeeping_spi.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/housekeeping_spi.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -416,6 +441,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/io_buf.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/io_buf.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -425,6 +451,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/SD_Card_Interface_Module/llsdspi.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/SD_Card_Interface_Module/llsdspi.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -434,6 +461,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/Memory/memory_intf.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/Memory/memory_intf.v"/>
           <Attr Name="ImportTime" Val="1742866546"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -443,6 +471,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mgmt_core.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mgmt_core.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -452,6 +481,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mgmt_core_wrapper.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mgmt_core_wrapper.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -461,6 +491,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mgmt_protect.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mgmt_protect.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -470,6 +501,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mgmt_protect_hv.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mgmt_protect_hv.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -479,6 +511,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mprj2_logic_high.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mprj2_logic_high.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -488,6 +521,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mprj_io_buffer.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mprj_io_buffer.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -497,6 +531,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mprj_logic_high.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mprj_logic_high.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -506,6 +541,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/SD_Card_Interface_Module/sdspi.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/SD_Card_Interface_Module/sdspi.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -524,6 +560,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/SD_Card_Interface_Module/spicmd.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/SD_Card_Interface_Module/spicmd.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -533,6 +570,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/SD_Card_Interface_Module/spirxdata.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/SD_Card_Interface_Module/spirxdata.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -542,6 +580,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/SD_Card_Interface_Module/spitxdata.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/SD_Card_Interface_Module/spitxdata.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -551,6 +590,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/user_id_programming.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/user_id_programming.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -632,6 +672,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/caravel.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/caravel.v"/>
           <Attr Name="ImportTime" Val="1743372939"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -641,7 +682,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/SynapticModule.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/SynapticModule.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -651,7 +692,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/pads.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/pads.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -661,7 +702,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/constant_block_antmicro.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/constant_block_antmicro.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -671,7 +712,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/mprj_io_antmicro.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/mprj_io_antmicro.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -681,7 +722,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/chip_io_antmicro.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/chip_io_antmicro.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -691,7 +732,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/io_buf copy.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/io_buf copy.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -701,7 +742,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/caravel_openframe.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/caravel_openframe.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -711,7 +752,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/digital_pll.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/digital_pll.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -721,7 +762,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/simple_por.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/simple_por.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -731,7 +772,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/caravel_netlists.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/caravel_netlists.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -741,7 +782,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/src/openframe_netlists.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../sources_1/imports/src/openframe_netlists.v"/>
           <Attr Name="ImportTime" Val="1743179106"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -751,7 +792,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/UserSpaceWBSYSCON.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/UserSpaceWBSYSCON.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -761,7 +802,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/WishboneDevice.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/WishboneDevice.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -771,7 +812,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/LUT.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/LUT.v"/>
           <Attr Name="ImportTime" Val="1739423180"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -779,19 +820,9 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/imports/TopLevel/MainMemory.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sources_1/imports/TopLevel/MainMemory.v"/>
-          <Attr Name="ImportTime" Val="1739427285"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/lab6ece433fall2024tempate/BCDto7Segment.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../ECE433Fall2024labs/lab6ece433fall2024JS/lab6ece433fall2024JS.srcs/sources_1/imports/lab6ece433fall2024tempate/BCDto7Segment.v"/>
           <Attr Name="ImportTime" Val="1729019026"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -820,16 +851,9 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/new/LUTBugSimulation_tb.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sim_1/imports/new/TopLevel_tb.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../SeniorDesignGit/24-25_npu/NPU_Userspace/NPU_Userspace.srcs/sim_1/new/TopLevel_tb.v"/>
           <Attr Name="ImportTime" Val="1743712267"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -839,7 +863,7 @@
       </File>
       <File Path="$PSRCDIR/sim_1/imports/new/gpio_mgmt_tb.v">
         <FileInfo RelPath="gpio_mgmt_tb.v">
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -847,7 +871,14 @@
       </File>
       <File Path="$PSRCDIR/sim_1/imports/new/spiflash.v">
         <FileInfo RelPath="spiflash.v">
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/LUTBugSimulationImproved_tb.v">
+        <FileInfo SFType="SVerilog">
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -855,7 +886,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="LUTBugSimulation_tb"/>
+        <Option Name="TopModule" Val="LUTBugSimulationImproved_tb"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
@@ -877,6 +908,7 @@
     <FileSet Name="clk_fix" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_fix" RelGenDir="$PGENDIR/clk_fix">
       <File Path="$PSRCDIR/sources_1/ip/clk_fix_1/clk_fix.xci">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -890,6 +922,7 @@
     <FileSet Name="bram" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bram" RelGenDir="$PGENDIR/bram">
       <File Path="$PSRCDIR/sources_1/ip/bram/bram.xci">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -922,7 +955,9 @@
   <Runs Version="1" Minor="21">
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -932,9 +967,7 @@
     </Run>
     <Run Id="clk_fix_synth_1" Type="Ft3:Synth" SrcSet="clk_fix" Part="xc7a100tcsg324-1" ConstrsSet="clk_fix" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_fix_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_fix_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_fix_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -944,9 +977,7 @@
     </Run>
     <Run Id="bram_synth_1" Type="Ft3:Synth" SrcSet="bram" Part="xc7a100tcsg324-1" ConstrsSet="bram" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bram_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/bram_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/bram_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -956,7 +987,9 @@
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -973,9 +1006,7 @@
     </Run>
     <Run Id="clk_fix_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="clk_fix" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_fix_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_fix_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_fix_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -992,9 +1023,7 @@
     </Run>
     <Run Id="bram_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="bram" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="bram_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/bram_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/bram_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
