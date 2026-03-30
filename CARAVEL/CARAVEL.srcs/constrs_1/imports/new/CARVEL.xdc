@@ -70,20 +70,6 @@ set_property PACKAGE_PIN U19 [get_ports {ser_tx_out}] ;# LD6
 set_property IOSTANDARD LVCMOS33 [get_ports {ser_tx_out}]
 
 # =============================================================================
-# External SPI Flash - PMOD JB
-# =============================================================================
-# Moved to JB1-JB4 so the external flash can be wired like a standalone SPI
-# device on a PMOD header while keeping the Pico control path on JA1-JA4.
-set_property PACKAGE_PIN W12 [get_ports {flash_clk}]  ;# JB1
-set_property IOSTANDARD LVCMOS33 [get_ports {flash_clk}]
-set_property PACKAGE_PIN W11 [get_ports {flash_csb}]  ;# JB2
-set_property IOSTANDARD LVCMOS33 [get_ports {flash_csb}]
-set_property PACKAGE_PIN V10 [get_ports {flash_io0}]  ;# JB3
-set_property IOSTANDARD LVCMOS33 [get_ports {flash_io0}]
-set_property PACKAGE_PIN W8  [get_ports {flash_io1}]  ;# JB4
-set_property IOSTANDARD LVCMOS33 [get_ports {flash_io1}]
-
-# =============================================================================
 # mprj_io Bus - IOSTANDARD for Every Bit
 # =============================================================================
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[0]}]
@@ -126,9 +112,24 @@ set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[36]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[37]}]
 
 # =============================================================================
+# External SPI Flash - PMOD JB
+# =============================================================================
+# External flash can be wired like a standalone SPI device on a PMOD header
+# *Connect an SPI Flash to this PMOD*
+set_property PACKAGE_PIN W12 [get_ports {flash_clk}]  ;# JB1
+set_property IOSTANDARD LVCMOS33 [get_ports {flash_clk}]
+set_property PACKAGE_PIN W11 [get_ports {flash_csb}]  ;# JB2
+set_property IOSTANDARD LVCMOS33 [get_ports {flash_csb}]
+set_property PACKAGE_PIN V10 [get_ports {flash_io0}]  ;# JB3
+set_property IOSTANDARD LVCMOS33 [get_ports {flash_io0}]
+set_property PACKAGE_PIN W8  [get_ports {flash_io1}]  ;# JB4
+set_property IOSTANDARD LVCMOS33 [get_ports {flash_io1}]
+
+# =============================================================================
 # mprj_io Bus - ZedBoard Pin Mapping
 # =============================================================================
-# JA PMOD - Bank 13
+# JA PMOD - Bank 13. 
+# *Use PICO on this bank*
 set_property PACKAGE_PIN AB11 [get_ports {mprj_io[0]}]  ;# JA7
 set_property PACKAGE_PIN Y11  [get_ports {mprj_io[17]}]  ;# JA1
 set_property PACKAGE_PIN AA11 [get_ports {mprj_io[18]}]  ;# JA2
