@@ -51,67 +51,6 @@ set_property PACKAGE_PIN R16 [get_ports {FPGA_rst}]
 set_property IOSTANDARD LVCMOS33 [get_ports {FPGA_rst}]
 
 # =============================================================================
-# Status / Debug Outputs
-# =============================================================================
-# User LEDs LD0-LD6
-set_property PACKAGE_PIN T22 [get_ports {gpio}]       ;# LD0
-set_property IOSTANDARD LVCMOS33 [get_ports {gpio}]
-set_property PACKAGE_PIN T21 [get_ports {sck_out}]    ;# LD1
-set_property IOSTANDARD LVCMOS33 [get_ports {sck_out}]
-set_property PACKAGE_PIN U22 [get_ports {csb_out}]    ;# LD2
-set_property IOSTANDARD LVCMOS33 [get_ports {csb_out}]
-set_property PACKAGE_PIN U21 [get_ports {sdi_out}]    ;# LD3
-set_property IOSTANDARD LVCMOS33 [get_ports {sdi_out}]
-set_property PACKAGE_PIN V22 [get_ports {sdo_out}]    ;# LD4
-set_property IOSTANDARD LVCMOS33 [get_ports {sdo_out}]
-set_property PACKAGE_PIN W22 [get_ports {ser_rx_out}] ;# LD5
-set_property IOSTANDARD LVCMOS33 [get_ports {ser_rx_out}]
-set_property PACKAGE_PIN U19 [get_ports {ser_tx_out}] ;# LD6
-set_property IOSTANDARD LVCMOS33 [get_ports {ser_tx_out}]
-
-# =============================================================================
-# mprj_io Bus - IOSTANDARD for Every Bit
-# =============================================================================
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[4]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[5]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[6]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[7]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[8]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[9]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[10]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[11]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[12]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[13]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[14]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[15]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[16]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[17]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[18]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[19]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[20]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[21]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[22]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[23]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[24]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[25]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[26]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[27]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[28]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[29]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[30]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[31]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[32]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[33]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[34]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[35]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[36]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[37]}]
-
-# =============================================================================
 # External SPI Flash - PMOD JB
 # =============================================================================
 # External flash can be wired like a standalone SPI device on a PMOD header
@@ -179,41 +118,63 @@ set_property PACKAGE_PIN J15 [get_ports {mprj_io[35]}]  ;# XADC_GIO3
 set_property PACKAGE_PIN L16 [get_ports {mprj_io[36]}]  ;# OTG_VBUSOC
 set_property PACKAGE_PIN G17 [get_ports {mprj_io[37]}]  ;# OTG_RESETN
 
+# =============================================================================
+# Status / Debug Outputs
+# =============================================================================
+# User LEDs LD0-LD6
+set_property PACKAGE_PIN T22 [get_ports {gpio}]       ;# LD0
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio}]
+set_property PACKAGE_PIN T21 [get_ports {sck_out}]    ;# LD1
+set_property IOSTANDARD LVCMOS33 [get_ports {sck_out}]
+set_property PACKAGE_PIN U22 [get_ports {csb_out}]    ;# LD2
+set_property IOSTANDARD LVCMOS33 [get_ports {csb_out}]
+set_property PACKAGE_PIN U21 [get_ports {sdi_out}]    ;# LD3
+set_property IOSTANDARD LVCMOS33 [get_ports {sdi_out}]
+set_property PACKAGE_PIN V22 [get_ports {sdo_out}]    ;# LD4
+set_property IOSTANDARD LVCMOS33 [get_ports {sdo_out}]
+set_property PACKAGE_PIN W22 [get_ports {ser_rx_out}] ;# LD5
+set_property IOSTANDARD LVCMOS33 [get_ports {ser_rx_out}]
+set_property PACKAGE_PIN U19 [get_ports {ser_tx_out}] ;# LD6
+set_property IOSTANDARD LVCMOS33 [get_ports {ser_tx_out}]
 
 # =============================================================================
-# Old Nexys A7 Seven-Segment Signals
+# mprj_io Bus - IOSTANDARD for Every Bit
 # =============================================================================
-# ZedBoard does not have the Nexys A7 seven-segment display interface.
-
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[7]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[6]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[5]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[4]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[3]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[2]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[1]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Display[0]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[7]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[6]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[5]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[4]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[3]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[2]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[1]}]
-# set_property IOSTANDARD LVCMOS33 [get_ports {Transistors[0]}]
-# set_property PACKAGE_PIN H15 [get_ports {Display[7]}]
-# set_property PACKAGE_PIN L18 [get_ports {Display[6]}]
-# set_property PACKAGE_PIN T11 [get_ports {Display[5]}]
-# set_property PACKAGE_PIN P15 [get_ports {Display[4]}]
-# set_property PACKAGE_PIN K13 [get_ports {Display[3]}]
-# set_property PACKAGE_PIN K16 [get_ports {Display[2]}]
-# set_property PACKAGE_PIN R10 [get_ports {Display[1]}]
-# set_property PACKAGE_PIN T10 [get_ports {Display[0]}]
-# set_property PACKAGE_PIN U13 [get_ports {Transistors[7]}]
-# set_property PACKAGE_PIN K2  [get_ports {Transistors[6]}]
-# set_property PACKAGE_PIN T14 [get_ports {Transistors[5]}]
-# set_property PACKAGE_PIN P14 [get_ports {Transistors[4]}]
-# set_property PACKAGE_PIN J14 [get_ports {Transistors[3]}]
-# set_property PACKAGE_PIN T9  [get_ports {Transistors[2]}]
-# set_property PACKAGE_PIN J18 [get_ports {Transistors[1]}]
-# set_property PACKAGE_PIN J17 [get_ports {Transistors[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[8]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[9]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[10]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[11]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[12]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[13]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[14]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[15]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[16]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[17]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[18]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[19]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[20]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[21]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[22]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[23]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[24]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[25]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[26]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[27]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[28]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[29]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[30]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[31]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[32]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[33]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[34]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[35]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[36]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {mprj_io[37]}]
