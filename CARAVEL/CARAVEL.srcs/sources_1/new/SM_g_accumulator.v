@@ -41,9 +41,12 @@ module SM_g_accumulator(
     wire [31:0] h_tn1_gated = enable_g ? h_tn1 : 32'b0;
     wire [31:0] tau_gated   = enable_g ? tau_decay_inverse : 32'b0;
     wire [31:0] dt_gated    = enable_g ? dt : 32'b0;
+    
+    wire [31:0] neg_g_tn1_gated;
+    assign neg_g_tn1_gated = {~g_tn1_gated[31], g_tn1_gated[30:0]};
 
     LUT_MAC_Module #(.DataWidth(32)) MAC1(
-        .M_value(g_tn1_gated),
+        .M_value(neg_g_tn1_gated),
         .B_value(h_tn1_gated),
         .X_value(tau_gated),
         .Exception(except_MAC1),

@@ -42,9 +42,12 @@ module SM_h_accumulator(
     wire [31:0] tau_gated   = enable_h ? tau_rise_inverse : 32'b0;
     wire [31:0] dt_gated    = enable_h ? dt : 32'b0;
     wire [31:0] b_MAC1      = (enable_h && actionPotential_tn1) ? h0 : 32'b0;
+    
+    wire [31:0] neg_h_tn1_gated;
+    assign neg_h_tn1_gated = {~h_tn1_gated[31], h_tn1_gated[30:0]};
 
     LUT_MAC_Module MAC1(
-        .M_value(h_tn1_gated),
+        .M_value(neg_h_tn1_gated),
         .B_value(b_MAC1),
         .X_value(tau_gated),
         .Exception(except_MAC1),
