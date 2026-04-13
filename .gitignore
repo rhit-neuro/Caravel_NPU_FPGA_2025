@@ -45,16 +45,16 @@ unisims
 *.lib
 
 ## dirs
-vivado.cache/
-vivado.hw/
-vivado.ip_user_files/
-vivado.runs/
-vivado.sim/
+*/CARAVEL.cache/
+*/CARAVEL.hw/
+*/CARAVEL.ip_user_files/
+*/CARAVEL.runs/
+*/CARAVEL.sim/
 
 ###### for Xilinx Vivado|ISE
-.Xil/
-.cache/
-fsm_encoding.os
+*/.Xil/
+*/.cache/
+*/fsm_encoding.os
 tab_*/
 webtalk.*
 vivado_pid*.str
