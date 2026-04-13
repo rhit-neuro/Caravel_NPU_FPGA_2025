@@ -5,7 +5,7 @@ module io_buf (
     input o,
     output i,
     input oe,
-    input ie
+    input ie 
 );
 
     assign io = oe ? o : 'bz;
