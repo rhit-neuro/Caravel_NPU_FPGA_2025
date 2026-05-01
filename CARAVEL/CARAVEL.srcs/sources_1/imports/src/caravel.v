@@ -83,11 +83,11 @@ module caravel (
     output sdo_out,
     output sdi_out,
     output csb_out,
-    output sck_out
+    output sck_out,
     
     //NON CARAVEL PINS FOR 7 SEG DISPLAY
-//    output [7:0] Display,
-//    output [7:0] Transistors
+    output [7:0] Display,
+    output [7:0] Transistors
 );
 
     //**BEGIN NON CARAVEL VERILOG**
@@ -117,25 +117,25 @@ module caravel (
       .CFGCLK(),
       .CFGMCLK(),
       .EOS());
-            // Removed 7Seg display for porting to Zedboard - Ben O
-//        wire [31:0] SevenSegDisplay;
-//        wire [7:0] D7,D6,D5,D4,D3,D2,D1,D0;
+    
+        wire [31:0] SevenSegDisplay;
+        wire [7:0] D7,D6,D5,D4,D3,D2,D1,D0;
         
-//        HEXto7Segment Dig7(SevenSegDisplay[31:28],D7);
-//        HEXto7Segment Dig6(SevenSegDisplay[27:24],D6);
-//        HEXto7Segment Dig5(SevenSegDisplay[23:20],D5);
-//        HEXto7Segment Dig4(SevenSegDisplay[19:16],D4);
-//        HEXto7Segment Dig3(SevenSegDisplay[15:12],D3);
-//        HEXto7Segment Dig2(SevenSegDisplay[11:8],D2);
-//        HEXto7Segment Dig1(SevenSegDisplay[7:4],D1);
-//        HEXto7Segment Dig0(SevenSegDisplay[3:0],D0);
+        HEXto7Segment Dig7(SevenSegDisplay[31:28],D7);
+        HEXto7Segment Dig6(SevenSegDisplay[27:24],D6);
+        HEXto7Segment Dig5(SevenSegDisplay[23:20],D5);
+        HEXto7Segment Dig4(SevenSegDisplay[19:16],D4);
+        HEXto7Segment Dig3(SevenSegDisplay[15:12],D3);
+        HEXto7Segment Dig2(SevenSegDisplay[11:8],D2);
+        HEXto7Segment Dig1(SevenSegDisplay[7:4],D1);
+        HEXto7Segment Dig0(SevenSegDisplay[3:0],D0);
     
         //module SevenSegDriverNexysA7 #(parameter N=8)(
         //input [N-1:0] D7, D6,D5, D4, D3, D2, D1, D0,
         //input Reset, Clock,
         //output [N-1:0]	Display,
         //output [N-1:0] Select);
-//        SevenSegDriverNexysA7 SevenSegUnit(D7,D6,D5,D4,D3,D2,D1,D0, FPGA_rst, clock, Display, Transistors);
+        SevenSegDriverNexysA7 SevenSegUnit(D7,D6,D5,D4,D3,D2,D1,D0, FPGA_rst, clock, Display, Transistors);
               
       //**END NON CARAVEL VERILOG**
     
@@ -443,10 +443,10 @@ module caravel (
 
       // User project direct access to gpio pad connections for analog
       // (all but the lowest-numbered 7 pads)
-      .mprj_analog_io(user_analog_io)
+      .mprj_analog_io(user_analog_io),
       
       //CUSTOM DATA FOR 7 SEG DISPLAY **NOT CARAVEL**
-//      .SevenSegDisplay(SevenSegDisplay)
+      .SevenSegDisplay(SevenSegDisplay)
   );
 
 `ifndef FPGA
