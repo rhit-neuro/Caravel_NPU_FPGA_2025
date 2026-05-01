@@ -68,7 +68,7 @@ module user_project_wrapper #(
     output [127:0] la_data_out,
     input  [127:0] la_oenb,
 
-    // IOs
+    // IOs. This is where the MPRJ's are defined.
     input  [`MPRJ_IO_PADS-1:0] io_in,
     output [`MPRJ_IO_PADS-1:0] io_out,
     output [`MPRJ_IO_PADS-1:0] io_oeb,
@@ -83,10 +83,10 @@ module user_project_wrapper #(
     input   user_clock2,
 
     // User maskable interrupt signals
-    output [2:0] user_irq,
+    output [2:0] user_irq
     
-    //CUSTOM DATA FOR 7 SEG DISPLAY **NOT CARAVEL**
-    output reg [31:0] SevenSegDisplay
+    //CUSTOM DATA FOR 7 SEG DISPLAY **NOT CARAVEL**. Removed for porting to zedboard
+//    output reg [31:0] SevenSegDisplay
 );
 
 // splitting the address space to user address space and debug address space 
@@ -108,15 +108,16 @@ assign wbs_cyc_i_debug = (wbs_adr_i[31:3] == 29'h601FFFF) ? wbs_cyc_i : 0;
 assign wbs_ack_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_ack_o_debug : wbs_ack_o_user; 
 assign wbs_dat_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_dat_o_debug : wbs_dat_o_user; 
 
+// TODO remove all 7 seg display terms in all wrappers. I just commented them out so if I fuck up I can revert it. 
+// Fully remove for clarity
 //register to hold last memory writes for 7 segment display
-wire enable_last_mem = wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_ack_o;
-always @(posedge wb_clk_i or posedge wb_rst_i)
-    if (wb_rst_i) begin
-        SevenSegDisplay <= 32'b0;
-    end else if (enable_last_mem) begin
-        SevenSegDisplay <= wbs_dat_i;
-    end
-
+//wire enable_last_mem = wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_ack_o;
+//always @(posedge wb_clk_i or posedge wb_rst_i)
+//    if (wb_rst_i) begin
+//        SevenSegDisplay <= 32'b0;
+//    end else if (enable_last_mem) begin
+//        SevenSegDisplay <= wbs_dat_i;
+//    end
 
 debug_regs debug(
     .wb_clk_i(wb_clk_i),
