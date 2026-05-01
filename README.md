@@ -104,7 +104,7 @@ export TOOLS='/opt/riscv'
 
 Then clone the repository using: 
 ```
-git clone https://github.com/rhit-neuro/Caravel_FPGA_2025.git
+git clone https://github.com/rhit-neuro/Caravel_NPU_FPGA_2025.git
 ```
 
 Ensure you are in the correct branch for the cloned repository, if not you can change the branch by
