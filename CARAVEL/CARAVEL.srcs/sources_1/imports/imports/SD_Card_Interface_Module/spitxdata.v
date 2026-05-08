@@ -5,7 +5,7 @@
 // Project:	SD-Card controller
 //
 // Purpose:	To handle all of the processing associated with sending data
-//		from a memory to our lower-level SPI processor.
+//		from a memory to our lower-level SPI processor. Writes to SD card.
 //
 // Creator:	Dan Gisselquist, Ph.D.
 //		Gisselquist Technology, LLC

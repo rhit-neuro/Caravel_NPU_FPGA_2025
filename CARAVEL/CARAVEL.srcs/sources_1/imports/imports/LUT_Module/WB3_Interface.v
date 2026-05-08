@@ -48,10 +48,10 @@ module WB3_Interface (
     assign b3_active = strobe | active_reg;
 
     //direct connection for input wires
-    assign b3_int_address = wbs3_adr_i;
-    assign b3_int_dataIn = wbs3_dat_i;
-    assign b3_int_write = wbs3_we_i;
-    assign b3_int_select = wbs3_sel_i;
+    assign b3_int_address = strobe ? wbs3_adr_i : 32'b0; // Added strobe conditional to make it symmetrical to wb4
+    assign b3_int_dataIn = strobe ? wbs3_dat_i : 32'b0;
+    assign b3_int_write = strobe ? wbs3_we_i : 1'b0;
+    assign b3_int_select = strobe ? wbs3_sel_i : 4'b0;
     
     //logical control for output wires
     assign wbs3_dat_o = b3_active ? per3_dat_o : 32'b0;
