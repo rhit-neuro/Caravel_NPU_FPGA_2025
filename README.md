@@ -19,6 +19,8 @@ Ensure the project is set to use the `xc7a100tcsg324-1` project part (part of Ar
 > Ensure all Vivado IPs are updated to your version of Vivado. This can be done automatically by clicking on the un-updated IP and looking at the bottom of Vivado and click the **Update IP** button
 
 Now you should not see any errors and should be ready to synthesize the project for the NexysA7 board.
+> [!NOTE]
+> If an error appears regarding "clk_fix not found" and clk_fix does exist, right click it and "Generate Output Products." This error occurs because the IP sometimes has trouble importing.
 
 You can now generate a Bitstream file by clicking the `Generate Bitsream` in the tab on the left menu. 
 **Be sure to say Yes to the Synthesize and Implement before generating Bitstream option**
