@@ -1,4 +1,4 @@
-# Caravel NPU FPGA 2025
+# Caravel FPGA 2026
 The goal of this project is to combine the [Efabless's Caravel harness](https://caravel-harness.readthedocs.io/en/latest/) with a custom user space containing neural processing acceleration units. This repo contains the necessary tools to compile the SoC in Vivado, add the SoC to the Nexys A7 FPGA, and run a custom program on the SoC/FPGA combo.
 
 # [STEP 1] Vivado Project Setup & Synthesis
