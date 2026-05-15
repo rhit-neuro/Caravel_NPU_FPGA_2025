@@ -582,3 +582,5 @@ See [this link](https://github.com/efabless/Caravel_on_FPGA) to original repo by
 To see our changes and steps to get to this point, see [this deprecated repo](https://github.com/rhit-neuro/Caravel_FPGA_2025_-DEPRECATED-_/tree/Our_Userspace).
 Look in the `Our_Userspace` branch for specifics on the FPGA version of our userspace and the `main` branch for simply blinking an LED based on the original Efabless repo.
 
+# FreeRTOS
+For integrating FreeRTOS into the project, see the document FreeRTOS Setup.docx. The FreeRTOS repository is linked here https://github.com/FreeRTOS/FreeRTOS. 
