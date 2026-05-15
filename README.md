@@ -9,7 +9,7 @@ Do not push directly to `main`.
 
 All changes must be made on a separate branch and merged into `main` through a Pull Request.
 
-Before merging into `main`, the Pull Request must be approved by at least one other team member. This is to prevent accidental breaking changes from entering the main branch.
+Before merging into `main`, the Pull Request must be approved by at least one other team member. This is to prevent changes from breaking the main branch.
 
 # Vivado Git Workflow
 
