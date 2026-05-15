@@ -251,7 +251,7 @@ Do not commit generated build folders just because Vivado created them while tes
 
 ### 4.5 If Vivado creates garbage files while testing
 
-Vivado may create many temporary/generated files while synthesis, implementation, or bitstream generation is running.
+Vivado may create many temporary/generated files while synthesis, implementation, or bitstream generation is running. See *Section 2.3*.
 
 Before committing any fixes, check:
 
