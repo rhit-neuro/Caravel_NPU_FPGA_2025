@@ -11,7 +11,7 @@
 
 
 module LUT_Arbiter #(parameter 
-    WAIT_TIME = 1,
+    WAIT_TIME = 1, 
     AddressWidth=32, 
     DataWidth=32
     )(
@@ -65,9 +65,12 @@ module LUT_Arbiter #(parameter
     wire [31:0] address_in = sel_wb ? b3_adr : b4_adr;
     wire [31:0] data_in = sel_wb ? b3_dataIn : b4_dataIn;
     wire write_in = sel_wb ? b3_write : b4_write;
-    assign address = processing_flag ? address_reg : address_in;
-    assign dataIn = processing_flag ? dataIn_reg : data_in;
-    assign write = processing_flag ? write_reg : write_in;
+    
+    wire hold_txn = processing_flag | wait_flag | read_flag; // Hold the latched value through WAIT_READ and READ (so the LUT datapath can't be fed different values during the wait and read phase)
+    assign address = hold_txn ? address_reg : address_in;
+    assign dataIn  = hold_txn ? dataIn_reg  : data_in;
+    assign write   = hold_txn ? write_reg   : write_in;
+    
     assign b3_busy = processing_flag ? 1 : (sel_wb ? 0 : 1);
     assign b4_busy = processing_flag ? 1 : (sel_wb ? 1 : 0);
     assign b3_dataOut = read_flag ? dataOut_reg : dataOut;
