@@ -1,15 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-<<<<<<< HEAD
-// Date        : Thu Dec 11 12:17:37 2025
-=======
-// Date        : Wed Jan 14 23:07:40 2026
->>>>>>> LUTBugFixBen
-// Host        : RHIT-PW01EG6F running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub {d:/Github
-//               Repositories/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/bram/bram_stub.v}
+// Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+// Date        : Fri May 22 17:51:23 2026
+// Host        : xilinx-2204 running 64-bit Ubuntu 22.04.5 LTS
+// Command     : write_verilog -force -mode synth_stub
+//               /home/ubuntu/work/Caravel_NPU_FPGA_2025/CARAVEL/CARAVEL.gen/sources_1/ip/bram/bram_stub.v
 // Design      : bram
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1

@@ -1,9 +1,5 @@
 -- (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-<<<<<<< HEAD
--- (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
-=======
 -- (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
->>>>>>> LUTBugFixBen
 -- 
 -- This file contains confidential and proprietary information
 -- of AMD and is protected under U.S. and international copyright

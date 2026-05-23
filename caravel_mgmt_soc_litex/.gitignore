@@ -1,10 +1,47 @@
-/.idea/
-/litex/build/
-./openlane/mgmt_core/runs/
-/openlane/mgmt_core_wrapper/runs/
-*.hex*
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+
+# ── OpenLane run outputs ──────────────────────────────────────────────────────
+openlane/*/runs/
+
+# ── Signoff build outputs ─────────────────────────────────────────────────────
+signoff/build/
+signoff/**/*.log
+signoff/**/*.rpt
+signoff/**/*.out
+signoff/**/*.xml
+
+# ── LiteX build outputs ───────────────────────────────────────────────────────
+litex/build/
+litex/**/__pycache__/
+**/__pycache__/
+**/*.pyc
+
+# ── Simulation / verification artifacts ──────────────────────────────────────
+*.hex
 *.lst
 *.vcd
+*.fst
+*.lxt
 *.gtkw
-/openlane/mgmt_core/runs/
-/openlane/mgmt_core_wrapper/runs/
+sim/*/sim_build/
+sim/**/*.log
+sim/**/*.out
+
+# ── General tool logs & temporaries ──────────────────────────────────────────
+*.log
+*.err
+*.out
+*.swp
+*.bak
+
+# ── Synopsys / VCS ────────────────────────────────────────────────────────────
+DVEfiles/
+csrc/
+simv
+simv.daidir/
+ucli.key
+vc_hdrs.h
+
+# ── Magic VLSI ────────────────────────────────────────────────────────────────
+mag/*.log
